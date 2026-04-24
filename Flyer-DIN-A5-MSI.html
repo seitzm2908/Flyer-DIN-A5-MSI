@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markus Seitz – Flyer V2</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:       #003366;
+    --navy-dark:  #002244;
+    --navy-mid:   #004080;
+    --ice:        #daeaf7;
+    --ice-mid:    #b3d4ee;
+    --white:      #ffffff;
+    --text-gray:  #4a5568;
+    --text-light: #718096;
+  }
+
+  body {
+    background: #e8edf2;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 20px;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #003366;
+    opacity: 0.5;
+  }
+
+  /* =====================
+     VORDERSEITE
+  ===================== */
+  .front {
+    width: 148mm;
+    min-height: 210mm;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,51,102,0.25);
+  }
+
+  /* --- Top bar --- */
+  .front-topbar {
+    background: var(--navy);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .front-topbar .brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .front-topbar .badge {
+    background: white;
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 900;
+    letter-spacing: 0.3em;
+    padding: 3px 8px;
+    text-transform: uppercase;
+  }
+
+  /* --- Hero photo --- */
+  .front-hero {
+    position: relative;
+    height: 85mm;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .front-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
+  }
+  /* Gradient overlay from bottom */
+  .front-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 51, 102, 0.92) 0%,
+      rgba(0, 51, 102, 0.55) 40%,
+      rgba(0, 51, 102, 0.0) 75%
+    );
+  }
+  .front-hero-text {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    padding: 10mm 8mm 6mm;
+  }
+  .front-hero-text h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .front-hero-text h1 span {
+    color: var(--ice-mid);
+  }
+
+  /* --- Eyecatcher question --- */
+  .front-question {
+    background: var(--navy);
+    padding: 8px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .front-question span {
+    color: var(--ice-mid);
+  }
+
+  /* --- Body content --- */
+  .front-body {
+    padding: 7mm 8mm;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5mm;
+  }
+
+  .front-intro {
+    font-size: 10px;
+    color: var(--text-gray);
+    line-height: 1.7;
+  }
+
+  /* Check list */
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5mm;
+  }
+  .check-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .check-icon {
+    width: 16px;
+    height: 16px;
+    background: var(--navy);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .check-icon svg {
+    width: 8px; height: 8px;
+  }
+  .check-content {
+    font-size: 9.5px;
+    color: var(--text-gray);
+    line-height: 1.5;
+  }
+  .check-content strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1px;
+  }
+
+  /* Testimonial box — ice blue background */
+  .testimonial {
+    background: var(--ice);
+    border-left: 3px solid var(--navy);
+    padding: 5mm 5mm 4mm;
+    margin-top: auto;
+  }
+  .testimonial blockquote {
+    font-size: 9.5px;
+    font-style: italic;
+    color: var(--navy-dark);
+    line-height: 1.6;
+  }
+  .testimonial cite {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-style: normal;
+    margin-top: 4px;
+  }
+
+  /* --- Front footer CTA --- */
+  .front-footer {
+    background: var(--navy);
+    padding: 7px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .front-footer .cta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .front-footer .phone {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--ice-mid);
+    letter-spacing: 0.05em;
+  }
+
+
+  /* =====================
+     RÜCKSEITE
+  ===================== */
+  .back {
+    width: 148mm;
+    min-height: 210mm;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,51,102,0.25);
+  }
+
+  /* --- Back header bar --- */
+  .back-header {
+    background: var(--navy);
+    padding: 8mm 8mm 6mm;
+  }
+  .back-header .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ice-mid);
+    margin-bottom: 4px;
+  }
+  .back-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .back-header h2 span {
+    color: var(--ice-mid);
+  }
+
+  /* --- Portrait + credentials section --- */
+  .back-profile {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    border-bottom: 3px solid var(--navy);
+  }
+
+  /* Circular portrait in a box */
+  .back-portrait-box {
+    background: var(--ice);
+    padding: 6mm 6mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 45mm;
+  }
+  .portrait-circle {
+    width: 32mm;
+    height: 32mm;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--navy);
+  }
+  .portrait-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Name + exp numbers */
+  .back-creds {
+    flex: 1;
+    padding: 6mm 7mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4mm;
+    background: white;
+  }
+  .back-creds .name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .back-creds .title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6.5px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: -2px;
+  }
+
+  .exp-row {
+    display: flex;
+    gap: 2mm;
+  }
+  .exp-pill {
+    background: var(--navy);
+    padding: 3px 6px;
+    text-align: center;
+  }
+  .exp-pill .n {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    color: white;
+    display: block;
+    line-height: 1;
+  }
+  .exp-pill .l {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5px;
+    font-weight: 600;
+    color: var(--ice-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 1px;
+  }
+
+  /* --- Services --- */
+  .back-services {
+    padding: 6mm 8mm;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4mm;
+  }
+  .services-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+  .svc {
+    border: 1px solid var(--ice-mid);
+    padding: 4mm 4mm;
+    background: white;
+  }
+  .svc-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+  }
+  .svc-text {
+    font-size: 8.5px;
+    color: var(--text-gray);
+    line-height: 1.5;
+  }
+
+  /* --- Contact block --- */
+  .back-contact {
+    background: var(--navy);
+    padding: 5mm 8mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm 6mm;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .contact-item svg {
+    width: 12px; height: 12px;
+    color: var(--ice-mid);
+    flex-shrink: 0;
+  }
+  .contact-item span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.03em;
+  }
+
+  /* --- Legal --- */
+  .back-legal {
+    background: var(--navy-dark);
+    padding: 4mm 8mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+  .legal-block .lt {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5.5px;
+    font-weight: 700;
+    color: var(--ice-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 2px;
+  }
+  .legal-block p {
+    font-size: 6px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+  }
+
+  @media print {
+    body { background: white; padding: 0; gap: 0; }
+    .front, .back { box-shadow: none; page-break-after: always; }
+    .label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<p class="label">Vorderseite</p>
+
+<!-- ===== VORDERSEITE ===== -->
+<div class="front">
+
+  <div class="front-topbar">
+    <span class="brand">Markus Seitz Immobilien · iad</span>
+    <span class="badge">iad Network</span>
+  </div>
+
+  <!-- Großflächiges Hemd-Portrait mit Gradient -->
+  <div class="front-hero">
+    <img src="MS_Hemd1.jpg" alt="Markus Seitz">
+    <div class="front-hero-text">
+      <h1>Strategie<br><span>schlägt</span><br>Zufall.</h1>
+    </div>
+  </div>
+
+  <!-- Eyecatcher-Frage als Balken -->
+  <div class="front-question">
+    Ist Ihr Haus „preiswert" – oder <span>den Preis wert?</span>
+  </div>
+
+  <div class="front-body">
+    <p class="front-intro">
+      Käufer entscheiden in Sekunden. Wenn Bilder, Preis und Inszenierung nicht sofort harmonieren, wird weitergeklickt — und der echte Wert Ihres Zuhauses bleibt auf der Strecke.
+    </p>
+
+    <div class="check-list">
+      <div class="check-item">
+        <div class="check-icon">
+          <svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="check-content">
+          <strong>Controlling</strong>
+          Fundierte Marktpreisanalyse auf Datenbasis — kein Bauchgefühl, nur Fakten.
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">
+          <svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="check-content">
+          <strong>Marketing</strong>
+          Emotionale Inszenierung, die Käufer anzieht — professionell und zielgerichtet.
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">
+          <svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="check-content">
+          <strong>Vertrieb</strong>
+          30 Jahre Erfahrung: Verhandlung auf Augenhöhe bis zur Schlüsselübergabe.
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial: hellblau hinterlegt = Social Proof -->
+    <div class="testimonial">
+      <blockquote>„Hatte für viele Probleme eine Lösung … begleitete uns bei Behörden &amp; Notar. Ein echter Glücksfall!"</blockquote>
+      <cite>— Kundenrezension · Worms</cite>
+    </div>
+  </div>
+
+  <div class="front-footer">
+    <span class="cta">Kostenloser Strategie-Check</span>
+    <span class="phone">+49 176 158 585 11</span>
+  </div>
+
+</div>
+
+<p class="label">Rückseite</p>
+
+<!-- ===== RÜCKSEITE ===== -->
+<div class="back">
+
+  <div class="back-header">
+    <div class="eyebrow">Ihr Makler für Worms &amp; Region</div>
+    <h2>Bereit für den<br><span>Strategie-Check?</span></h2>
+  </div>
+
+  <!-- Kreisrundes Portrait + Credentials -->
+  <div class="back-profile">
+    <div class="back-portrait-box">
+      <div class="portrait-circle">
+        <img src="MS_Anzug1.jpg" alt="Markus Seitz im Anzug">
+      </div>
+    </div>
+    <div class="back-creds">
+      <div>
+        <div class="name">Markus<br>Seitz</div>
+        <div class="title">Ihr Strategie-Makler · iad</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-pill">
+          <span class="n">30+</span>
+          <span class="l">Vertrieb</span>
+        </div>
+        <div class="exp-pill">
+          <span class="n">15+</span>
+          <span class="l">Marketing</span>
+        </div>
+        <div class="exp-pill">
+          <span class="n">10+</span>
+          <span class="l">Controlling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leistungskacheln -->
+  <div class="back-services">
+    <div class="services-title">Was ich für Sie tue</div>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-title">Wertermittlung</div>
+        <div class="svc-text">Fundierte Marktpreisanalyse — kein Schätzwert, sondern belastbare Daten.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-title">Exposé &amp; Fotos</div>
+        <div class="svc-text">Professionelle Inszenierung für maximale Reichweite auf allen Kanälen.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-title">Käufer-Selektion</div>
+        <div class="svc-text">Nur vorqualifizierte Interessenten — Ihre Zeit ist wertvoll.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-title">Notar &amp; Übergabe</div>
+        <div class="svc-text">Vollständige Begleitung bis zur finalen Schlüsselübergabe.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kontakt -->
+  <div class="back-contact">
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.6a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+      </svg>
+      <span>+49 176 158 585 11</span>
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <span>markus.seitz@iaddeutschland.de</span>
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/>
+      </svg>
+      <span>markus-seitz.immobilien</span>
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span>67551 Worms-Pfeddersheim</span>
+    </div>
+  </div>
+
+  <!-- Impressum -->
+  <div class="back-legal">
+    <div class="legal-block">
+      <div class="lt">Anschrift</div>
+      <p>Markus Seitz Immobilien iad<br>St.-Georgen-Str. 13<br>67551 Worms-Pfeddersheim</p>
+    </div>
+    <div class="legal-block">
+      <div class="lt">Aufsichtsbehörde</div>
+      <p>Gewerbeerlaubnis §34c GewO<br>Stadt Worms · Marktplatz 2<br>67547 Worms</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
