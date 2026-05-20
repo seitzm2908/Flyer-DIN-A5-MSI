@@ -1,0 +1,86 @@
+{
+  "brand": {
+    "name": "Markus Seitz Immobilien · iad",
+    "tagline": "Strategie schlägt Zufall.",
+    "positioning": "Ihr Strategie-Makler in Worms & Rheinhessen",
+    "persona": "Seriös, direkt, datengetrieben — kein Typ der 1000 Posts über Immobilienwerte, sondern klare Haltung",
+    "voice": "Professionell ohne Arroganz. Direkt ohne Angriff. Zahlen statt Bauchgefühl.",
+    "region": {
+      "primary": "Worms-Pfeddersheim",
+      "secondary": ["Worms", "Rheinhessen", "Mainz-Bingen", "Alzey-Worms", "Ludwigshafen"]
+    }
+  },
+  "colors": {
+    "navy":       "#003366",
+    "navy_dark":  "#002244",
+    "navy_mid":   "#004080",
+    "ice":        "#daeaf7",
+    "ice_mid":    "#b3d4ee",
+    "white":      "#ffffff",
+    "text_gray":  "#4a5568",
+    "text_light": "#718096"
+  },
+  "typography": {
+    "headline": "Montserrat",
+    "headline_weights": [700, 800, 900],
+    "body": "Open Sans",
+    "body_weights": [300, 400, 600],
+    "style": "UPPERCASE für Headlines, Sentence case für Body"
+  },
+  "credentials": {
+    "years_vertrieb": "30+",
+    "years_marketing": "15+",
+    "years_controlling": "10+",
+    "network": "iad Deutschland"
+  },
+  "contact": {
+    "phone": "+49 176 158 585 11",
+    "email": "markus.seitz@iaddeutschland.de",
+    "address": "St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim",
+    "website_main": "markus-seitz.immobilien",
+    "website_valuation": "wertermittlung-rheinhessen.de"
+  },
+  "cta_primary": "Kostenloser Strategie-Check",
+  "cta_secondary": "Jetzt Wert ermitteln",
+  "key_messages": [
+    "Strategie schlägt Zufall.",
+    "Ist Ihr Haus 'preiswert' – oder den Preis wert?",
+    "Fundierte Marktpreisanalyse — kein Bauchgefühl, nur Fakten.",
+    "Käufer entscheiden in Sekunden.",
+    "Controlling · Marketing · Vertrieb — aus einer Hand.",
+    "Nur vorqualifizierte Interessenten — Ihre Zeit ist wertvoll."
+  ],
+  "services": [
+    "Wertermittlung (Marktpreisanalyse)",
+    "Exposé & Professionelle Fotografie",
+    "Käufer-Selektion & Vorqualifizierung",
+    "Verhandlungsführung",
+    "Notar & Übergabe-Begleitung"
+  ],
+  "target_audience": {
+    "primary": "Eigentümer 45–70 Jahre, die verkaufen möchten",
+    "secondary": "Erbengemeinschaften, Scheidungsimmobilien, Umzügler",
+    "pain_points": [
+      "Unsicherheit über den richtigen Preis",
+      "Angst, zu günstig zu verkaufen",
+      "Keine Zeit für Besichtigungen",
+      "Schlechte Erfahrungen mit anderen Maklern",
+      "Angst vor langen Laufzeiten"
+    ]
+  },
+  "google_business": {
+    "profile_name": "Markus Seitz Immobilien",
+    "category": "Immobilienmakler",
+    "target_ranking": "Top 3 lokal",
+    "priority_keywords": [
+      "Makler Worms",
+      "Immobilienmakler Worms",
+      "Haus verkaufen Worms",
+      "Wertermittlung Rheinhessen",
+      "Immobilien Rheinhessen",
+      "Makler Pfeddersheim",
+      "Haus verkaufen Rheinhessen",
+      "Immobilienbewertung Worms"
+    ]
+  }
+}
