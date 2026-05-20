@@ -9,38 +9,43 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy:      #003366;
-    --navy-dark: #002244;
-    --navy-mid:  #004080;
-    --ice:       #daeaf7;
-    --ice-mid:   #b3d4ee;
+    --dark:      #0a1628;
+    --dark-mid:  #0d1f3c;
+    --dark-card: #111d33;
+    --dark-elevated: #162340;
+    --teal:      #1abcbc;
+    --teal-light:#4ecdc4;
+    --teal-dark: #0d9090;
+    --teal-glow: rgba(26, 188, 188, 0.15);
     --white:     #ffffff;
-    --gray:      #4a5568;
-    --light:     #718096;
-    --bg:        #f0f4f8;
-    --success:   #2d7a4f;
-    --warn:      #b7791f;
-    --danger:    #9b2c2c;
+    --white-80:  rgba(255,255,255,0.8);
+    --white-60:  rgba(255,255,255,0.6);
+    --white-30:  rgba(255,255,255,0.3);
+    --white-10:  rgba(255,255,255,0.07);
+    --success:   #2dd4a0;
+    --warn:      #f6c90e;
+    --danger:    #ff5f5f;
   }
 
   body {
     font-family: 'Open Sans', sans-serif;
-    background: var(--bg);
-    color: var(--gray);
+    background: var(--dark);
+    color: var(--white-80);
     min-height: 100vh;
   }
 
   /* ── TOPBAR ── */
   .topbar {
-    background: var(--navy);
-    padding: 12px 32px;
+    background: var(--dark-mid);
+    border-bottom: 1px solid rgba(26,188,188,0.2);
+    padding: 14px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
   }
   .topbar-brand {
     display: flex;
@@ -48,131 +53,115 @@
     gap: 16px;
   }
   .melia-logo {
-    background: var(--ice-mid);
-    color: var(--navy);
+    background: linear-gradient(135deg, var(--teal-light), var(--teal-dark));
+    color: var(--dark);
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    padding: 6px 14px;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    padding: 7px 16px;
     text-transform: uppercase;
   }
   .brand-name {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
-    color: rgba(255,255,255,0.6);
+    color: var(--white-30);
     text-transform: uppercase;
     letter-spacing: 0.2em;
   }
-  .topbar-date {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--ice-mid);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
   .topbar-nav {
     display: flex;
-    gap: 8px;
+    gap: 4px;
   }
   .nav-btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
     font-weight: 700;
-    color: rgba(255,255,255,0.7);
+    color: var(--white-60);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    padding: 6px 12px;
-    border: 1px solid rgba(255,255,255,0.2);
+    letter-spacing: 0.12em;
+    padding: 7px 14px;
+    border: 1px solid var(--white-10);
     cursor: pointer;
     background: transparent;
     transition: all 0.2s;
     text-decoration: none;
   }
   .nav-btn:hover, .nav-btn.active {
-    background: var(--ice-mid);
-    color: var(--navy);
-    border-color: var(--ice-mid);
+    background: var(--teal-glow);
+    color: var(--teal);
+    border-color: rgba(26,188,188,0.4);
+  }
+  .topbar-date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 
   /* ── LAYOUT ── */
   .main {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 32px 24px;
+    padding: 28px 24px 48px;
   }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .col-span-2 { grid-column: span 2; }
-  .col-span-3 { grid-column: span 3; }
-
-  /* ── SECTION HEADER ── */
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    margin-top: 32px;
-  }
-  .section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--navy);
-  }
-  .section-action {
+  /* ── SECTION ── */
+  .section-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
-    font-weight: 600;
-    color: var(--navy-mid);
+    font-weight: 700;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    cursor: pointer;
-    opacity: 0.7;
+    color: var(--teal);
+    margin-bottom: 14px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(26,188,188,0.2);
   }
 
   /* ── CARDS ── */
   .card {
-    background: white;
+    background: var(--dark-card);
+    border: 1px solid rgba(255,255,255,0.06);
     padding: 20px;
-    box-shadow: 0 2px 12px rgba(0,51,102,0.08);
   }
-  .card-navy {
-    background: var(--navy);
-    color: white;
+  .card-teal-border {
+    background: var(--dark-card);
+    border: 1px solid rgba(26,188,188,0.3);
     padding: 20px;
-    box-shadow: 0 4px 20px rgba(0,51,102,0.25);
   }
-  .card-ice {
-    background: var(--ice);
+  .card-elevated {
+    background: var(--dark-elevated);
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 20px;
   }
 
-  /* ── KPI CARDS ── */
-  .kpi-grid {
+  /* ── KPI ── */
+  .kpi-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 28px;
+    gap: 12px;
+    margin-bottom: 24px;
   }
   .kpi {
-    background: white;
-    padding: 16px 20px;
-    border-left: 4px solid var(--navy);
-    box-shadow: 0 2px 8px rgba(0,51,102,0.08);
+    background: var(--dark-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid var(--teal);
+    padding: 16px 18px;
   }
   .kpi-label {
     font-family: 'Montserrat', sans-serif;
@@ -180,50 +169,76 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    color: var(--light);
-    margin-bottom: 6px;
+    color: var(--white-30);
+    margin-bottom: 8px;
   }
   .kpi-value {
     font-family: 'Montserrat', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 900;
-    color: var(--navy);
+    color: var(--white);
     line-height: 1;
+    margin-bottom: 4px;
   }
-  .kpi-sub {
-    font-size: 10px;
-    color: var(--light);
-    margin-top: 4px;
-  }
+  .kpi-value.teal { color: var(--teal); }
+  .kpi-sub { font-size: 10px; color: var(--white-60); }
   .kpi-badge {
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     font-size: 8px;
     font-weight: 700;
-    padding: 2px 6px;
-    margin-top: 4px;
+    padding: 2px 8px;
+    margin-top: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
   }
-  .badge-green { background: #c6f6d5; color: var(--success); }
-  .badge-warn  { background: #fefcbf; color: var(--warn); }
-  .badge-red   { background: #fed7d7; color: var(--danger); }
-  .badge-blue  { background: var(--ice); color: var(--navy); }
+  .badge-teal   { background: var(--teal-glow); color: var(--teal); border: 1px solid rgba(26,188,188,0.3); }
+  .badge-warn   { background: rgba(246,201,14,0.1); color: var(--warn); border: 1px solid rgba(246,201,14,0.3); }
+  .badge-danger { background: rgba(255,95,95,0.1); color: var(--danger); border: 1px solid rgba(255,95,95,0.3); }
+  .badge-ok     { background: rgba(45,212,160,0.1); color: var(--success); border: 1px solid rgba(45,212,160,0.3); }
 
-  /* ── CONTENT CALENDAR ── */
-  .calendar-grid {
+  /* ── TAGLINE ── */
+  .hero-strip {
+    background: var(--dark-mid);
+    border: 1px solid rgba(26,188,188,0.2);
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .hero-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .hero-tagline span { color: var(--teal); }
+  .hero-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--white-30);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: 4px;
+  }
+
+  /* ── CALENDAR ── */
+  .cal-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
   .cal-day {
-    background: white;
-    border-top: 3px solid var(--ice-mid);
+    background: var(--dark-card);
+    border: 1px solid rgba(255,255,255,0.06);
     padding: 14px 12px;
-    box-shadow: 0 2px 8px rgba(0,51,102,0.06);
   }
   .cal-day.today {
-    border-top-color: var(--navy);
+    border-color: rgba(26,188,188,0.4);
+    background: var(--dark-elevated);
   }
   .cal-day-name {
     font-family: 'Montserrat', sans-serif;
@@ -231,108 +246,211 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--light);
+    color: var(--white-30);
     margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .cal-day.today .cal-day-name { color: var(--navy); }
+  .cal-day.today .cal-day-name { color: var(--teal); }
   .cal-item {
-    background: var(--bg);
+    background: var(--white-10);
     padding: 7px 9px;
     margin-bottom: 6px;
-    border-left: 3px solid var(--ice-mid);
+    border-left: 2px solid var(--white-30);
     font-size: 9.5px;
-    color: var(--gray);
+    color: var(--white-60);
     line-height: 1.4;
   }
-  .cal-item.ig { border-left-color: #E1306C; }
-  .cal-item.fb { border-left-color: #1877F2; }
-  .cal-item.gmb { border-left-color: var(--success); }
-  .cal-item.canva { border-left-color: var(--navy); }
+  .cal-item.ig  { border-left-color: #E1306C; }
+  .cal-item.fb  { border-left-color: #1877F2; }
+  .cal-item.gmb { border-left-color: var(--teal); }
   .cal-platform {
     font-family: 'Montserrat', sans-serif;
     font-size: 7px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
   }
-  .cal-platform.ig { color: #E1306C; }
-  .cal-platform.fb { color: #1877F2; }
-  .cal-platform.gmb { color: var(--success); }
+  .cal-platform.ig  { color: #E1306C; }
+  .cal-platform.fb  { color: #1877F2; }
+  .cal-platform.gmb { color: var(--teal); }
 
-  /* ── CONTENT QUICK-GEN ── */
-  .gen-section { }
-  .gen-title {
+  /* ── HOOK LIBRARY ── */
+  .hook-card {
+    background: var(--dark-elevated);
+    border-left: 3px solid var(--teal);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .hook-card:hover {
+    background: var(--teal-glow);
+    border-left-color: var(--teal-light);
+  }
+  .hook-type {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    margin-bottom: 5px;
+  }
+  .hook-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.35;
+  }
+
+  /* ── QUICK GEN ── */
+  .gen-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
     font-weight: 800;
-    color: white;
+    color: var(--white);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     margin-bottom: 4px;
   }
   .gen-sub {
     font-size: 11px;
-    color: var(--ice-mid);
-    margin-bottom: 16px;
+    color: var(--white-60);
+    margin-bottom: 18px;
     line-height: 1.6;
   }
-  .gen-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .gen-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
   .gen-btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    padding: 8px 14px;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    padding: 9px 16px;
+    background: var(--white-10);
+    color: var(--white-80);
+    border: 1px solid rgba(255,255,255,0.12);
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
   }
-  .gen-btn:hover {
-    background: var(--ice-mid);
-    color: var(--navy);
-    border-color: var(--ice-mid);
-  }
-  .gen-btn.primary {
-    background: var(--ice-mid);
-    color: var(--navy);
-    border-color: var(--ice-mid);
+  .gen-btn:hover, .gen-btn.primary {
+    background: var(--teal);
+    color: var(--dark);
+    border-color: var(--teal);
   }
 
-  /* ── RANKING TABLE ── */
-  .ranking-table {
-    width: 100%;
-    border-collapse: collapse;
+  /* ── CHAT ── */
+  .chat-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
-  .ranking-table th {
+  .chat-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-right: 4px;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: rgba(26,188,188,0.3); }
+  .bubble {
+    padding: 10px 14px;
+    font-size: 11px;
+    line-height: 1.6;
+    max-width: 88%;
+  }
+  .bubble.melia {
+    background: var(--dark-elevated);
+    border-left: 2px solid var(--teal);
+    color: var(--white-80);
+    align-self: flex-start;
+  }
+  .bubble.user {
+    background: rgba(26,188,188,0.15);
+    border: 1px solid rgba(26,188,188,0.3);
+    color: var(--white);
+    align-self: flex-end;
+  }
+  .bubble-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+  .chat-input-row { display: flex; gap: 8px; }
+  .chat-input {
+    flex: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    padding: 10px 14px;
+    background: var(--dark-elevated);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    outline: none;
+  }
+  .chat-input:focus { border-color: var(--teal); }
+  .chat-input::placeholder { color: var(--white-30); }
+  .chat-send {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 18px;
+    background: var(--teal);
+    color: var(--dark);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .chat-send:hover { background: var(--teal-light); }
+
+  /* ── RANKING TABLE ── */
+  .rank-table { width: 100%; border-collapse: collapse; }
+  .rank-table th {
     font-family: 'Montserrat', sans-serif;
     font-size: 7.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--light);
+    color: var(--white-30);
     text-align: left;
     padding: 8px 0;
-    border-bottom: 1px solid var(--ice);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-  .ranking-table td {
+  .rank-table td {
     padding: 10px 0;
     font-size: 11px;
-    border-bottom: 1px solid var(--ice);
-    color: var(--gray);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white-80);
     vertical-align: middle;
   }
-  .ranking-table td:first-child {
-    font-weight: 600;
-    color: var(--navy);
-  }
+  .rank-table td:first-child { font-weight: 600; color: var(--white); }
   .rank-pos {
     display: inline-flex;
     align-items: center;
@@ -341,253 +459,116 @@
     height: 28px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 13px;
-  }
-  .rank-1 { background: var(--navy); color: white; }
-  .rank-2 { background: var(--navy-mid); color: white; }
-  .rank-3 { background: var(--ice-mid); color: var(--navy); }
-  .rank-other { background: var(--bg); color: var(--gray); }
-  .rank-target { background: #fefcbf; color: var(--warn); border: 1px dashed var(--warn); }
-
-  /* ── COMPETITOR LIST ── */
-  .competitor-item {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--ice);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .competitor-item:last-child { border-bottom: none; }
-  .comp-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--navy);
-  }
-  .comp-type {
-    font-size: 10px;
-    color: var(--light);
-    margin-top: 1px;
-  }
-  .comp-tags {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-  .comp-tag {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 8px;
-    font-weight: 600;
-    padding: 2px 7px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  /* ── HOOK LIBRARY ── */
-  .hook-card {
-    background: var(--ice);
-    border-left: 4px solid var(--navy);
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .hook-card:hover { border-left-color: var(--ice-mid); background: var(--ice-mid); }
-  .hook-type {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 7px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--navy);
-    opacity: 0.7;
-    margin-bottom: 4px;
-  }
-  .hook-text {
-    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.4;
   }
+  .pos-1   { background: var(--teal); color: var(--dark); }
+  .pos-2   { background: rgba(26,188,188,0.4); color: var(--white); }
+  .pos-3   { background: rgba(26,188,188,0.2); color: var(--teal); }
+  .pos-x   { background: rgba(255,255,255,0.07); color: var(--white-60); font-size: 10px; }
 
-  /* ── CANVA DESIGNS ── */
-  .designs-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
+  /* ── DESIGNS ── */
+  .designs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .design-card {
-    background: white;
+    background: var(--dark-card);
+    border: 1px solid rgba(255,255,255,0.06);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,51,102,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
   }
   .design-card:hover {
+    border-color: rgba(26,188,188,0.4);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,51,102,0.15);
   }
   .design-thumb {
     width: 100%;
     aspect-ratio: 4/5;
-    background: var(--navy);
+    background: var(--dark-elevated);
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    color: var(--ice-mid);
+    font-size: 9px;
+    color: var(--white-30);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    overflow: hidden;
   }
   .design-thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .design-info {
-    padding: 10px 12px;
-  }
+  .design-info { padding: 10px 12px; }
   .design-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--white);
     margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .design-type {
-    font-size: 9px;
-    color: var(--light);
-  }
+  .design-type { font-size: 9px; color: var(--white-30); }
 
-  /* ── MELIA CHAT ── */
-  .chat-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 320px;
-    overflow-y: auto;
-    margin-bottom: 12px;
-    padding-right: 4px;
-  }
-  .chat-bubble {
-    padding: 10px 14px;
-    font-size: 11px;
-    line-height: 1.6;
-    max-width: 90%;
-  }
-  .chat-bubble.melia {
-    background: var(--ice);
-    color: var(--navy);
-    border-left: 3px solid var(--navy);
-    align-self: flex-start;
-  }
-  .chat-bubble.user {
-    background: var(--navy);
-    color: white;
-    align-self: flex-end;
-  }
-  .chat-sender {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 7px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 4px;
-    opacity: 0.7;
-  }
-  .chat-input-row {
-    display: flex;
-    gap: 8px;
-  }
-  .chat-input {
-    flex: 1;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
-    padding: 10px 14px;
-    border: 1px solid var(--ice-mid);
-    background: white;
-    color: var(--gray);
-    outline: none;
-  }
-  .chat-input:focus { border-color: var(--navy); }
-  .chat-send {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 10px 16px;
-    background: var(--navy);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .chat-send:hover { background: var(--navy-mid); }
-
-  /* ── FOOTER ── */
-  .footer {
-    background: var(--navy-dark);
-    padding: 16px 32px;
-    margin-top: 48px;
+  /* ── COMPETITOR ── */
+  .comp-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .comp-item:last-child { border-bottom: none; }
+  .comp-name { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--white); }
+  .comp-type { font-size: 10px; color: var(--white-30); margin-top: 1px; }
+  .comp-tags { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+
+  /* ── CHECKLIST ── */
+  .check-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 10.5px;
+    align-items: flex-start;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-icon { font-weight: 700; font-size: 12px; flex-shrink: 0; width: 16px; }
+  .check-icon.ok     { color: var(--success); }
+  .check-icon.warn   { color: var(--warn); }
+  .check-icon.danger { color: var(--danger); }
+
+  /* ── PROGRESS ── */
+  .progress-wrap { margin-bottom: 14px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .progress-bar { height: 3px; background: rgba(255,255,255,0.07); }
+  .progress-fill { height: 100%; background: var(--teal); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark-mid);
+    border-top: 1px solid rgba(26,188,188,0.15);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
   }
   .footer-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 8px;
     font-weight: 600;
-    color: rgba(255,255,255,0.3);
+    color: var(--white-30);
     text-transform: uppercase;
     letter-spacing: 0.2em;
   }
-  .footer-version {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 8px;
-    font-weight: 700;
-    color: var(--ice-mid);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-  }
-
-  /* ── PROGRESS BAR ── */
-  .progress-bar {
-    height: 4px;
-    background: var(--ice);
-    margin-top: 8px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: var(--navy);
-    transition: width 1s ease;
-  }
-
-  /* ── ALERT STRIP ── */
-  .alert {
-    padding: 10px 16px;
-    margin-bottom: 20px;
-    font-size: 11px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .alert-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .alert-info { background: var(--ice); color: var(--navy); }
-  .alert-info .alert-dot { background: var(--navy); }
-  .alert-warn { background: #fefcbf; color: var(--warn); }
-  .alert-warn .alert-dot { background: var(--warn); }
+  .footer-version { font-family: 'Montserrat', sans-serif; font-size: 8px; color: var(--teal); letter-spacing: 0.2em; }
 </style>
 </head>
 <body>
@@ -596,33 +577,42 @@
 <div class="topbar">
   <div class="topbar-brand">
     <div class="melia-logo">MELIA</div>
-    <div class="brand-name">Marketing KI · Markus Seitz Immobilien</div>
+    <div>
+      <div style="font-family: Montserrat; font-size: 13px; font-weight: 700; color: white; letter-spacing: 0.05em;">MARKUS SEITZ IMMOBILIEN</div>
+      <div class="brand-name">Marketing KI · Worms & Rheinhessen</div>
+    </div>
   </div>
   <div class="topbar-nav">
     <a href="#dashboard" class="nav-btn active">Dashboard</a>
     <a href="#content" class="nav-btn">Content</a>
-    <a href="#seo" class="nav-btn">SEO & Google</a>
+    <a href="#seo" class="nav-btn">Google</a>
     <a href="#konkurrenz" class="nav-btn">Konkurrenz</a>
     <a href="#designs" class="nav-btn">Canva</a>
   </div>
-  <div class="topbar-date" id="topbar-date">Wird geladen...</div>
+  <div class="topbar-date" id="topbar-date">...</div>
 </div>
 
 <div class="main">
 
-  <!-- ALERTS -->
-  <div class="alert alert-info" style="margin-top:0; margin-bottom: 16px;">
-    <div class="alert-dot"></div>
-    Melia ist bereit. Ziel diese Woche: Google-Ranking "Makler Worms" unter Top 3 stabilisieren + 3 Instagram-Posts live schalten.
+  <!-- HERO -->
+  <div class="hero-strip" id="dashboard">
+    <div>
+      <div class="hero-tagline">Ihre Immobilie verdient<span> eine Strategie.</span></div>
+      <div class="hero-sub">Kein Makler. Eine Strategie. · Worms & Rheinhessen</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-family: Montserrat; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 4px;">Ziel diese Woche</div>
+      <div style="font-family: Montserrat; font-size: 13px; font-weight: 700; color: var(--teal);">3 Posts · 2 GMB · Top 3 halten</div>
+    </div>
   </div>
 
-  <!-- KPI STRIP -->
-  <div class="kpi-grid">
+  <!-- KPI -->
+  <div class="kpi-row">
     <div class="kpi">
-      <div class="kpi-label">Google Maps Rank</div>
-      <div class="kpi-value">–</div>
+      <div class="kpi-label">Google Maps Rang</div>
+      <div class="kpi-value teal">–</div>
       <div class="kpi-sub">"Makler Worms"</div>
-      <div class="kpi-badge badge-blue">Jetzt prüfen ↗</div>
+      <div class="kpi-badge badge-warn">Jetzt prüfen ↗</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Google Bewertungen</div>
@@ -633,426 +623,297 @@
     <div class="kpi">
       <div class="kpi-label">Posts diese Woche</div>
       <div class="kpi-value">0</div>
-      <div class="kpi-sub">Ziel: 5–7 gesamt</div>
-      <div class="kpi-badge badge-red">Starten</div>
+      <div class="kpi-sub">Ziel: 5–7</div>
+      <div class="kpi-badge badge-danger">Starten</div>
     </div>
     <div class="kpi">
-      <div class="kpi-label">Konkurrenten getrackt</div>
-      <div class="kpi-value">–</div>
-      <div class="kpi-sub">Worms & Rheinhessen</div>
-      <div class="kpi-badge badge-blue">Einrichten</div>
+      <div class="kpi-label">Canva-Designs</div>
+      <div class="kpi-value teal">12</div>
+      <div class="kpi-sub">Generiert · Auswählen</div>
+      <div class="kpi-badge badge-teal">Bereit</div>
     </div>
   </div>
 
   <!-- CONTENT CALENDAR -->
-  <div id="content">
-    <div class="section-header">
-      <div class="section-title">Content-Kalender — Aktuelle Woche</div>
-      <div class="section-action">+ Neuen Post planen</div>
+  <div class="section-label" id="content">Content-Kalender — Diese Woche</div>
+  <div class="cal-grid">
+    <div class="cal-day">
+      <div class="cal-day-name">Montag</div>
+      <div class="cal-item gmb"><div class="cal-platform gmb">Google Business</div>Wertermittlung-Angebot</div>
+      <div class="cal-item ig"><div class="cal-platform ig">Instagram</div>Hook: "Du verlierst gerade Geld."</div>
     </div>
-
-    <div class="calendar-grid">
-      <div class="cal-day">
-        <div class="cal-day-name">Montag</div>
-        <div class="cal-item gmb">
-          <div class="cal-platform gmb">Google Business</div>
-          Angebot-Post: Kostenlose Wertermittlung
-        </div>
-        <div class="cal-item ig">
-          <div class="cal-platform ig">Instagram</div>
-          Hook-Post: "Strategie schlägt Zufall."
-        </div>
-      </div>
-      <div class="cal-day today">
-        <div class="cal-day-name">Dienstag ← Heute</div>
-        <div class="cal-item ig">
-          <div class="cal-platform ig">Instagram</div>
-          Carousel: 5 Fehler beim Privatverkauf
-        </div>
-      </div>
-      <div class="cal-day">
-        <div class="cal-day-name">Mittwoch</div>
-        <div class="cal-item fb">
-          <div class="cal-platform fb">Facebook</div>
-          Marktupdate Worms & Rheinhessen
-        </div>
-        <div class="cal-item gmb">
-          <div class="cal-platform gmb">Google Business</div>
-          Tipp-Post: Immobilien richtig vorbereiten
-        </div>
-      </div>
-      <div class="cal-day">
-        <div class="cal-day-name">Donnerstag</div>
-        <div class="cal-item ig">
-          <div class="cal-platform ig">Instagram</div>
-          Story: Behind-the-Scenes Besichtigung
-        </div>
-        <div class="cal-item fb">
-          <div class="cal-platform fb">Facebook</div>
-          Frage-Post: Ihre größte Sorge beim Verkauf?
-        </div>
-      </div>
-      <div class="cal-day">
-        <div class="cal-day-name">Freitag</div>
-        <div class="cal-item ig">
-          <div class="cal-platform ig">Instagram</div>
-          Reel: "Was ich anders mache" (60 Sek.)
-        </div>
-        <div class="cal-item gmb">
-          <div class="cal-platform gmb">Google Business</div>
-          Wochenabschluss-Post
-        </div>
-      </div>
+    <div class="cal-day today">
+      <div class="cal-day-name">Dienstag · Heute</div>
+      <div class="cal-item ig"><div class="cal-platform ig">Instagram</div>Carousel: 5 Fehler Privatverkauf</div>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Mittwoch</div>
+      <div class="cal-item fb"><div class="cal-platform fb">Facebook</div>Marktupdate Worms Mai 2025</div>
+      <div class="cal-item gmb"><div class="cal-platform gmb">Google Business</div>Tipp-Post: Immobilie vorbereiten</div>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Donnerstag</div>
+      <div class="cal-item ig"><div class="cal-platform ig">Instagram</div>Portrait-Post: "Kein Makler. Eine Strategie."</div>
+      <div class="cal-item fb"><div class="cal-platform fb">Facebook</div>Frage: Deine größte Sorge?</div>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Freitag</div>
+      <div class="cal-item ig"><div class="cal-platform ig">Instagram</div>Reel: "Der Markt hat sich verändert."</div>
+      <div class="cal-item gmb"><div class="cal-platform gmb">Google Business</div>Wochenpost</div>
     </div>
   </div>
 
-  <!-- QUICK GENERATE + MELIA CHAT -->
-  <div class="grid-2" style="margin-top: 20px;">
-
-    <div class="card-navy">
-      <div class="gen-title">Content schnell generieren</div>
-      <div class="gen-sub">Melia erstellt sofort einsatzbereite Hooks, Captions und Canva-Designs auf Basis Ihres CI.</div>
+  <!-- QUICK GEN + CHAT -->
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card-teal-border">
+      <div class="gen-title">Content generieren</div>
+      <div class="gen-sub">Melia erstellt Posts im CI — dunkles Navy, Teal-Akzent, Dein Stil.</div>
       <div class="gen-buttons">
-        <button class="gen-btn primary" onclick="openCanva()">↗ Instagram Post</button>
-        <button class="gen-btn" onclick="openCanva()">↗ Carousel</button>
-        <button class="gen-btn" onclick="openCanva()">↗ Story</button>
-        <button class="gen-btn" onclick="openCanva()">↗ Facebook Post</button>
-        <button class="gen-btn" onclick="openCanva()">↗ GMB Post</button>
-        <button class="gen-btn" onclick="openCanva()">↗ Reel Script</button>
+        <a href="https://www.canva.com" target="_blank" class="gen-btn primary">↗ Instagram Post</a>
+        <a href="https://www.canva.com" target="_blank" class="gen-btn">↗ Carousel</a>
+        <a href="https://www.canva.com" target="_blank" class="gen-btn">↗ Story</a>
+        <a href="https://www.canva.com" target="_blank" class="gen-btn">↗ Facebook</a>
+        <a href="https://www.canva.com" target="_blank" class="gen-btn">↗ GMB Post</a>
+        <a href="https://www.canva.com" target="_blank" class="gen-btn">↗ Reel Script</a>
       </div>
     </div>
-
     <div class="card">
-      <div class="section-title" style="margin-bottom: 12px;">Melia fragen</div>
-      <div class="chat-container" id="chat-messages">
-        <div class="chat-bubble melia">
-          <div class="chat-sender">Melia</div>
-          Guten Tag! Ich bin Melia, Ihre Marketing-KI. Was soll ich heute für Sie erstellen? Ein Post, ein Carousel, eine Caption — oder soll ich die Konkurrenz in Worms analysieren?
+      <div class="chat-wrap">
+        <div class="chat-header">Melia fragen</div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="bubble melia">
+            <div class="bubble-label">Melia</div>
+            Bereit. Was soll ich heute erstellen? Post, Carousel, Caption, Reel-Script — oder Konkurrenzcheck in Worms?
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" id="chat-input" placeholder="Post erstellen, Hook schreiben, Konkurrenz checken..." onkeypress="handleKey(event)">
+          <button class="chat-send" onclick="sendMessage()">→</button>
         </div>
       </div>
-      <div class="chat-input-row">
-        <input type="text" class="chat-input" id="chat-input" placeholder="Fragen Sie Melia..." onkeypress="handleKey(event)">
-        <button class="chat-send" onclick="sendMessage()">Senden</button>
-      </div>
     </div>
-
   </div>
 
   <!-- HOOK LIBRARY -->
-  <div class="section-header">
-    <div class="section-title">Hook-Bibliothek — Sofort einsatzbereit</div>
-    <div class="section-action">Alle anzeigen</div>
-  </div>
-
+  <div class="section-label">Hook-Bibliothek — Sofort kopieren</div>
   <div class="grid-3">
     <div>
       <div class="hook-card" onclick="copyHook(this)">
-        <div class="hook-type">Provokation</div>
-        <div class="hook-text">"Strategie schlägt Zufall. Immer."</div>
+        <div class="hook-type">Bewährt · Carousel Slide 01</div>
+        <div class="hook-text">"Du verlierst gerade Geld. Ohne es zu merken."</div>
       </div>
       <div class="hook-card" onclick="copyHook(this)">
-        <div class="hook-type">Provokation</div>
-        <div class="hook-text">"Ihr Haus ist nicht das wert, was Ihr Nachbar bekommen hat."</div>
-      </div>
-    </div>
-    <div>
-      <div class="hook-card" onclick="copyHook(this)">
-        <div class="hook-type">Frage (rhetorisch)</div>
-        <div class="hook-text">"Ist Ihr Haus 'preiswert' — oder den Preis wert?"</div>
-      </div>
-      <div class="hook-card" onclick="copyHook(this)">
-        <div class="hook-type">Frage</div>
-        <div class="hook-text">"Wann haben Sie zuletzt Ihr Haus durch Käuferaugen gesehen?"</div>
+        <div class="hook-type">Bewährt · Carousel Slide 02</div>
+        <div class="hook-text">"Der Markt hat sich verändert."</div>
       </div>
     </div>
     <div>
       <div class="hook-card" onclick="copyHook(this)">
-        <div class="hook-type">Zahlen</div>
-        <div class="hook-text">"3 Fehler · 1 Immobilie · 0 Käufer"</div>
+        <div class="hook-type">Kern-Positionierung</div>
+        <div class="hook-text">"Kein Makler. Eine Strategie."</div>
       </div>
       <div class="hook-card" onclick="copyHook(this)">
-        <div class="hook-type">Kontra-Position</div>
-        <div class="hook-text">"Alle sagen: Preis bestimmt alles. Ich sage: Inszenierung bestimmt den Preis."</div>
+        <div class="hook-type">Neu · Diagnose-Formel</div>
+        <div class="hook-text">"Du wartest gerade. Der Markt nicht."</div>
+      </div>
+    </div>
+    <div>
+      <div class="hook-card" onclick="copyHook(this)">
+        <div class="hook-type">Neu · Zahl-Hook</div>
+        <div class="hook-text">"8 Sekunden. So lang schaut ein Käufer auf dein Inserat."</div>
+      </div>
+      <div class="hook-card" onclick="copyHook(this)">
+        <div class="hook-type">Neu · Kontrast</div>
+        <div class="hook-text">"Nicht wer am lautesten ruft. Wer am klügsten verkauft."</div>
       </div>
     </div>
   </div>
 
-  <!-- SEO & GOOGLE RANKING -->
-  <div id="seo">
-    <div class="section-header">
-      <div class="section-title">Google-Ranking — Ziel: Top 3 in Rheinhessen</div>
-      <div class="section-action">Jetzt prüfen ↗</div>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="section-title" style="margin-bottom: 16px;">Keyword-Tracking</div>
-        <table class="ranking-table">
-          <thead>
-            <tr>
-              <th>Keyword</th>
-              <th>Maps</th>
-              <th>Organisch</th>
-              <th>Ziel</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Makler Worms</td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="kpi-badge badge-blue">Top 3</span></td>
-            </tr>
-            <tr>
-              <td>Immobilienmakler Worms</td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="kpi-badge badge-blue">Top 3</span></td>
-            </tr>
-            <tr>
-              <td>Haus verkaufen Worms</td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="kpi-badge badge-blue">Top 5</span></td>
-            </tr>
-            <tr>
-              <td>Wertermittlung Rheinhessen</td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="kpi-badge badge-green">Top 1</span></td>
-            </tr>
-            <tr>
-              <td>Immobilien Rheinhessen</td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="rank-pos rank-target">?</span></td>
-              <td><span class="kpi-badge badge-blue">Top 5</span></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="alert alert-warn" style="margin-top: 14px; margin-bottom: 0; font-size: 10px;">
-          <div class="alert-dot"></div>
-          Rankings noch nicht erfasst — bitte manuell prüfen und eintragen.
-        </div>
+  <!-- GOOGLE / SEO -->
+  <div class="section-label" id="seo">Google & Local SEO — Ziel: Top 3 Worms</div>
+  <div class="grid-2">
+    <div class="card">
+      <div style="font-family: Montserrat; font-size: 10px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 14px;">Keyword-Ranking</div>
+      <table class="rank-table">
+        <thead>
+          <tr><th>Keyword</th><th>Maps</th><th>Organisch</th><th>Ziel</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Makler Worms</td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="kpi-badge badge-teal">Top 3</span></td>
+          </tr>
+          <tr>
+            <td>Immobilienmakler Worms</td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="kpi-badge badge-teal">Top 3</span></td>
+          </tr>
+          <tr>
+            <td>Haus verkaufen Worms</td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="kpi-badge badge-teal">Top 5</span></td>
+          </tr>
+          <tr>
+            <td>Wertermittlung Rheinhessen</td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="rank-pos pos-x">?</span></td>
+            <td><span class="kpi-badge badge-ok">Top 1</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 12px; font-size: 10px; color: var(--warn);">
+        ⚠ Rankings manuell in Google Maps prüfen und hier eintragen.
       </div>
-
-      <div class="card">
-        <div class="section-title" style="margin-bottom: 16px;">Google Business — Sofortmaßnahmen</div>
-
-        <div style="margin-bottom: 10px;">
-          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px;">
-            <span style="font-family: Montserrat; font-weight: 700; color: var(--navy);">Profil-Vollständigkeit</span>
-            <span style="color: var(--warn); font-weight: 700;">~60%</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
-        </div>
-
-        <div style="font-size: 10.5px; line-height: 1.8; margin-top: 14px;">
-          <div style="display: flex; gap: 8px; margin-bottom: 6px;">
-            <span style="color: var(--success); font-weight: 700;">✓</span>
-            <span>Name & Adresse hinterlegt</span>
-          </div>
-          <div style="display: flex; gap: 8px; margin-bottom: 6px;">
-            <span style="color: var(--success); font-weight: 700;">✓</span>
-            <span>Website verlinkt</span>
-          </div>
-          <div style="display: flex; gap: 8px; margin-bottom: 6px;">
-            <span style="color: var(--warn); font-weight: 700;">!</span>
-            <span>Beschreibung keyword-optimieren (750 Zeichen)</span>
-          </div>
-          <div style="display: flex; gap: 8px; margin-bottom: 6px;">
-            <span style="color: var(--danger); font-weight: 700;">✗</span>
-            <span>Regelmäßige GMB-Posts (Ziel: 3×/Woche)</span>
-          </div>
-          <div style="display: flex; gap: 8px; margin-bottom: 6px;">
-            <span style="color: var(--danger); font-weight: 700;">✗</span>
-            <span>Fotos-Strategie (Ziel: 1×/Monat neue Fotos)</span>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <span style="color: var(--warn); font-weight: 700;">!</span>
-            <span>Review-Anfragen systematisch versenden</span>
-          </div>
-        </div>
+    </div>
+    <div class="card">
+      <div style="font-family: Montserrat; font-size: 10px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 14px;">Google Business — Status</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Profil-Vollständigkeit</span><span style="color: var(--warn);">~60%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon ok">✓</div><span>Name, Adresse, Website hinterlegt</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon warn">!</div><span>Beschreibung keyword-optimieren (750 Zeichen)</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon danger">✗</div><span>GMB-Posts: 2–3× pro Woche (Sie-Form)</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon danger">✗</div><span>Fotos-Strategie: 1× pro Monat neue Fotos</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon warn">!</div><span>Review-Anfragen nach jedem Abschluss versenden</span>
       </div>
     </div>
   </div>
 
   <!-- KONKURRENZ -->
-  <div id="konkurrenz">
-    <div class="section-header">
-      <div class="section-title">Konkurrenz-Radar — Worms & Rheinhessen</div>
-      <div class="section-action">Vollständige Analyse ↗</div>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="section-title" style="margin-bottom: 14px;">Nationale Ketten (lokal aktiv)</div>
-        <div class="competitor-item">
-          <div>
-            <div class="comp-name">Engel & Völkers</div>
-            <div class="comp-type">Franchise · Premium-Segment</div>
-          </div>
-          <div class="comp-tags">
-            <span class="comp-tag badge-warn">Marke stark</span>
-            <span class="comp-tag badge-green">Unpersönlich</span>
-          </div>
-        </div>
-        <div class="competitor-item">
-          <div>
-            <div class="comp-name">von Poll Immobilien</div>
-            <div class="comp-type">Franchise · Premium</div>
-          </div>
-          <div class="comp-tags">
-            <span class="comp-tag badge-warn">SEO aktiv</span>
-            <span class="comp-tag badge-green">Kein Lokalbezug</span>
-          </div>
-        </div>
-        <div class="competitor-item">
-          <div>
-            <div class="comp-name">REMAX</div>
-            <div class="comp-type">Franchise · International</div>
-          </div>
-          <div class="comp-tags">
-            <span class="comp-tag badge-blue">Qualität variiert</span>
-          </div>
-        </div>
-        <div class="competitor-item">
-          <div>
-            <div class="comp-name">Sparkasse Immobilien</div>
-            <div class="comp-type">Banken-Makler · Vertrauen</div>
-          </div>
-          <div class="comp-tags">
-            <span class="comp-tag badge-warn">Markenvertrauen</span>
-            <span class="comp-tag badge-green">Nebengeschäft</span>
-          </div>
+  <div class="section-label" id="konkurrenz">Konkurrenz-Radar — Worms & Rheinhessen</div>
+  <div class="grid-2">
+    <div class="card">
+      <div style="font-family: Montserrat; font-size: 10px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 14px;">Nationale Ketten (lokal)</div>
+      <div class="comp-item">
+        <div><div class="comp-name">Engel & Völkers</div><div class="comp-type">Franchise · Premium</div></div>
+        <div class="comp-tags">
+          <span class="kpi-badge badge-warn">Marke stark</span>
+          <span class="kpi-badge badge-teal">Anonym</span>
         </div>
       </div>
-
-      <div class="card">
-        <div class="section-title" style="margin-bottom: 14px;">Unsere klaren Vorteile</div>
-        <div style="font-size: 11px; line-height: 2;">
-          <div style="display: flex; gap: 10px; border-bottom: 1px solid var(--ice); padding: 8px 0;">
-            <span style="color: var(--navy); font-weight: 900; font-family: Montserrat; min-width: 24px;">30+</span>
-            <span>Jahre Vertriebserfahrung — kein Franchise-Neuling</span>
-          </div>
-          <div style="display: flex; gap: 10px; border-bottom: 1px solid var(--ice); padding: 8px 0;">
-            <span style="color: var(--navy); font-weight: 900; font-family: Montserrat; min-width: 24px;">15+</span>
-            <span>Jahre Marketing — echte Inszenierung, kein Listing</span>
-          </div>
-          <div style="display: flex; gap: 10px; border-bottom: 1px solid var(--ice); padding: 8px 0;">
-            <span style="color: var(--navy); font-weight: 900; font-family: Montserrat; min-width: 24px;">10+</span>
-            <span>Jahre Controlling — Datenbasis statt Bauchgefühl</span>
-          </div>
-          <div style="display: flex; gap: 10px; border-bottom: 1px solid var(--ice); padding: 8px 0;">
-            <span style="color: var(--navy); font-weight: 900; font-family: Montserrat; min-width: 24px;">iad</span>
-            <span>Netzwerk — europaweit, persönlich vor Ort</span>
-          </div>
-          <div style="display: flex; gap: 10px; padding: 8px 0;">
-            <span style="color: var(--navy); font-weight: 900; font-family: Montserrat; min-width: 24px;">★</span>
-            <span>Echte Rheinhessen-Expertise — kein Berliner Copy-Paste</span>
-          </div>
+      <div class="comp-item">
+        <div><div class="comp-name">von Poll Immobilien</div><div class="comp-type">Franchise · Premium</div></div>
+        <div class="comp-tags">
+          <span class="kpi-badge badge-warn">SEO aktiv</span>
+          <span class="kpi-badge badge-teal">Kein Lokalbezug</span>
         </div>
+      </div>
+      <div class="comp-item">
+        <div><div class="comp-name">REMAX</div><div class="comp-type">Franchise · International</div></div>
+        <div class="comp-tags"><span class="kpi-badge badge-teal">Qualität variiert</span></div>
+      </div>
+      <div class="comp-item">
+        <div><div class="comp-name">Sparkasse Immobilien</div><div class="comp-type">Banken-Makler</div></div>
+        <div class="comp-tags">
+          <span class="kpi-badge badge-warn">Vertrauen</span>
+          <span class="kpi-badge badge-teal">Nebengeschäft</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-family: Montserrat; font-size: 10px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 14px;">Deine klaren Vorteile</div>
+      <div class="check-item">
+        <div style="font-family: Montserrat; font-weight: 900; color: var(--teal); min-width: 30px; font-size: 14px;">30+</div>
+        <span>Jahre Vertrieb — kein Franchise-Neuling</span>
+      </div>
+      <div class="check-item">
+        <div style="font-family: Montserrat; font-weight: 900; color: var(--teal); min-width: 30px; font-size: 14px;">15+</div>
+        <span>Jahre Marketing — Inszenierung, kein Listing</span>
+      </div>
+      <div class="check-item">
+        <div style="font-family: Montserrat; font-weight: 900; color: var(--teal); min-width: 30px; font-size: 14px;">10+</div>
+        <span>Jahre Controlling — Datenbasis statt Bauchgefühl</span>
+      </div>
+      <div class="check-item">
+        <div style="font-family: Montserrat; font-weight: 900; color: var(--teal); min-width: 30px; font-size: 14px;">iad</div>
+        <span>Europäisches Netzwerk — persönlich vor Ort</span>
+      </div>
+      <div class="check-item">
+        <div style="font-family: Montserrat; font-weight: 900; color: var(--teal); min-width: 30px; font-size: 14px;">★</div>
+        <span>Echte Rheinhessen-Expertise + dein Gesicht = Vertrauen</span>
       </div>
     </div>
   </div>
 
   <!-- CANVA DESIGNS -->
-  <div id="designs">
-    <div class="section-header">
-      <div class="section-title">Canva — Aktuell generierte Designs</div>
-      <div class="section-action" onclick="openCanva()">Alle Designs ↗</div>
+  <div class="section-label" id="designs">Canva — Generierte Design-Kandidaten</div>
+  <div class="designs-grid">
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/i3zT1SsiNsx426I')">
+      <div class="design-thumb"><img src="https://design.canva.ai/NIfzIfa8j8gE4HQ" alt="IG 1" onerror="this.parentElement.innerHTML='Instagram V1'"></div>
+      <div class="design-info"><div class="design-title">Strategie Post V1</div><div class="design-type">Instagram · Portrait</div></div>
     </div>
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/3nXzrLKM8jnzEI2')">
+      <div class="design-thumb"><img src="https://design.canva.ai/rytT5GmIo1JrTF0" alt="IG 2" onerror="this.parentElement.innerHTML='Instagram V2'"></div>
+      <div class="design-info"><div class="design-title">Strategie Post V2</div><div class="design-type">Instagram · Portrait</div></div>
+    </div>
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/POA4lJpbewoDtV1')">
+      <div class="design-thumb"><img src="https://design.canva.ai/TSaZMNJaz8mS4nX" alt="Story 1" onerror="this.parentElement.innerHTML='Story V1'"></div>
+      <div class="design-info"><div class="design-title">Hook Story V1</div><div class="design-type">Story · 9:16</div></div>
+    </div>
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/YB32qVKvfU8IywK')">
+      <div class="design-thumb"><img src="https://design.canva.ai/tIzGCsRBF0dSATW" alt="FB 1" onerror="this.parentElement.innerHTML='Facebook V1'"></div>
+      <div class="design-info"><div class="design-title">Marktupdate FB V1</div><div class="design-type">Facebook Post</div></div>
+    </div>
+  </div>
 
-    <div class="designs-grid">
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/i3zT1SsiNsx426I')">
-        <div class="design-thumb">
-          <img src="https://design.canva.ai/NIfzIfa8j8gE4HQ" alt="Instagram Post 1" onerror="this.parentElement.innerHTML='Instagram Post'">
-        </div>
-        <div class="design-info">
-          <div class="design-title">Strategie Post — V1</div>
-          <div class="design-type">Instagram · 1080×1350</div>
-        </div>
-      </div>
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/3nXzrLKM8jnzEI2')">
-        <div class="design-thumb">
-          <img src="https://design.canva.ai/rytT5GmIo1JrTF0" alt="Instagram Post 2" onerror="this.parentElement.innerHTML='Instagram Post'">
-        </div>
-        <div class="design-info">
-          <div class="design-title">Strategie Post — V2</div>
-          <div class="design-type">Instagram · 1080×1350</div>
-        </div>
-      </div>
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/POA4lJpbewoDtV1')">
-        <div class="design-thumb">
-          <img src="https://design.canva.ai/TSaZMNJaz8mS4nX" alt="Story 1" onerror="this.parentElement.innerHTML='Story Hook'">
-        </div>
-        <div class="design-info">
-          <div class="design-title">Hook Story — V1</div>
-          <div class="design-type">Story · 1080×1920</div>
-        </div>
-      </div>
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/YB32qVKvfU8IywK')">
-        <div class="design-thumb">
-          <img src="https://design.canva.ai/tIzGCsRBF0dSATW" alt="Facebook 1" onerror="this.parentElement.innerHTML='Facebook Post'">
-        </div>
-        <div class="design-info">
-          <div class="design-title">Marktupdate FB — V1</div>
-          <div class="design-type">Facebook Post</div>
-        </div>
-      </div>
+  <div class="designs-grid" style="margin-top: 10px;">
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/4vywFZElhuzVZLi')">
+      <div class="design-thumb"><img src="https://design.canva.ai/E4p4CqGQnzvG8ko" alt="IG 3" onerror="this.parentElement.innerHTML='Instagram V3'"></div>
+      <div class="design-info"><div class="design-title">Strategie Post V3</div><div class="design-type">Instagram</div></div>
     </div>
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/zBr7XCi0xzc3ycb')">
+      <div class="design-thumb"><img src="https://design.canva.ai/VZf8rd-5ZxylQEu" alt="IG 4" onerror="this.parentElement.innerHTML='Instagram V4'"></div>
+      <div class="design-info"><div class="design-title">Strategie Post V4</div><div class="design-type">Instagram</div></div>
+    </div>
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/eYRLDRB8tEIurtw')">
+      <div class="design-thumb"><img src="https://design.canva.ai/Wf9y_wbqeMbgjHc" alt="Story 2" onerror="this.parentElement.innerHTML='Story V2'"></div>
+      <div class="design-info"><div class="design-title">Hook Story V2</div><div class="design-type">Story</div></div>
+    </div>
+    <div class="design-card" onclick="window.open('https://www.canva.com/d/jwyk-6jJiKEtp-Q')">
+      <div class="design-thumb"><img src="https://design.canva.ai/YX0Pc8opKS6qwaP" alt="FB 2" onerror="this.parentElement.innerHTML='Facebook V2'"></div>
+      <div class="design-info"><div class="design-title">Marktupdate FB V2</div><div class="design-type">Facebook</div></div>
+    </div>
+  </div>
 
-    <div class="designs-grid" style="margin-top: 12px;">
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/4vywFZElhuzVZLi')">
-        <div class="design-thumb"><img src="https://design.canva.ai/E4p4CqGQnzvG8ko" alt="V3" onerror="this.parentElement.innerHTML='Post V3'"></div>
-        <div class="design-info"><div class="design-title">Strategie Post — V3</div><div class="design-type">Instagram</div></div>
-      </div>
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/zBr7XCi0xzc3ycb')">
-        <div class="design-thumb"><img src="https://design.canva.ai/VZf8rd-5ZxylQEu" alt="V4" onerror="this.parentElement.innerHTML='Post V4'"></div>
-        <div class="design-info"><div class="design-title">Strategie Post — V4</div><div class="design-type">Instagram</div></div>
-      </div>
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/eYRLDRB8tEIurtw')">
-        <div class="design-thumb"><img src="https://design.canva.ai/Wf9y_wbqeMbgjHc" alt="Story 2" onerror="this.parentElement.innerHTML='Story V2'"></div>
-        <div class="design-info"><div class="design-title">Hook Story — V2</div><div class="design-type">Story</div></div>
-      </div>
-      <div class="design-card" onclick="window.open('https://www.canva.com/d/jwyk-6jJiKEtp-Q')">
-        <div class="design-thumb"><img src="https://design.canva.ai/YX0Pc8opKS6qwaP" alt="FB 2" onerror="this.parentElement.innerHTML='Facebook V2'"></div>
-        <div class="design-info"><div class="design-title">Marktupdate FB — V2</div><div class="design-type">Facebook</div></div>
-      </div>
-    </div>
-
-    <div style="margin-top: 12px;" class="card-ice">
-      <div class="section-title" style="margin-bottom: 10px;">Bestehende Designs (Canva)</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <a href="https://www.canva.com/d/jllbD3TPl9_2K5Z" target="_blank" class="gen-btn" style="background: var(--navy); color: white; border-color: var(--navy); text-decoration: none; font-size: 9px; padding: 6px 12px;">MSI Web Karussell (7 Seiten)</a>
-        <a href="https://www.canva.com/d/9QZUVkE6f7YK0AJ" target="_blank" class="gen-btn" style="background: var(--navy); color: white; border-color: var(--navy); text-decoration: none; font-size: 9px; padding: 6px 12px;">Die 7 teuersten Fehler (8 Seiten)</a>
-        <a href="https://www.canva.com/d/-Tr5bi_iHNqA7YY" target="_blank" class="gen-btn" style="background: var(--navy); color: white; border-color: var(--navy); text-decoration: none; font-size: 9px; padding: 6px 12px;">Markus Seitz Immobilien iad</a>
-        <a href="https://www.canva.com/d/9nenAFuM8K7Pc3Q" target="_blank" class="gen-btn" style="background: var(--navy); color: white; border-color: var(--navy); text-decoration: none; font-size: 9px; padding: 6px 12px;">Markus Seitz</a>
-      </div>
-    </div>
+  <!-- BESTEHENDE DESIGNS -->
+  <div class="section-label">Bestehende Canva-Designs</div>
+  <div class="card" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 20px;">
+    <a href="https://www.canva.com/d/jllbD3TPl9_2K5Z" target="_blank" class="gen-btn">MSI Web Karussell (7 Seiten)</a>
+    <a href="https://www.canva.com/d/9QZUVkE6f7YK0AJ" target="_blank" class="gen-btn">Die 7 teuersten Fehler (8 Seiten)</a>
+    <a href="https://www.canva.com/d/bG6O0ASOJ51eYyR" target="_blank" class="gen-btn">Die 7 Fehler — Version 2</a>
+    <a href="https://www.canva.com/d/-Tr5bi_iHNqA7YY" target="_blank" class="gen-btn">Markus Seitz Immobilien iad</a>
+    <a href="https://www.canva.com/d/9nenAFuM8K7Pc3Q" target="_blank" class="gen-btn">Markus Seitz Portrait</a>
   </div>
 
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-text">MELIA · Marketing KI · Markus Seitz Immobilien · iad · Worms-Pfeddersheim</div>
-  <div class="footer-version">Version 1.0 · 2025</div>
+  <div class="footer-text">MELIA · Marketing KI · Markus Seitz Immobilien · Worms-Pfeddersheim · v1.1</div>
+  <div class="footer-version">Ihre Immobilie verdient eine Strategie.</div>
 </div>
 
 <script>
-  // Date
   document.getElementById('topbar-date').textContent = new Date().toLocaleDateString('de-DE', {
     weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
   });
 
-  // Canva öffnen
-  function openCanva() {
-    window.open('https://www.canva.com', '_blank');
-  }
-
-  // Hook kopieren
   function copyHook(el) {
-    const text = el.querySelector('.hook-text').textContent;
+    const text = el.querySelector('.hook-text').textContent.replace(/["""]/g, '');
     navigator.clipboard.writeText(text).then(() => {
       const orig = el.querySelector('.hook-type').textContent;
       el.querySelector('.hook-type').textContent = '✓ Kopiert!';
@@ -1060,28 +921,27 @@
     });
   }
 
-  // Melia Chat (lokal, keine API)
-  const meliaResponses = {
-    'post': 'Ich erstelle einen Post für Sie. Welches Thema soll im Vordergrund stehen? Positionierung, Marktupdate, Fehler beim Privatverkauf oder Prozess?',
-    'carousel': 'Ein Carousel braucht einen starken Hook auf Slide 1. Mein Vorschlag: "5 Fehler, die Ihren Verkaufspreis ruinieren" — das hat nachweislich hohe Engagement-Raten in der Immobilien-Nische. Soll ich die 5 Slides ausformulieren?',
-    'hook': 'Hier sind meine stärksten Hooks für Ihre Positionierung:\n1. "Strategie schlägt Zufall. Immer."\n2. "Ihr Haus ist nicht das wert, was Ihr Nachbar bekommen hat."\n3. "Alle listen. Wir inszenieren."\nWelcher passt am besten zum geplanten Post?',
-    'google': 'Für Top 3 bei "Makler Worms" brauchen Sie: (1) 2–3 GMB-Posts pro Woche, (2) regelmäßig neue Fotos im Profil, (3) konsequent Reviews anfragen nach jedem Abschluss, (4) keyword-optimierte Beschreibung. Soll ich den GMB-Post für diese Woche schreiben?',
-    'konkurrenz': 'Ich suche in Worms nach aktiven Maklern. Wichtig zu tracken: Engel & Völkers, von Poll, lokale Einzelmakler. Ihr Vorteil: Controlling-Ansatz + Lokalkenntnis + iad-Netzwerk. Was soll ich zuerst analysieren?',
-    'caption': 'Eine starke Caption folgt: Hook → Problem → Agitation → Lösung → CTA. Für welchen Post soll ich eine Caption schreiben?',
-    'reel': 'Ein Reel-Script in 60 Sekunden: 0–3 Sek. Hook verbal ("Die meisten Makler zeigen Ihnen das nicht"), 3–15 Sek. Problem aufbauen, 15–45 Sek. Ihre Lösung, 45–60 Sek. CTA. Zu welchem Thema?',
-    'default': 'Gute Frage. Ich arbeite daran. Was ich Ihnen jetzt empfehle: Schauen Sie in die Hook-Bibliothek oben — die Hooks sind sofort einsatzbereit. Oder soll ich direkt einen vollständigen Post für Instagram, Facebook oder Google Business ausarbeiten?'
+  const responses = {
+    post: 'Für deinen nächsten Instagram-Post: Welches Thema? Marktlage, Fehler beim Verkauf oder dein Portrait mit "Kein Makler. Eine Strategie."? Gib mir 1 Thema — ich schreibe Hook + Caption.',
+    carousel: 'Stärkstes Carousel-Format: Slide 01 = "Du verlierst gerade Geld." → dann 5 konkrete Gründe → Abschluss mit deinem Portrait und CTA. Soll ich alle 7 Slides ausformulieren?',
+    caption: 'Caption-Struktur: Hook (identisch zum Bild) → Problem (2 Sätze, lokal) → deine Lösung (1-2 Sätze, keine Floskeln) → CTA (1 klare Handlung). Zu welchem Thema?',
+    hook: 'Bewährt: "Du verlierst gerade Geld. Ohne es zu merken." Neu: "Du wartest gerade. Der Markt nicht." / "8 Sekunden. So lang schaut ein Käufer auf dein Inserat." Welcher passt zum geplanten Post?',
+    google: 'Für Top 3 "Makler Worms": 3× GMB-Posts pro Woche (Sie-Form), nach jedem Abschluss Review anfragen, Beschreibung keyword-optimieren. Soll ich den GMB-Post für diese Woche schreiben?',
+    konkurrenz: 'In Worms beobachten: Engel & Völkers, von Poll, lokale Einzelmakler. Dein Vorteil: Du bist eine Person mit Gesicht und 30+ Jahren Erfahrung — kein Franchise. Soll ich eine Analyse aufbauen?',
+    reel: 'Reel-Struktur 60 Sek.: 0–3s Hook verbal ("Du verlierst gerade Geld.") → 3–15s Problem lokal konkret → 15–45s was du anders machst → 45–55s Ergebnis/Zahl → 55–60s CTA. Zu welchem Thema?',
+    default: 'Was soll ich erstellen? Sage mir: Post, Carousel, Hook, Caption, Reel-Script, GMB-Post oder Konkurrenzcheck — und ich liefere direkt.'
   };
 
-  function getMeliaResponse(input) {
-    const low = input.toLowerCase();
-    if (low.includes('post') || low.includes('beitrag')) return meliaResponses['post'];
-    if (low.includes('carousel') || low.includes('karussell')) return meliaResponses['carousel'];
-    if (low.includes('hook')) return meliaResponses['hook'];
-    if (low.includes('google') || low.includes('ranking') || low.includes('seo')) return meliaResponses['google'];
-    if (low.includes('konkurrenz') || low.includes('mitbewerb') || low.includes('wettbewerb')) return meliaResponses['konkurrenz'];
-    if (low.includes('caption') || low.includes('text') || low.includes('beschriftung')) return meliaResponses['caption'];
-    if (low.includes('reel') || low.includes('video') || low.includes('skript')) return meliaResponses['reel'];
-    return meliaResponses['default'];
+  function getResponse(input) {
+    const l = input.toLowerCase();
+    if (l.includes('carousel') || l.includes('karussell')) return responses.carousel;
+    if (l.includes('caption') || l.includes('text')) return responses.caption;
+    if (l.includes('hook')) return responses.hook;
+    if (l.includes('google') || l.includes('ranking') || l.includes('seo')) return responses.google;
+    if (l.includes('konkurrenz') || l.includes('mitbewerb')) return responses.konkurrenz;
+    if (l.includes('reel') || l.includes('video')) return responses.reel;
+    if (l.includes('post') || l.includes('beitrag')) return responses.post;
+    return responses.default;
   }
 
   function sendMessage() {
@@ -1090,32 +950,27 @@
     const text = input.value.trim();
     if (!text) return;
 
-    // User bubble
     const userBubble = document.createElement('div');
-    userBubble.className = 'chat-bubble user';
-    userBubble.innerHTML = '<div class="chat-sender">Sie</div>' + text;
+    userBubble.className = 'bubble user';
+    userBubble.innerHTML = text;
     messages.appendChild(userBubble);
 
-    // Melia response
     setTimeout(() => {
       const meliaBubble = document.createElement('div');
-      meliaBubble.className = 'chat-bubble melia';
-      meliaBubble.innerHTML = '<div class="chat-sender">Melia</div>' + getMeliaResponse(text);
+      meliaBubble.className = 'bubble melia';
+      meliaBubble.innerHTML = '<div class="bubble-label">Melia</div>' + getResponse(text);
       messages.appendChild(meliaBubble);
       messages.scrollTop = messages.scrollHeight;
-    }, 600);
+    }, 500);
 
     input.value = '';
     messages.scrollTop = messages.scrollHeight;
   }
 
-  function handleKey(e) {
-    if (e.key === 'Enter') sendMessage();
-  }
+  function handleKey(e) { if (e.key === 'Enter') sendMessage(); }
 
-  // Smooth scroll für nav
   document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function() {
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       this.classList.add('active');
     });

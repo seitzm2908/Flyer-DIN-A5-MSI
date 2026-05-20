@@ -1,77 +1,86 @@
 {
   "brand": {
-    "name": "Markus Seitz Immobilien · iad",
-    "tagline": "Strategie schlägt Zufall.",
-    "positioning": "Ihr Strategie-Makler in Worms & Rheinhessen",
-    "persona": "Seriös, direkt, datengetrieben — kein Typ der 1000 Posts über Immobilienwerte, sondern klare Haltung",
-    "voice": "Professionell ohne Arroganz. Direkt ohne Angriff. Zahlen statt Bauchgefühl.",
+    "name": "Markus Seitz Immobilien",
+    "logo": "MS-Monogramm im Kreis, Gradient Silber → Teal",
+    "tagline_primary": "Ihre Immobilie verdient eine Strategie.",
+    "tagline_social": "Kein Makler. Eine Strategie.",
+    "positioning": "Strategie-Makler — nicht Listenmaker",
+    "tone": "Direkt. Kurz. Klar. Professionell ohne Arroganz.",
+    "anrede_social": "Du (Instagram, Facebook Posts)",
+    "anrede_formal": "Sie (Flyer, Briefe, Google Business)",
     "region": {
       "primary": "Worms-Pfeddersheim",
-      "secondary": ["Worms", "Rheinhessen", "Mainz-Bingen", "Alzey-Worms", "Ludwigshafen"]
+      "secondary": ["Worms", "Rheinhessen", "Mainz-Bingen", "Alzey-Worms"]
     }
   },
   "colors": {
-    "navy":       "#003366",
-    "navy_dark":  "#002244",
-    "navy_mid":   "#004080",
-    "ice":        "#daeaf7",
-    "ice_mid":    "#b3d4ee",
-    "white":      "#ffffff",
-    "text_gray":  "#4a5568",
-    "text_light": "#718096"
+    "background_dark":   "#0a1628",
+    "background_mid":    "#0d1f3c",
+    "teal_accent":       "#1abcbc",
+    "teal_light":        "#4ecdc4",
+    "teal_dark":         "#0d9090",
+    "white":             "#ffffff",
+    "white_80":          "rgba(255,255,255,0.8)",
+    "white_60":          "rgba(255,255,255,0.6)",
+    "logo_gradient":     "linear-gradient(135deg, #c0c8d8 0%, #1abcbc 100%)",
+    "border_gradient":   "linear-gradient(135deg, #4ecdc4, #0a1628, #4ecdc4)"
   },
   "typography": {
-    "headline": "Montserrat",
-    "headline_weights": [700, 800, 900],
-    "body": "Open Sans",
-    "body_weights": [300, 400, 600],
-    "style": "UPPERCASE für Headlines, Sentence case für Body"
+    "headline_font":    "Montserrat oder gleichwertig — Bold/ExtraBold",
+    "body_font":        "Open Sans oder gleichwertig — Regular",
+    "headline_style":   "Sentence case, stark, kurz",
+    "accent_words":     "Schlüsselwörter in Teal hervorheben",
+    "max_headline":     "5 Wörter — weniger ist mehr"
   },
+  "design_principles": [
+    "Dunkel. Atmosphärisch. Premium.",
+    "Echte Fotos von Immobilien und von Markus",
+    "Teal-Akzent auf das Schlüsselwort der Aussage",
+    "Nummerierung bei Carousels: 01, 02, 03 oben links",
+    "Logo + 'MARKUS SEITZ IMMOBILIEN' immer unten links",
+    "Kurzer Trennstrich in Teal als Designelement",
+    "Kein Overdesign — Stärke kommt aus der Aussage"
+  ],
   "credentials": {
-    "years_vertrieb": "30+",
-    "years_marketing": "15+",
-    "years_controlling": "10+",
-    "network": "iad Deutschland"
+    "years_vertrieb":   "30+",
+    "years_marketing":  "15+",
+    "years_controlling":"10+",
+    "network":          "iad Deutschland"
   },
   "contact": {
-    "phone": "+49 176 158 585 11",
-    "email": "markus.seitz@iaddeutschland.de",
-    "address": "St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim",
-    "website_main": "markus-seitz.immobilien",
+    "phone":             "+49 176 158 585 11",
+    "email":             "markus.seitz@iaddeutschland.de",
+    "address":           "St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim",
+    "website_main":      "markus-seitz.immobilien",
     "website_valuation": "wertermittlung-rheinhessen.de"
   },
-  "cta_primary": "Kostenloser Strategie-Check",
-  "cta_secondary": "Jetzt Wert ermitteln",
-  "key_messages": [
-    "Strategie schlägt Zufall.",
-    "Ist Ihr Haus 'preiswert' – oder den Preis wert?",
-    "Fundierte Marktpreisanalyse — kein Bauchgefühl, nur Fakten.",
-    "Käufer entscheiden in Sekunden.",
-    "Controlling · Marketing · Vertrieb — aus einer Hand.",
-    "Nur vorqualifizierte Interessenten — Ihre Zeit ist wertvoll."
+  "key_hooks_proven": [
+    "Du verlierst gerade Geld. Ohne es zu merken.",
+    "Der Markt hat sich verändert.",
+    "Kein Makler. Eine Strategie.",
+    "Ihre Immobilie verdient eine Strategie.",
+    "Für den bestmöglichen Preis. Für dich."
   ],
-  "services": [
-    "Wertermittlung (Marktpreisanalyse)",
-    "Exposé & Professionelle Fotografie",
-    "Käufer-Selektion & Vorqualifizierung",
-    "Verhandlungsführung",
-    "Notar & Übergabe-Begleitung"
-  ],
-  "target_audience": {
-    "primary": "Eigentümer 45–70 Jahre, die verkaufen möchten",
-    "secondary": "Erbengemeinschaften, Scheidungsimmobilien, Umzügler",
-    "pain_points": [
-      "Unsicherheit über den richtigen Preis",
-      "Angst, zu günstig zu verkaufen",
-      "Keine Zeit für Besichtigungen",
-      "Schlechte Erfahrungen mit anderen Maklern",
-      "Angst vor langen Laufzeiten"
-    ]
+  "content_style": {
+    "headlines": "Kurz. Schlagkräftig. Maximal 5 Wörter.",
+    "sublines": "1 Satz. Nicht mehr.",
+    "body": "Klar. Direkt. Keine Floskeln. Keine generischen Makler-Phrasen.",
+    "cta": "Einfach. Eindeutig. Spezifisch.",
+    "photos": "Atmosphärische Immobilien-Aufnahmen + Portrait-Fotos von Markus"
   },
+  "what_not_to_do": [
+    "Keine '1000 Posts: Wie viel ist Ihre Immobilie wert?'",
+    "Keine generischen Makler-Phrasen",
+    "Kein Ice-Blue (#daeaf7) — das war der alte Flyer-Stil",
+    "Kein heller Hintergrund für Social-Media-Posts",
+    "Keine langen Texte auf dem Visual",
+    "Kein 'Wir' — es ist Markus, eine Person, eine Stimme"
+  ],
   "google_business": {
-    "profile_name": "Markus Seitz Immobilien",
-    "category": "Immobilienmakler",
-    "target_ranking": "Top 3 lokal",
+    "profile_name":     "Markus Seitz Immobilien",
+    "category":         "Immobilienmakler",
+    "target_ranking":   "Top 3 lokal",
+    "anrede_gmb":       "Sie (formell)",
     "priority_keywords": [
       "Makler Worms",
       "Immobilienmakler Worms",

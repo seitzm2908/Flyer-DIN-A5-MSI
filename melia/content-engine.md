@@ -1,234 +1,251 @@
 # Melia Content Engine — Vollständiges Playbook
 
-## Inhaltstypen & Formate
+## CI-Grundregeln für JEDEN Post
 
-### 1. INSTAGRAM POSTS (Einzelbild)
-**Format:** 1080×1350px (4:5, Portrait)  
-**Strategie:** Hook im Visual, Mehrwert in der Caption
-
-#### Hook-Templates (bewiesen funktional):
 ```
-PROVOKATION:
-"Die meisten Makler lügen Sie an. Ich nicht."
-"Ihr Haus ist nicht das wert, was Ihr Nachbar bekommen hat."
-"Warum 73% der Privatverkäufe scheitern — und was das mit Strategie zu tun hat."
-
-ZAHLENHOOK:
-"3 Fehler · 1 Immobilie · 0 Käufer"
-"30 Jahre. 15 Jahre. 10 Jahre. Was ich dafür tue."
-"Der Unterschied zwischen 349.000 € und 389.000 € heißt Inszenierung."
-
-FRAGE (rhetorisché):
-"Wann haben Sie zuletzt Ihr Haus durch Käuferaugen gesehen?"
-"Was, wenn Ihr Makler mehr an der Provision als an Ihrem Preis interessiert ist?"
-"Ist Ihr Haus 'preiswert' — oder den Preis wert?"
-
-KONTRA-POSITION:
-"Alle sagen: Preis bestimmt alles. Ich sage: Inszenierung bestimmt den Preis."
-"Immobilienverkauf ist kein Zufall. Es ist Strategie."
-"Ein Haus zu inserieren ist nicht Makler sein."
-```
-
-#### Caption-Struktur (AIDA):
-```
-[HOOK - 1 Satz, identisch oder Variation des Visuals]
-↓
-[PROBLEM - Was den Leser beschäftigt, 2-3 Sätze]
-↓
-[AGITATION - Das Problem konkret machen, 1-2 Sätze]
-↓
-[LÖSUNG - Was Markus anders macht, 2-3 Sätze]
-↓
-[CTA - Eins davon:]
-  → "Strategie-Check vereinbaren: Link in Bio"
-  → "Kostenlose Marktpreisanalyse: +49 176 158 585 11"
-  → "Mehr erfahren: wertermittlung-rheinhessen.de"
-```
-
-#### Hashtag-Strategie:
-```
-REGION (immer dabei):
-#WormsImmobilien #Rheinhessen #ImmobilienWorms #MaklerWorms
-#WormsPfeddersheim #RheinhessenLeben
-
-THEMA (je Post wechseln):
-#Immobilienverkauf #Hausverkauf #Wertermittlung
-#ImmobilienMarketing #StrategieMakler
-
-NISCHE:
-#iadDeutschland #ImmobilienExperte #Strategie
-
-REICHWEITE (1-2 große):
-#Immobilien #Makler
+✓ Hintergrund:   #0a1628 (sehr dunkles Navy)
+✓ Akzentfarbe:   #1abcbc (Teal — auf DAS eine Schlüsselwort)
+✓ Text:          weiß
+✓ Headline:      max. 5 Wörter, bold
+✓ Subline:       1 Satz
+✓ Logo:          unten links, immer
+✓ Ton Social:    Du-Form — direkt, kein Makler-Sprech
+✓ Ton Formal:    Sie-Form (GMB, Flyer, Briefe)
+✗ NIE:           Heller Hintergrund für Social Posts
+✗ NIE:           Ice-Blue (#daeaf7) — alter Flyer-Stil
+✗ NIE:           Mehr als eine Kernbotschaft pro Post
 ```
 
 ---
 
-### 2. INSTAGRAM CAROUSEL (3–8 Slides)
-**Format:** 1080×1350px, gleiche Abmessungen durchgehend  
-**Strategie:** Slide 1 = Hook, Slides 2-N = Wert, letzte Slide = CTA
+## BEWÄHRTE HOOKS (bereits live und getestet)
 
-#### Bewährte Carousel-Themen:
 ```
-FEHLER-FORMAT (beste Engagement-Rate):
-"Die 5 teuersten Fehler beim Immobilienverkauf"
-"7 Dinge, die Sie vor dem Verkauf wissen müssen"
-"3 Fehler, die Ihren Verkaufspreis ruinieren"
-
-VERGLEICH-FORMAT (klare Positionierung):
-"Privatverkauf vs. Makler: Die ehrliche Rechnung"
-"Guter Makler vs. schlechter Makler — wo ist der Unterschied?"
-"Vor 3 Jahren vs. heute: So hat sich der Markt verändert"
-
-PROZESS-FORMAT (Vertrauen aufbauen):
-"So läuft ein Verkauf mit Strategie ab — Schritt für Schritt"
-"Was passiert zwischen Bewertung und Schlüsselübergabe?"
-
-DATEN-FORMAT (Autorität zeigen):
-"Marktbericht Worms Q1 2025: Was die Zahlen sagen"
-"Preistendenz Rheinhessen: Wohin geht der Markt?"
+"Du verlierst gerade Geld. Ohne es zu merken."     ← STARK (Slide 01 Carousel)
+"Der Markt hat sich verändert."                     ← STARK (Slide 02 Carousel)
+"Kein Makler. Eine Strategie."                      ← KERN-POSITIONIERUNG
+"Für den bestmöglichen Preis. Für dich."            ← PERSÖNLICH
+"Ihre Immobilie verdient eine Strategie."           ← TAGLINE
 ```
 
-#### Slide-Struktur:
+Diese sind die Basis. Neue Hooks müssen dieselbe Direktheit haben.
+
+---
+
+## HOOK-FORMELN (für neue Posts)
+
+### Formel 1: Diagnose + Konsequenz
 ```
-SLIDE 1: Hook-Visual
-- Große Zahl oder starke Aussage
-- Headline: Montserrat 900, UPPERCASE
-- Subline: Montserrat 600
-- Hintergrund: Navy #003366
-- Akzent: Ice-Blue #b3d4ee
+"Du [machst etwas] gerade [falsch/verlierst/riskierst]. [Konkrete Konsequenz]."
 
-SLIDES 2–N: Content-Slides  
-- Nummer (01/05, 02/05 etc.) oben links
-- Headline: kurz, prägnant
-- 2-3 Bullet Points oder 1 kurzer Text
-- Icon oder einfaches Visual
-- Hintergrund: Weiß oder Navy
+Beispiele:
+"Du wartest gerade. Der Markt nicht."
+"Du verkaufst gerade unter Wert. Mit dem falschen Preis."
+"Du verlierst Käufer. Im ersten Klick."
+```
 
-LETZTE SLIDE: CTA
-- "Strategie-Check vereinbaren"
-- Kontaktdaten sichtbar
-- Logo prominent
-- QR-Code (optional)
+### Formel 2: Kontrast (Alt vs. Neu)
+```
+"[Alte Wahrheit] war gestern. [Neue Realität] ist heute."
+
+Beispiele:
+"Einfach inserieren war gestern. Inszenierung ist heute."
+"Der Makler, der alles verspricht. Und liefert, was zählt."
+"Nicht wer am lautesten ruft. Wer am klügsten verkauft."
+```
+
+### Formel 3: Kurze Provokation
+```
+"[Kurze starke Aussage.] [Ein-Wort-Verstärker oder Frage.]"
+
+Beispiele:
+"Kein Makler. Eine Strategie."
+"Nicht gelistet. Inszeniert."
+"Der Markt kennt kein Mitleid."
+"Strategie. Oder Zufall. Du entscheidest."
+```
+
+### Formel 4: Zahl + Realität
+```
+"[Zahl] [überraschende Aussage]."
+
+Beispiele:
+"73% der Privatverkäufer verlieren Geld. Ohne es zu wissen."
+"8 Sekunden. So lang schaut ein Käufer auf dein Inserat."
+"30 Jahre. Damit du nicht alles selbst lernen musst."
 ```
 
 ---
 
-### 3. INSTAGRAM REELS / STORIES
-**Format:** 1080×1920px (9:16)  
-**Dauer:** 15–60 Sekunden
+## INSTAGRAM — Post-Typen
 
-#### Reel-Scripts (Struktur):
+### Typ 1: Einzelpost (1 Bild)
 ```
-0:00–0:03  HOOK (visuell + verbal)
-           "Ihr Makler zeigt Ihnen etwas nicht."
-           
-0:03–0:15  PROBLEM aufbauen
-           Konkret, persönlich, regional
-           
-0:15–0:40  LÖSUNG / MEHRWERT
-           Was Markus anders macht
-           
-0:40–0:55  BEWEIS / SOCIAL PROOF
-           Zahlen, Kundenstimme, Ergebnis
-           
-0:55–1:00  CTA
-           "Link in Bio / Jetzt anrufen"
-```
+VISUAL:
+- Atmosphärisches Immobilienfoto als Basis
+- Großer, fetter Hook-Text über das Bild
+- Teal-Akzent auf Schlüsselwort
+- Logo unten links
+- Kurzer Teal-Trennstrich als Gestaltungselement
 
----
+CAPTION (Struktur):
+[Hook — identisch zum Visual oder Variation]
+.
+[Problem in 2-3 Sätzen — konkret, lokal, persönlich]
+.
+[Was Markus anders macht — 1-2 Sätze, keine Floskeln]
+.
+[CTA — eines davon:]
+→ "Strategie-Check vereinbaren: Link in Bio"
+→ "Deine kostenlose Wertermittlung: wertermittlung-rheinhessen.de"
+→ "+49 176 158 585 11"
 
-### 4. FACEBOOK POSTS
-**Strategie:** Längere Texte ok, persönlicher Ton, Community-Fokus
-
-#### Post-Typen:
-```
-MARKTUPDATE (wöchentlich):
-"Was bewegt den Immobilienmarkt in Worms diese Woche..."
-→ Kurze Analyse, 150–200 Wörter, 1 klare Botschaft
-
-FRAGE-POST (Engagement):
-"Wenn Sie Ihr Haus verkaufen würden — was wäre Ihre größte Sorge?"
-→ Kommentare = Marktforschung + Reichweite
-
-BEHIND-THE-SCENES:
-"Heute war ich in diesem wunderschönen Altbau in Pfeddersheim..."
-→ Authentisch, persönlich, lokal
-
-KUNDENSTORY (monatlich):
-"Vor 6 Monaten rief mich Familie X an. Ihr Haus stand seit..."
-→ Storytelling, DSGVO-konform (anonymisiert oder mit Zustimmung)
+HASHTAGS:
+#MaklerWorms #ImmobilienWorms #Rheinhessen #MarkusSeitzImmobilien
+#StrategieMakler #HausVerkaufen #Immobilien #ImmobilienVerkauf
 ```
 
----
-
-### 5. GOOGLE BUSINESS POSTS
-**Frequenz:** 2× pro Woche (Google gewichtet Aktualität)  
-**Strategie:** Keyword-reich, lokal, Call-to-Action
-
-#### GMB-Post-Templates:
+### Typ 2: Carousel (5–8 Slides)
 ```
-ANGEBOT-POST:
-Titel: "Kostenlose Wertermittlung für Ihr Haus in Worms"
-Text: "Sie möchten wissen, was Ihre Immobilie in Worms, Rheinhessen 
-      oder der Umgebung aktuell wert ist? Als erfahrener Immobilienmakler 
-      erstelle ich Ihnen eine fundierte Marktpreisanalyse — kostenlos und 
-      unverbindlich. ..."
-CTA: Jetzt anrufen / Mehr erfahren → wertermittlung-rheinhessen.de
+SLIDE-STRUKTUR:
+01 → HOOK (stärkste Aussage, zieht zum Wischen)
+02 → PROBLEM vertiefen (Marktdaten, Realität)
+03 → FEHLER/IRRTUM aufdecken
+04 → MARKUS als Lösung (idealerweise Portrait-Foto)
+05 → PROZESS (wie es läuft)
+06 → BEWEIS (Ergebnis, Kundenstimme anonymisiert)
+07 → CTA (klare Handlung)
 
-NEUIGKEIT-POST:
-Titel: "Marktbericht Worms [Monat]: Was Eigentümer jetzt wissen müssen"
-Text: "[Aktuelle Marktaussage]. Als Ihr Makler vor Ort behalte ich..."
-CTA: Mehr erfahren
+DESIGN PRO SLIDE:
+- Nummer oben links (01, 02...) + Teal-Strich
+- Immer dunkler Hintergrund
+- Atmosphärisches Foto oder Grafik
+- Teal-Akzent auf Schlüsselwort
+- Logo auf Abschluss-Slide prominent
 
-TIPP-POST:
-Titel: "3 Dinge, die Ihr Haus wertvoller machen — vor dem Verkauf"
-Text: "..."
-CTA: Kostenlose Beratung vereinbaren
+BEWÄHRTE THEMEN:
+"Du verlierst gerade Geld — 5 Gründe warum" (läuft bereits!)
+"Der Markt hat sich verändert — was das für dich bedeutet"
+"Kein Makler. Eine Strategie. — Was das konkret heißt"
+"5 Fehler, die deinen Verkaufspreis ruinieren"
+"So läuft ein Verkauf mit Strategie wirklich ab"
+"Privatverkauf vs. Makler — die ehrliche Rechnung"
 ```
 
----
-
-## Content-Kalender Vorlage
-
+### Typ 3: Portrait-Post (Markus im Mittelpunkt)
 ```
-WOCHE [KW ##] — Thema: [MONATSTHEMA]
+Markus-Portrait + kurze starke Aussage = stärkster Vertrauens-Content
 
-MONTAG
-  IG-Post: [Thema]
-  Hook: [...]
-  Caption: [...]
-  
-MITTWOCH  
-  IG-Carousel: [Thema, N Slides]
-  Slide 1 Hook: [...]
-  
-DONNERSTAG
-  GMB-Post: [Thema]
-  Facebook: [Thema]
-  
-FREITAG
-  IG-Story: Behind-the-scenes oder Tipp
-  
-OPTIONAL
-  Reel: [Skript-Stichpunkte]
+FORMAT:
+- Portrait rechts oder links, Overlay-Text auf der anderen Seite
+- Oder: Markus zentral, Text oben/unten
+- Dunkel, professionell, Anzug oder Business-Casual
+
+HOOK-BEISPIELE:
+"Kein Makler. Eine Strategie."
+"30 Jahre. Damit du nicht alles selbst lernen musst."
+"Ich liste nicht. Ich inszeniere."
+
+CAPTION:
+Persönlich. Markus spricht direkt.
+"Ich war selbst Käufer und Verkäufer. Ich kenne beide Seiten..."
 ```
 
 ---
 
-## Monatsthemen-Rotation
+## FACEBOOK — Post-Typen
 
 ```
-JANUAR   → Jahresstart: Marktausblick + "Jetzt ist der richtige Zeitpunkt"
-FEBRUAR  → Frühjahrsvorbereitung: "Frühjahr = beste Verkaufszeit"
-MÄRZ     → Wert & Bewertung: Marktpreisanalyse in den Vordergrund
-APRIL    → Prozess: So funktioniert ein professioneller Verkauf
-MAI      → Käufer-Qualifizierung: "Nicht jeder Interessent ist ein Käufer"
-JUNI     → Sommerloch-Strategie: "Weniger Konkurrenz = Ihre Chance"
-JULI     → Fehler-Monat: Was beim Privatverkauf schiefläuft
-AUGUST   → Urlaub/Recharge: Leichtere Inhalte, aber Positionierung halten
-SEPTEMBER→ Herbst-Offensive: Zweite beste Verkaufszeit
-OKTOBER  → Daten & Zahlen: Marktbericht Q3
-NOVEMBER → Vertrauen: Kundenstimmen, Transparenz, Prozess
-DEZEMBER → Jahresrückblick + Ausblick: Positionierung für nächstes Jahr
+TYP 1: Marktupdate (wöchentlich)
+- Etwas längerer Text ok (200–300 Wörter)
+- Lokal, konkret, Rheinhessen/Worms-Bezug
+- "Was ich diese Woche auf dem Markt beobachte..."
+- Sie-Form oder gemischt
+
+TYP 2: Frage-Post (Engagement)
+- "Was wäre deine größte Sorge beim Immobilienverkauf?"
+- Kommentare = kostenlose Marktforschung
+- Kommentare immer beantworten!
+
+TYP 3: Behind-the-scenes
+- Heute bei einer Besichtigung in [Ort]...
+- Authentisch. Kurz. Keine Hochglanz-Sprache.
+
+TYP 4: Kundenstory (monatlich)
+- Anonymisiert oder mit Zustimmung
+- Konkret: "Eigenheim in Worms-Pfeddersheim, 3 Wochen, Bestpreis"
+- Story-Format: Ausgangslage → Problem → Lösung → Ergebnis
+```
+
+---
+
+## GOOGLE BUSINESS — Posts (Sie-Form!)
+
+**Frequenz:** 2–3× pro Woche — Google liebt Aktualität
+
+```
+TEMPLATE ANGEBOT:
+Titel: "Kostenlose Wertermittlung für Ihre Immobilie in Worms"
+Text: Ihr Haus in Worms, Rheinhessen oder der Umgebung — 
+      was ist es aktuell wert? Ich erstelle Ihnen eine 
+      fundierte Marktpreisanalyse auf Datenbasis. 
+      Kostenlos und unverbindlich.
+      Ihre Immobilie verdient eine Strategie.
+CTA: Jetzt anrufen: +49 176 158 585 11
+
+TEMPLATE TIPP:
+Titel: "[Konkreter Tipp] für Immobilienverkäufer in Worms"
+Text: [Tipp + kurze Erläuterung + Lokalbezug]
+CTA: Mehr erfahren → wertermittlung-rheinhessen.de
+
+TEMPLATE MARKT:
+Titel: "Immobilienmarkt Worms [Monat] [Jahr]: Was Eigentümer wissen müssen"
+Text: [Kurze Markteinschätzung] + Handlungsempfehlung
+CTA: Kostenloses Beratungsgespräch vereinbaren
+```
+
+---
+
+## REELS / VIDEO-SCRIPTS
+
+```
+STRUKTUR (60 Sek.):
+0–3 Sek:   VISUELLER HOOK (Markus oder starkes Bild)
+            Verbal: "Du verlierst gerade Geld. Ohne es zu merken."
+
+3–15 Sek:  PROBLEM (konkret, lokal, persönlich)
+           "Hier in Worms und Rheinhessen sehe ich das täglich..."
+
+15–45 Sek: LÖSUNG (was Markus konkret anders macht)
+           Kurze, klare Punkte. Kein Fachsprachen-Bingo.
+
+45–55 Sek: BEWEIS (Zahl, Ergebnis, kurze Aussage)
+
+55–60 Sek: CTA
+           "Link in Bio. Oder ruf mich direkt an."
+
+STIL:
+→ Markus redet direkt in die Kamera
+→ Authentisch, kein Teleprompter-Vibe
+→ Subtitel immer (80% schauen ohne Ton)
+→ Teal-Farbakzente bei den Subtiteln
+```
+
+---
+
+## MONATSTHEMEN-ROTATION
+
+```
+JAN  → Jahresstart: "Was ändert sich 2025 für Immobilienverkäufer in Rheinhessen?"
+FEB  → Vorbereitung: "Frühjahr = beste Zeit — dein Haus ist noch nicht bereit"
+MRZ  → Wertermittlung: Fokus auf wertermittlung-rheinhessen.de
+APR  → Prozess: "So funktioniert ein Verkauf mit Strategie — Schritt für Schritt"
+MAI  → Käufer: "Nicht jeder Interessent ist ein Käufer. Wie ich selektiere."
+JUN  → Sommerloch als Chance: "Weniger Konkurrenz. Deine Chance."
+JUL  → Fehler: "5 Fehler, die ich jeden Monat sehe"
+AUG  → Persönlich: Markus-Posts, Behind-the-scenes, Authentizität
+SEP  → Herbst-Offensive: Zweitbeste Verkaufszeit nutzen
+OKT  → Daten: Marktbericht Q3, Zahlen, Preisentwicklung Worms
+NOV  → Vertrauen: Kundenstimmen, Transparenz, Prozess
+DEZ  → Jahresabschluss + Ausblick
 ```
