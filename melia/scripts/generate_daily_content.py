@@ -2,14 +2,19 @@
 Melia Daily Content Generator
 Markus Seitz Immobilien — täglich 06:00 Uhr automatisch
 
-Generiert 5 CI-konforme Hooks mit Captions auf Basis von
-Markttrends für Worms, Mannheim, Heidelberg, Darmstadt,
-Mainz, Speyer, Bad Dürkheim und Ludwigshafen.
+Generiert 5 CI-konforme Hooks mit Captions und erstellt
+automatisch Canva-Posts via Brand-Template-Autofill-API.
+
+Canva-Automatisierung läuft, wenn folgende GitHub Secrets gesetzt sind:
+  CANVA_CLIENT_ID, CANVA_CLIENT_SECRET,
+  CANVA_REFRESH_TOKEN, CANVA_BRAND_TEMPLATE_ID
 """
 
 import os
 import json
+import time
 import datetime
+import requests
 import anthropic
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
@@ -62,17 +67,18 @@ FORMEL 5 — Lokal:
 Beispiel: "Mannheim 2025: Wer jetzt verkauft, braucht Strategie."
 """
 
+CANVA_API_BASE = "https://api.canva.com/rest/v1"
+
 # ── Trend-Quellen (RSS) ────────────────────────────────────────────────────────
 
 RSS_FEEDS = [
     "https://www.wormser-zeitung.de/feed",
-    "https://www.rnz.de/rss/feed.rss",          # Rhein-Neckar-Zeitung
+    "https://www.rnz.de/rss/feed.rss",
     "https://www.allgemeine-zeitung.de/feed",
     "https://www.immobilienscout24.de/ratgeber/feed/",
 ]
 
 def fetch_trend_headlines() -> str:
-    """Versucht, aktuelle Schlagzeilen aus RSS-Feeds zu laden."""
     try:
         import feedparser
         headlines = []
@@ -91,6 +97,82 @@ def fetch_trend_headlines() -> str:
         return "\n".join(headlines[:10]) if headlines else "Keine aktuellen Schlagzeilen verfügbar."
     except Exception:
         return "RSS nicht verfügbar — generiere auf Basis von Markt-Kontext."
+
+
+# ── Canva API ─────────────────────────────────────────────────────────────────
+
+def canva_get_access_token() -> str:
+    """Tauscht den Refresh Token gegen einen neuen Access Token."""
+    resp = requests.post(
+        f"{CANVA_API_BASE}/oauth/token",
+        data={
+            "grant_type":    "refresh_token",
+            "refresh_token": os.environ["CANVA_REFRESH_TOKEN"],
+            "client_id":     os.environ["CANVA_CLIENT_ID"],
+            "client_secret": os.environ["CANVA_CLIENT_SECRET"],
+        },
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    return resp.json()["access_token"]
+
+
+def canva_create_post(access_token: str, brand_template_id: str,
+                      title: str, headline: str, subline: str) -> dict:
+    """
+    Erstellt einen Canva-Post via Autofill-API.
+    Gibt {"design_id": "...", "edit_url": "..."} zurück.
+    """
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type":  "application/json",
+    }
+
+    # Autofill-Job starten
+    resp = requests.post(
+        f"{CANVA_API_BASE}/autofills",
+        headers=headers,
+        json={
+            "brand_template_id": brand_template_id,
+            "title": title,
+            "data": {
+                "headline": {"type": "text", "text": headline},
+                "subline":  {"type": "text", "text": subline},
+            },
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    job_id = resp.json()["job"]["id"]
+
+    # Job pollen bis fertig (max. 60 Sekunden)
+    for _ in range(30):
+        time.sleep(2)
+        poll = requests.get(
+            f"{CANVA_API_BASE}/autofills/{job_id}",
+            headers=headers,
+            timeout=30,
+        )
+        poll.raise_for_status()
+        job = poll.json()["job"]
+
+        if job["status"] == "success":
+            design = job["result"]["design"]
+            return {
+                "design_id": design["id"],
+                "edit_url":  design.get("url", f"https://www.canva.com/design/{design['id']}/edit"),
+            }
+        if job["status"] == "failed":
+            raise RuntimeError(f"Canva Autofill fehlgeschlagen: {job}")
+
+    raise RuntimeError("Canva Autofill Timeout (>60s)")
+
+
+def canva_active() -> bool:
+    required = ["CANVA_CLIENT_ID", "CANVA_CLIENT_SECRET",
+                "CANVA_REFRESH_TOKEN", "CANVA_BRAND_TEMPLATE_ID"]
+    return all(os.environ.get(k) for k in required)
 
 
 # ── Prompt ────────────────────────────────────────────────────────────────────
@@ -158,9 +240,7 @@ Wichtig: Gib NUR valides JSON zurück, kein Text davor oder danach."""
 
 def generate_content(date_str: str, weekday: str, month_name: str) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
     trend_headlines = fetch_trend_headlines()
-
     prompt = build_prompt(date_str, weekday, month_name, trend_headlines)
 
     message = client.messages.create(
@@ -170,37 +250,37 @@ def generate_content(date_str: str, weekday: str, month_name: str) -> dict:
     )
 
     raw = message.content[0].text.strip()
-
-    # JSON aus der Antwort extrahieren
     if "```json" in raw:
         raw = raw.split("```json")[1].split("```")[0].strip()
     elif "```" in raw:
         raw = raw.split("```")[1].split("```")[0].strip()
 
-    return json.loads(raw)
+    return json.loads(raw), trend_headlines
 
 
 # ── Markdown-Ausgabe ──────────────────────────────────────────────────────────
 
 def format_markdown(data: dict, trend_headlines: str) -> str:
     date = data["datum"]
-    lines = []
-
-    lines.append(f"# Melia Daily Content — {date}")
-    lines.append(f"*Automatisch generiert · Markus Seitz Immobilien*")
-    lines.append("")
-    lines.append("---")
-    lines.append("")
+    lines = [
+        f"# Melia Daily Content — {date}",
+        "*Automatisch generiert · Markus Seitz Immobilien*",
+        "", "---", "",
+    ]
 
     for post in data["posts"]:
         nr = post["nr"]
-        lines.append(f"## Post {nr} · {post.get('plattform', 'Instagram')} · {post.get('stadt_bezug', '')}")
-        lines.append(f"**Formel:** {post.get('formel', '')}  ")
+        canva_link = ""
+        if post.get("canva_edit_url"):
+            canva_link = f" · [In Canva öffnen]({post['canva_edit_url']})"
+
+        lines.append(f"## Post {nr} · {post.get('plattform','Instagram')} · {post.get('stadt_bezug','')}{canva_link}")
+        lines.append(f"**Formel:** {post.get('formel','')}  ")
         lines.append("")
-        lines.append(f"### Visual")
+        lines.append("### Visual")
         lines.append("```")
-        headline = post['headline']
-        teal = post.get('teal_wort', '')
+        headline = post["headline"]
+        teal = post.get("teal_wort", "")
         if teal:
             headline = headline.replace(teal, f"[TEAL: {teal}]")
         lines.append(f"HEADLINE:  {headline}")
@@ -208,7 +288,7 @@ def format_markdown(data: dict, trend_headlines: str) -> str:
         lines.append(f"LOGO:      MS-Monogramm + MARKUS SEITZ IMMOBILIEN")
         lines.append("```")
         lines.append("")
-        lines.append(f"### Caption")
+        lines.append("### Caption")
         lines.append(post["caption"])
         lines.append("")
         lines.append(f"**Hashtags:** {post['hashtags']}")
@@ -221,20 +301,14 @@ def format_markdown(data: dict, trend_headlines: str) -> str:
         lines.append(trend_headlines)
         lines.append("")
 
-    lines.append(f"*Generiert: {date} · Melia v1.1 · claude-sonnet-4-6*")
-
+    lines.append(f"*Generiert: {date} · Melia v1.2 · claude-sonnet-4-6*")
     return "\n".join(lines)
-
-
-def format_latest_json(data: dict) -> str:
-    """Speichert auch eine 'latest.json' für das Dashboard."""
-    return json.dumps(data, ensure_ascii=False, indent=2)
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    now = datetime.datetime.now()
+    now        = datetime.datetime.now()
     date_str   = now.strftime("%Y-%m-%d")
     weekday    = ["Montag","Dienstag","Mittwoch","Donnerstag",
                   "Freitag","Samstag","Sonntag"][now.weekday()]
@@ -244,28 +318,57 @@ def main():
 
     print(f"Melia generiert Content für {date_str}...")
 
-    trend_headlines = fetch_trend_headlines()
-    data = generate_content(date_str, weekday, month_name)
+    data, trend_headlines = generate_content(date_str, weekday, month_name)
 
+    # ── Canva-Posts automatisch erstellen ──────────────────────────────────
+    if canva_active():
+        print("Canva-Integration aktiv — erstelle Posts...")
+        try:
+            access_token      = canva_get_access_token()
+            brand_template_id = os.environ["CANVA_BRAND_TEMPLATE_ID"]
+
+            for post in data["posts"]:
+                nr       = post["nr"]
+                city     = post.get("stadt_bezug", f"Post{nr}")
+                headline = post["headline"]
+                subline  = post["subline"]
+                title    = f"Melia Post {nr} — {city} — {date_str}"
+
+                print(f"  Erstelle Canva Post {nr} ({city})...")
+                result = canva_create_post(
+                    access_token, brand_template_id,
+                    title, headline, subline
+                )
+                post["canva_design_id"] = result["design_id"]
+                post["canva_edit_url"]  = result["edit_url"]
+                print(f"  ✓ Post {nr}: {result['design_id']}")
+
+        except Exception as e:
+            print(f"  ⚠ Canva-Fehler (Text-Content wurde trotzdem gespeichert): {e}")
+    else:
+        print("Canva-Integration nicht konfiguriert — nur Text-Content wird gespeichert.")
+        print("  → Secrets CANVA_CLIENT_ID / CANVA_CLIENT_SECRET /")
+        print("    CANVA_REFRESH_TOKEN / CANVA_BRAND_TEMPLATE_ID in GitHub hinterlegen.")
+
+    # ── Dateien speichern ──────────────────────────────────────────────────
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # Tages-Datei
-    md_path = os.path.join(OUTPUT_DIR, f"{date_str}.md")
+    md_path   = os.path.join(OUTPUT_DIR, f"{date_str}.md")
+    json_path = os.path.join(OUTPUT_DIR, "latest.json")
+
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(format_markdown(data, trend_headlines))
 
-    # latest.json für Dashboard
-    json_path = os.path.join(OUTPUT_DIR, "latest.json")
     with open(json_path, "w", encoding="utf-8") as f:
-        f.write(format_latest_json(data))
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
     print(f"✓ {md_path}")
     print(f"✓ {json_path}")
     print(f"✓ {len(data['posts'])} Posts generiert")
 
-    # Kurze Vorschau
     for post in data["posts"]:
-        print(f"  Post {post['nr']}: {post['headline']}")
+        canva_id = post.get("canva_design_id", "—")
+        print(f"  Post {post['nr']}: {post['headline']}  [{canva_id}]")
 
 
 if __name__ == "__main__":

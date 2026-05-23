@@ -3,7 +3,7 @@ name: Melia — Täglicher Content-Generator
 on:
   schedule:
     - cron: '0 5 * * *'   # Täglich 06:00 Uhr MEZ (05:00 UTC)
-  workflow_dispatch:        # Auch manuell auslösbar (einmaliger Test)
+  workflow_dispatch:        # Auch manuell auslösbar
 
 jobs:
   generate-daily-content:
@@ -24,9 +24,13 @@ jobs:
         run: |
           pip install anthropic requests feedparser
 
-      - name: Melia Daily Content generieren
+      - name: Melia Daily Content + Canva-Posts generieren
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY:        ${{ secrets.ANTHROPIC_API_KEY }}
+          CANVA_CLIENT_ID:          ${{ secrets.CANVA_CLIENT_ID }}
+          CANVA_CLIENT_SECRET:      ${{ secrets.CANVA_CLIENT_SECRET }}
+          CANVA_REFRESH_TOKEN:      ${{ secrets.CANVA_REFRESH_TOKEN }}
+          CANVA_BRAND_TEMPLATE_ID:  ${{ secrets.CANVA_BRAND_TEMPLATE_ID }}
         run: python melia/scripts/generate_daily_content.py
 
       - name: Content committen und pushen
