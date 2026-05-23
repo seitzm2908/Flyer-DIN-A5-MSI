@@ -1,0 +1,38 @@
+name: Melia — Täglicher Content-Generator
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # Täglich 06:00 Uhr MEZ (05:00 UTC)
+  workflow_dispatch:        # Auch manuell auslösbar (einmaliger Test)
+
+jobs:
+  generate-daily-content:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Abhängigkeiten installieren
+        run: |
+          pip install anthropic requests feedparser
+
+      - name: Melia Daily Content generieren
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python melia/scripts/generate_daily_content.py
+
+      - name: Content committen und pushen
+        run: |
+          git config user.name "Melia — Markus Seitz Immobilien"
+          git config user.email "melia@markus-seitz.immobilien"
+          git add melia/daily-content/
+          git diff --staged --quiet || git commit -m "Melia: Daily Content $(date +%Y-%m-%d)"
+          git push
