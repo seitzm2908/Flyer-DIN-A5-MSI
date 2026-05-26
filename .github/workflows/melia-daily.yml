@@ -27,6 +27,17 @@ jobs:
         run: |
           pip install anthropic requests feedparser
 
+      - name: API-Key prüfen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "FEHLER: ANTHROPIC_API_KEY ist nicht gesetzt!"
+            echo "Bitte unter Settings → Secrets → Actions → New repository secret hinterlegen."
+            exit 1
+          fi
+          echo "✓ ANTHROPIC_API_KEY gefunden (${#ANTHROPIC_API_KEY} Zeichen)"
+
       - name: Melia Daily Content + Canva-Posts generieren
         env:
           ANTHROPIC_API_KEY:        ${{ secrets.ANTHROPIC_API_KEY }}
