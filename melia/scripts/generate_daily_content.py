@@ -238,24 +238,47 @@ Wichtig: Gib NUR valides JSON zurück, kein Text davor oder danach."""
 
 # ── Generator ─────────────────────────────────────────────────────────────────
 
-def generate_content(date_str: str, weekday: str, month_name: str) -> dict:
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    trend_headlines = fetch_trend_headlines()
-    prompt = build_prompt(date_str, weekday, month_name, trend_headlines)
+def extract_json(raw: str) -> dict:
+    """Extrahiert und parst JSON robust aus dem Modell-Output."""
+    import re
 
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=4096,
-        messages=[{"role": "user", "content": prompt}]
-    )
-
-    raw = message.content[0].text.strip()
+    # Code-Block entfernen falls vorhanden
     if "```json" in raw:
         raw = raw.split("```json")[1].split("```")[0].strip()
     elif "```" in raw:
         raw = raw.split("```")[1].split("```")[0].strip()
 
-    return json.loads(raw), trend_headlines
+    # Erstes { bis letztes } ausschneiden
+    start = raw.find("{")
+    end   = raw.rfind("}") + 1
+    if start != -1 and end > start:
+        raw = raw[start:end]
+
+    return json.loads(raw)
+
+
+def generate_content(date_str: str, weekday: str, month_name: str) -> tuple:
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    trend_headlines = fetch_trend_headlines()
+    prompt = build_prompt(date_str, weekday, month_name, trend_headlines)
+
+    for attempt in range(3):
+        message = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=4096,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        raw = message.content[0].text.strip()
+        try:
+            data = extract_json(raw)
+            return data, trend_headlines
+        except json.JSONDecodeError as e:
+            print(f"  JSON-Fehler (Versuch {attempt + 1}/3): {e}")
+            print(f"  Rohtext (erste 300 Zeichen): {raw[:300]}")
+            if attempt == 2:
+                raise RuntimeError(f"JSON nach 3 Versuchen ungültig: {e}") from e
+
+    raise RuntimeError("Unerwarteter Fehler in generate_content")
 
 
 # ── Markdown-Ausgabe ──────────────────────────────────────────────────────────
