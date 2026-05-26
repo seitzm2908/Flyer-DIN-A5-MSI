@@ -20,6 +20,11 @@ jobs:
         with:
           ref: main
 
+      - name: Branch prüfen (Debug)
+        run: |
+          echo "Aktueller Branch: $(git branch --show-current)"
+          echo "HEAD: $(git rev-parse HEAD)"
+
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
@@ -35,7 +40,6 @@ jobs:
         run: |
           if [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "FEHLER: ANTHROPIC_API_KEY ist nicht gesetzt!"
-            echo "Bitte unter Settings → Secrets → Actions → New repository secret hinterlegen."
             exit 1
           fi
           echo "✓ ANTHROPIC_API_KEY gefunden (${#ANTHROPIC_API_KEY} Zeichen)"
@@ -56,5 +60,5 @@ jobs:
           git add melia/daily-content/
           git diff --staged --quiet || git commit -m "Melia: Daily Content $(date +%Y-%m-%d)"
           git fetch origin
-          git pull --rebase origin main
-          git push origin main
+          git rebase origin/main
+          git push origin HEAD:main
