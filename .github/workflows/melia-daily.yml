@@ -57,8 +57,8 @@ jobs:
         run: |
           git config user.name "Melia — Markus Seitz Immobilien"
           git config user.email "melia@markus-seitz.immobilien"
+          git fetch origin
+          git checkout -B main origin/main
           git add melia/daily-content/
           git diff --staged --quiet || git commit -m "Melia: Daily Content $(date +%Y-%m-%d)"
-          git fetch origin
-          git rebase origin/main
-          git push origin HEAD:main
+          git push origin main
