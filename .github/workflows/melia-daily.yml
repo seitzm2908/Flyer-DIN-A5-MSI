@@ -40,4 +40,4 @@ jobs:
           git add melia/daily-content/
           git diff --staged --quiet || git commit -m "Melia: Daily Content $(date +%Y-%m-%d)"
           git pull --rebase origin main
-          git push
+          git push origin main
