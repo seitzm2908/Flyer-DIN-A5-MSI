@@ -38,9 +38,9 @@ BRAND = {
     "valuation": "wertermittlung-rheinhessen.de",
 }
 
-PROVEN_HOOKS = [
-    "Du verlierst gerade Geld. Ohne es zu merken.",
-    "Der Markt hat sich verändert.",
+KERNBOTSCHAFTEN = [
+    "Ihre Immobilie verdient eine Strategie.",
+    "Strategie statt Bauchgefühl.",
     "Kein Makler. Eine Strategie.",
     "Für den bestmöglichen Preis. Für dich.",
 ]
@@ -48,23 +48,88 @@ PROVEN_HOOKS = [
 HOOK_FORMULAS = """
 FORMEL 1 — Diagnose:
 "Du [verb] gerade [problem]. [Konsequenz in 1 Satz]."
-Beispiel: "Du verlierst gerade Geld. Ohne es zu merken."
+Beispiel: "Du verschenkst gerade Rendite. Ohne Plan ist das fast unvermeidlich."
 
 FORMEL 2 — Kontrast:
 "[Alte Annahme] war gestern. [Neue Realität] ist heute."
-Beispiel: "Einfach inserieren war gestern. Inszenierung ist heute."
+Beispiel: "Bauchgefühl war gestern. Strategie gewinnt heute."
 
-FORMEL 3 — Provokation:
-"[Kurze Aussage.] [Ein-Wort-Verstärker oder Frage.]"
-Beispiel: "Kein Makler. Eine Strategie."
+FORMEL 3 — Provokation / Kurzformel:
+"[Starke Aussage.] [Verstärker oder Gegensatz.]"
+Beispiel: "Strategie statt Bauchgefühl. Immer."
 
-FORMEL 4 — Zahl:
-"[Zahl] [überraschende Aussage]."
-Beispiel: "8 Sekunden. So lang schaut ein Käufer auf dein Inserat."
+FORMEL 4 — Zahl / Fakt:
+"[Zahl oder Zeitraum]. [Überraschende Konsequenz.]"
+Beispiel: "3 Wochen. So lang bleibt ein schlechtes Inserat online — bevor der Preis fällt."
 
-FORMEL 5 — Lokal:
-"[Stadt/Region] hat sich verändert. [Was das für Dich bedeutet.]"
-Beispiel: "Mannheim 2025: Wer jetzt verkauft, braucht Strategie."
+FORMEL 5 — Lokal / Markt:
+"[Stadt] [konkrete Marktbeobachtung]. [Was das für Verkäufer bedeutet.]"
+Beispiel: "Heidelberg 2026: Käufer sind wählerischer. Dein Objekt muss überzeugen."
+
+FORMEL 6 — Frage:
+"[Unbequeme Frage, die Eigentümer sich stellen sollten]?"
+Beispiel: "Weißt du wirklich, was deine Immobilie heute wert ist?"
+
+FORMEL 7 — Emotion / Story:
+"[Nachvollziehbare Situation]. [Wendepunkt.] [Lösung.]"
+Beispiel: "Monatelang kein Angebot. Dann eine Strategie. Dann der Abschluss."
+
+FORMEL 8 — Fehler benennen:
+"Fehler Nr. [X]: [Was viele Eigentümer tun]. [Was das kostet.]"
+Beispiel: "Fehler Nr. 1: Zu früh den Preis nennen. Käufer springen ab."
+"""
+
+THEMEN_POOL = """
+THEMEN FÜR DIE 5 POSTS — jeden Tag andere Kombination wählen:
+
+PREISFINDUNG & BEWERTUNG:
+- Warum Online-Schätzer systematisch falsch liegen
+- Der Unterschied zwischen Angebotspreis und Verkaufspreis
+- Wann ein zu hoher Startpreis zum Bumerang wird
+- Kostenlosen Wert jetzt ermitteln lassen
+
+KÄUFERPSYCHOLOGIE:
+- Warum der erste Eindruck (online) alles entscheidet
+- Wie Emotionen Kaufentscheidungen treffen (nicht Zahlen)
+- Warum Käufer Objekte ohne Strategie meiden
+- 8-Sekunden-Regel beim Scrollen
+
+TIMING & MARKT:
+- Wann ist der richtige Moment zum Verkaufen?
+- Was steigende/sinkende Zinsen für Verkäufer bedeuten
+- Sommer, Winter, Herbst — wann verkauft es sich besser?
+- Warum zu langes Warten teuer wird
+
+HÄUFIGE FEHLER VON EIGENTÜMERN:
+- Renovieren vor dem Verkauf — ja oder nein?
+- Selbst verkaufen ohne Strategie
+- Zu viele Informationen im Inserat
+- Besichtigungen ohne Vorbereitung
+- Den falschen Käufer zu lange begleiten
+
+EMOTIONALE ASPEKTE:
+- Das Elternhaus loslassen — wie ein Verkauf gelingt
+- Wenn Erbschaft zur Aufgabe wird
+- Scheidung & Immobilie — was jetzt zählt
+- Erinnerungen vs. Marktwert
+
+INSZENIERUNG & VERMARKTUNG:
+- Warum Fotos über Tausende Euro entscheiden
+- Homestaging: kleiner Aufwand, große Wirkung
+- Exposé als Verkaufswerkzeug — nicht nur Beschreibung
+- Digitale Reichweite gezielt einsetzen
+
+LOKAL & REGIONAL:
+- Marktlage konkret in Worms / Mannheim / Heidelberg etc.
+- Nachbarschaftsentwicklung als Verkaufsargument
+- Infrastruktur-News als Preistreiber nutzen
+- Was Käufer in der Region wirklich suchen
+
+VERHANDLUNG & ABSCHLUSS:
+- Warum Strategie in der Verhandlung mehr zählt als der Preis
+- Wann man ein Angebot ablehnen sollte
+- Wie man Bieterverfahren richtig aufbaut
+- Der Unterschied zwischen Makler und Stratege
 """
 
 CANVA_API_BASE = "https://api.canva.com/rest/v1"
@@ -179,42 +244,50 @@ def canva_active() -> bool:
 
 def build_prompt(date_str: str, weekday: str, month_name: str, trend_headlines: str) -> str:
     cities_str = ", ".join(CITIES)
+    kernbotschaften = "\n".join(f'- "{k}"' for k in KERNBOTSCHAFTEN)
 
     return f"""Du bist Melia, die Marketing-KI von {BRAND['name']}.
-Tagline: "{BRAND['tagline']}"
-Kern-Hook: "{BRAND['hook_core']}"
-
 Heute ist {weekday}, {date_str} ({month_name}).
 
 DEINE AUFGABE:
-Erstelle genau 5 tagesaktuelle Marketing-Hooks mit vollständigen Captions.
-Jeder Hook muss anders sein — verschiedene Formeln, verschiedene Städte, verschiedene Themen.
+Erstelle genau 5 Instagram-Posts für Immobilieneigentümer in der Region.
+Jeder Post muss ein ANDERES Thema, eine ANDERE Formel und eine ANDERE Stadt haben.
+Denk aus der Perspektive eines Eigentümers, der verkaufen möchte oder überlegt — was beschäftigt ihn wirklich?
 
 ZIELREGION: {cities_str}
 
-CI-REGELN (absolut einzuhalten):
-- Ton: Du-Form, direkt, kurz, kein Makler-Sprech
-- Headline: MAX 5 Wörter — [TEAL: Schlüsselwort] markieren
-- Subline: Genau 1 Satz
-- Caption: Hook → Problem (2 Sätze, lokal) → Lösung (1-2 Sätze) → CTA
-- Hashtags: 6-8, immer #MaklerWorms oder Regionalhashtag dabei
-- CTA rotieren: Telefon / Website / "Link in Bio"
+KERNBOTSCHAFTEN (mindestens 1-2 davon täglich einweben — in Subline oder Caption, NICHT zwingend als Headline):
+{kernbotschaften}
 
-HOOK-FORMELN:
+HOOK-FORMELN (alle 8 stehen zur Verfügung — heute mindestens 4 verschiedene nutzen):
 {HOOK_FORMULAS}
 
-BEWÄHRTE HOOKS (NICHT kopieren, aber ähnliche Energie):
-{chr(10).join(f'- {h}' for h in PROVEN_HOOKS)}
+THEMEN-POOL (jeden Tag andere Kombination — heute 5 möglichst verschiedene Bereiche wählen):
+{THEMEN_POOL}
+
+CI-REGELN:
+- Ton: Du-Form, direkt, menschlich, kein Makler-Sprech, keine Floskeln
+- Headline: MAX 5 Wörter, trifft einen Nerv
+- Subline: Genau 1 Satz — schärft die Headline, zeigt den Nutzen
+- Caption: Hook-Satz → konkretes Problem (2 Sätze, lokal) → Lösung/Perspektive (1-2 Sätze) → klarer CTA
+- Hashtags: 6-8, immer mind. 1 Regions-Hashtag
+- CTA über die 5 Posts rotieren: Tel / Website / Wertermittlung / "Link in Bio"
+
+STRIKTE VERBOTE (führen zu schlechten Posts):
+- Keine zwei Posts mit ähnlicher Headline-Energie
+- Nicht jeden Post mit "Du verschenkst..." oder "war gestern" beginnen
+- Keine generischen Sätze wie "Wir helfen dir" oder "Kontaktiere uns"
+- Nicht alle 5 Posts über Preis/Geld — Themenvielfalt ist Pflicht
 
 AKTUELLE MARKTLAGE ({month_name}):
 {trend_headlines}
 
-KONTAKTDATEN (in CTAs verwenden):
+KONTAKTDATEN:
 - Tel: {BRAND['phone']}
 - Web: {BRAND['website']}
 - Wertermittlung: {BRAND['valuation']}
 
-AUSGABE-FORMAT (JSON, exakt so):
+AUSGABE-FORMAT (JSON, exakt so, NUR JSON):
 {{
   "datum": "{date_str}",
   "posts": [
@@ -222,18 +295,16 @@ AUSGABE-FORMAT (JSON, exakt so):
       "nr": 1,
       "plattform": "Instagram",
       "formel": "Diagnose",
+      "thema": "Preisfindung",
       "stadt_bezug": "Worms",
-      "headline": "Du [X] gerade [Y].",
-      "teal_wort": "[Y]",
-      "subline": "Ein Satz.",
-      "caption": "Vollständige Caption mit Hook, Problem, Lösung, CTA.",
+      "headline": "Max 5 Wörter.",
+      "teal_wort": "Schlüsselwort",
+      "subline": "Ein präziser Satz.",
+      "caption": "Vollständige Caption.",
       "hashtags": "#Tag1 #Tag2 #Tag3 #Tag4 #Tag5 #Tag6"
-    }},
-    ... (5 Posts total)
+    }}
   ]
-}}
-
-Wichtig: Gib NUR valides JSON zurück, kein Text davor oder danach."""
+}}"""
 
 
 # ── Generator ─────────────────────────────────────────────────────────────────
