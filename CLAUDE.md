@@ -14,6 +14,10 @@ Die folgenden Canva-Designs dienen als **Vorlagen für Hooks und Texte** bei der
 - Der Textinhalt bleibt identisch — nur die Zahl im Namen ändert sich
 - Neue Templates folgen dem gleichen Muster mit höherer Nummer
 
+### Template-Auswahl vor Post-Erstellung
+**IMMER** vor der Erstellung eines Posts prüfen, welche Vorlage besser zum jeweiligen Text/Hook passt.
+Den Inhalt beider Templates vergleichen und die passendere Vorlage wählen.
+
 ### Regelmäßige Prüfung
 Bei jeder Session prüfen, ob neue Templates nach dem Muster `MSI_Template*_Vorlage` in Canva hinzugekommen sind.
 Dazu in Canva nach `MSI_Template` suchen und neue IDs hier ergänzen.
