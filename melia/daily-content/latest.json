@@ -1,5 +1,5 @@
 {
-  "datum": "2026-09-20",
+  "datum": "2026-09-21",
   "posts": [
     {
       "nr": 1,
@@ -7,11 +7,11 @@
       "formel": "Diagnose",
       "thema": "Preisfindung & Bewertung",
       "stadt_bezug": "Worms",
-      "headline": "Dein Preis lügt dich an.",
+      "headline": "Dein Preis liegt daneben.",
       "teal_wort": "Preis",
-      "subline": "Online-Schätzer liefern Zahlen — aber keine Wahrheit.",
-      "caption": "Du gibst deine Adresse ein, bekommst eine Zahl zurück — und denkst, du weißt, was dein Haus wert ist. Aber Algorithmen kennen weder die Lage deiner Straße in Worms-Hochheim noch den Zustand deiner Heizung. Sie rechnen mit Vergangenheit, nicht mit deinem Jetzt. Der Unterschied zwischen diesem Schätzwert und deinem echten Verkaufspreis kann fünf- oder sechsstellig sein — nach oben wie nach unten. Lass deinen Wert professionell ermitteln: wertermittlung-rheinhessen.de",
-      "hashtags": "#Worms #Immobilienworms #Immobilienverkauf #Hauswert #Wertermittlung #ImmoStrategie #Rheinhessen"
+      "subline": "Online-Schätzer rechnen mit Durchschnitt — deine Immobilie ist keiner.",
+      "caption": "Du hast deinen Wert gegoogelt. Und dir dabei wahrscheinlich selbst geschadet. In Worms gibt es Straßen, die sich in Preis und Nachfrage extrem unterscheiden — das erkennt kein Algorithmus. Wer zu niedrig ansetzt, verschenkt. Wer zu hoch ansetzt, wartet. Beides kostet dich am Ende echtes Geld. Lass deinen Wert professionell ermitteln — kostenlos und ohne Verpflichtung: wertermittlung-rheinhessen.de",
+      "hashtags": "#Worms #Immobilienverkauf #Wertermittlung #Preisfindung #ImmobilienWorms #StrategieStattBauchgefühl #Eigentümer"
     },
     {
       "nr": 2,
@@ -20,46 +20,46 @@
       "thema": "Emotionale Aspekte",
       "stadt_bezug": "Mainz",
       "headline": "Das Elternhaus loslassen.",
-      "teal_wort": "Loslassen",
-      "subline": "Erinnerungen gehören dir — der richtige Verkauf auch.",
-      "caption": "Jedes Zimmer hat eine Geschichte. Der Geruch im Flur, die Kratzer an der Türzarge, der Garten, der früher riesig wirkte. Wenn Eltern gehen, bleibt eine Immobilie — und eine Entscheidung, die sich falsch anfühlt, egal welche du triffst. Viele Familien in Mainz warten dann zu lang, handeln zu emotional oder verkaufen unter Wert, weil der Druck irgendwann zu groß wird. Es gibt einen Weg, der das Erbe würdigt und trotzdem einen fairen Abschluss bringt. Ruf an, wir reden zuerst — ganz ohne Zahlen: +49 176 158 585 11",
-      "hashtags": "#Mainz #Immobilienmainz #Erbschaft #Elternhaus #Hausverkauf #ImmoMainz #Strategie"
+      "teal_wort": "Elternhaus",
+      "subline": "Ihre Immobilie verdient eine Strategie — auch wenn das Herz noch zögert.",
+      "caption": "Jahrelang war es das Zentrum der Familie. Jetzt steht es leer, und du weißt nicht, wie du anfangen sollst. Das kennen viele Eigentümer in Mainz — und genau diese Zögerlichkeit kostet oft Monate und Tausende Euro. Es geht nicht darum, Erinnerungen loszuwerden. Es geht darum, das Richtige zum richtigen Zeitpunkt zu tun. Ruf an, wenn du bereit bist für ein offenes Gespräch: +49 176 158 585 11",
+      "hashtags": "#Mainz #Erbschaft #Elternhaus #ImmobilienMainz #Eigentümer #Immobilienverkauf #Loslassen #Rheinhessen"
     },
     {
       "nr": 3,
       "plattform": "Instagram",
       "formel": "Zahl / Fakt",
       "thema": "Inszenierung & Vermarktung",
-      "stadt_bezug": "Heidelberg",
-      "headline": "8 Sekunden. Alles entschieden.",
-      "teal_wort": "8 Sekunden",
-      "subline": "Schlechte Fotos kosten dich Käufer, bevor sie dein Exposé lesen.",
-      "caption": "8 Sekunden — so lange scrollt ein Käufer, bevor er entscheidet: interessant oder weiter. In Heidelberg konkurriert deine Immobilie mit Objekten, die professionell fotografiert, inszeniert und digital ausgespielt werden. Wenn dein Titelbild bei schlechtem Licht mit dem Smartphone geschossen wurde, bist du raus — bevor jemand die Quadratmeter gelesen hat. Strategie statt Bauchgefühl: Dein Exposé ist dein erster Verkäufer. Mach ihn stark. Alle Infos auf markus-seitz.immobilien",
-      "hashtags": "#Heidelberg #Immobilienheidelberg #Homestaging #Exposé #Immofotografie #Immobilienverkauf #Rhein-Neckar #ImmoStrategie"
+      "stadt_bezug": "Mannheim",
+      "headline": "8 Sekunden. Alles oder nichts.",
+      "teal_wort": "Sekunden",
+      "subline": "Schlechte Fotos kosten dich Käufer, bevor sie auch nur einen Satz gelesen haben.",
+      "caption": "So lange scrollt ein Käufer, bevor er entscheidet: klicken oder weiterscrollen. In Mannheim konkurriert dein Objekt täglich gegen Dutzende andere Inserate. Verwackelte Handyfotos, schlechtes Licht, unaufgeräumte Räume — das ist kein Detail, das ist der Unterschied zwischen Anfrage und Stille. Professionelle Bildsprache ist kein Luxus. Sie ist dein erster Verkäufer. Mehr dazu auf: markus-seitz.immobilien",
+      "hashtags": "#Mannheim #Immobilienfotografie #Homestaging #ImmobilienMannheim #Vermarktung #Eigentümer #KeinMaklerEineStrategie"
     },
     {
       "nr": 4,
       "plattform": "Instagram",
       "formel": "Fehler benennen",
       "thema": "Häufige Fehler von Eigentümern",
-      "stadt_bezug": "Darmstadt",
-      "headline": "Fehler: Selbst verkaufen, kein Plan.",
+      "stadt_bezug": "Heidelberg",
+      "headline": "Fehler: Alles selbst machen.",
       "teal_wort": "Fehler",
-      "subline": "Kein Makler ist kein Problem — keine Strategie schon.",
-      "caption": "Fehler Nr. 3: Selbst verkaufen, ohne zu wissen, was Käufer in Darmstadt gerade wirklich suchen. Du sparst die Provision — aber verlierst Zeit, Energie und oft Geld, weil du den Markt anders einschätzt als er ist. Besichtigungen ohne Vorbereitung, ein Preis aus dem Bauchgefühl, Anfragen, die ins Leere laufen. Das kostet Wochen. Und je länger ein Objekt online steht, desto mehr sinkt das Vertrauen der Käufer in deinen Preis. Kein Makler. Eine Strategie. Die kannst du dir holen — auf Wunsch auch eigenständig umsetzen. Starte hier: markus-seitz.immobilien",
-      "hashtags": "#Darmstadt #Immobiliendarmstadt #Hausverkauf #Selbstverkauf #Immobilienverkauf #ImmoStrategie #Südhessen"
+      "subline": "Strategie statt Bauchgefühl — weil Selbstverkauf ohne Plan selten gut endet.",
+      "caption": "Fehler Nr. 1 beim privaten Verkauf in Heidelberg: Anfragen beantworten, Besichtigungen zeigen, Preise nennen — alles ohne System. Das Ergebnis: Käufer, die dich testen. Verhandlungen, die du verlierst. Zeit, die vergeht. Selbst verkaufen ist kein Problem — ohne Strategie aber fast immer teuer. Der Unterschied liegt nicht darin, wer verkauft. Sondern wie. Schreib mir direkt über den Link in Bio.",
+      "hashtags": "#Heidelberg #Privatverkauf #ImmobilienHeidelberg #Eigentümer #Immobilienstrategie #Verkaufen #IhreImmobilieVerdienstEineStrategie"
     },
     {
       "nr": 5,
       "plattform": "Instagram",
       "formel": "Lokal / Markt",
       "thema": "Timing & Markt",
-      "stadt_bezug": "Mannheim",
-      "headline": "Mannheim: Jetzt oder abwarten?",
-      "teal_wort": "Jetzt",
-      "subline": "Wer auf den perfekten Moment wartet, verpasst oft den richtigen.",
-      "caption": "Mannheim 2026: Der Markt ist selektiver geworden. Käufer haben mehr Auswahl, achten stärker auf Zustand und Preis-Leistung — und reagieren sensibel auf Objekte, die zu lang inseriert bleiben. Viele Eigentümer warten auf sinkende Zinsen oder steigende Preise. Aber Timing ohne Strategie ist Glücksspiel. Ihre Immobilie verdient eine Strategie — eine, die den richtigen Moment definiert, statt auf ihn zu hoffen. Lass uns gemeinsam schauen, was für dein Objekt jetzt Sinn macht. Link in Bio.",
-      "hashtags": "#Mannheim #Immobilienmannheim #Immobilienmarkt #Hausverkauf #Marktlage #ImmoStrategie #Rhein-Neckar #Mannheimimmobilien"
+      "stadt_bezug": "Darmstadt",
+      "headline": "Darmstadt: Jetzt noch warten?",
+      "teal_wort": "Warten",
+      "subline": "Für den bestmöglichen Preis zählt der Moment — und der ist nicht beliebig.",
+      "caption": "Darmstadt 2026: Der Markt ist nicht eingeschlafen, aber er verzeiht Fehler weniger als früher. Käufer rechnen genauer, Finanzierungen sind teurer, und Objekte ohne klare Positionierung liegen länger. Wer jetzt auf den perfekten Moment wartet, könnte ihn verpassen — denn der beste Zeitpunkt entsteht nicht von allein. Er wird gemacht. Lass uns gemeinsam schauen, was für dich gerade sinnvoll ist: markus-seitz.immobilien",
+      "hashtags": "#Darmstadt #ImmobilienDarmstadt #Marktlage #Immobilienverkauf #Eigentümer #Timing #StrategieStattBauchgefühl #Rheinhessen"
     }
   ]
 }
