@@ -665,7 +665,7 @@ a{color:var(--cyan);text-decoration:none}
           <div style="margin-top:12px">
             <div class="cb-row">
               <input type="checkbox" id="cb-ds">
-              <label for="cb-ds">Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. *</label>
+              <label for="cb-ds">Ich habe die <a href="javascript:void(0)" onclick="openModal('datenschutz')">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. *</label>
             </div>
           </div>
         </div>
@@ -979,8 +979,14 @@ a{color:var(--cyan);text-decoration:none}
     Selbstständiger Vertriebspartner der iad Deutschland GmbH · § 34c GewO<br>
     <a href="https://markus-seitz.immobilien" target="_blank">markus-seitz.immobilien</a> · wertermittlung-rheinhessen.de<br><br>
     <span style="font-size:.7rem;opacity:.7">
-      Diese Bewertung ist eine unverbindliche Schätzung auf Basis von Marktdaten. Sie ersetzt keine professionelle Verkehrswertermittlung nach ImmoWertV.<br>
-      © 2025 Markus Seitz Immobilien · <a href="javascript:void(0)" onclick="openModal('datenschutz')">Datenschutz</a> · <a href="javascript:void(0)" onclick="openModal('impressum')">Impressum</a> · <a href="javascript:void(0)" onclick="openModal('agb')">AGB</a> · <a href="javascript:void(0)" onclick="openModal('widerruf')">Widerruf</a>
+      Diese Bewertung ist eine unverbindliche Schätzung auf Basis von Marktdaten. Sie ersetzt keine professionelle Verkehrswertermittlung nach ImmoWertV.
+    </span><br>
+    <span style="font-size:.78rem;margin-top:10px;display:inline-block">
+      © 2025 Markus Seitz Immobilien &nbsp;·&nbsp;
+      <a href="javascript:void(0)" onclick="openModal('datenschutz')" style="color:var(--cyan)">Datenschutz</a> &nbsp;·&nbsp;
+      <a href="javascript:void(0)" onclick="openModal('impressum')" style="color:var(--cyan)">Impressum</a> &nbsp;·&nbsp;
+      <a href="javascript:void(0)" onclick="openModal('agb')" style="color:var(--cyan)">AGB</a> &nbsp;·&nbsp;
+      <a href="javascript:void(0)" onclick="openModal('widerruf')" style="color:var(--cyan)">Widerruf</a>
     </span>
   </div>
 </footer>
