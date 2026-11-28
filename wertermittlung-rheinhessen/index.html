@@ -456,6 +456,38 @@ a{color:var(--cyan);text-decoration:none}
               <div class="sel-card__sub">unbebaute Fläche</div>
             </div>
           </div>
+
+          <!-- ETW Sub-Typ (nur sichtbar wenn Eigentumswohnung gewählt) -->
+          <div id="etw-subtyp" style="display:none;margin-top:1.4rem">
+            <p class="step__sub" style="margin-top:0;margin-bottom:.8rem">Welcher <em>Wohnungstyp</em> trifft zu?</p>
+            <div class="card-grid" id="g-etw-typ">
+              <div class="sel-card" data-val="etw-etage" data-fac="0.88">
+                <div class="sel-card__icon">🏢</div>
+                <div class="sel-card__lbl">Etagenwohnung</div>
+                <div class="sel-card__sub">Regelgeschoss</div>
+              </div>
+              <div class="sel-card" data-val="etw-mais" data-fac="0.92">
+                <div class="sel-card__icon">🏠</div>
+                <div class="sel-card__lbl">Maisonette</div>
+                <div class="sel-card__sub">zwei Ebenen</div>
+              </div>
+              <div class="sel-card" data-val="etw-pent" data-fac="1.10">
+                <div class="sel-card__icon">👑</div>
+                <div class="sel-card__lbl">Penthouse</div>
+                <div class="sel-card__sub">oberste Etage, Luxus</div>
+              </div>
+              <div class="sel-card" data-val="etw-dg" data-fac="0.96">
+                <div class="sel-card__icon">🏚️</div>
+                <div class="sel-card__lbl">Dachgeschoss­wohnung</div>
+                <div class="sel-card__sub">ausgebautes DG</div>
+              </div>
+              <div class="sel-card" data-val="etw-eg" data-fac="0.80">
+                <div class="sel-card__icon">🌿</div>
+                <div class="sel-card__lbl">Erdgeschoss­wohnung</div>
+                <div class="sel-card__sub">ebenerdig</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- STEP 2: Standort & Basisdaten -->
@@ -1048,6 +1080,19 @@ function bindCards(gridId,stateKey,facKey,isBonus){
   });
 }
 bindCards('g-gebaeude','gebVal','gebFac',false);
+// Show/hide ETW sub-type panel and reset sub-selection when main type changes
+document.getElementById('g-gebaeude').querySelectorAll('.sel-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const sub=document.getElementById('etw-subtyp');
+    if(c.dataset.val==='etw'){
+      sub.style.display='';
+    } else {
+      sub.style.display='none';
+      document.getElementById('g-etw-typ').querySelectorAll('.sel-card').forEach(x=>x.classList.remove('active'));
+    }
+  });
+});
+bindCards('g-etw-typ','gebVal','gebFac',false);
 bindCards('g-zustand','zuVal','zuFac',false);
 bindCards('g-heizung','hzVal','hzFac',false);
 bindCards('g-garage','grVal','grBonus',true);
@@ -1097,7 +1142,7 @@ function refreshNext(){
 
 function canGo(){
   switch(S.step){
-    case 1:return S.gebVal!=='';
+    case 1:return S.gebVal!==''&&S.gebVal!=='etw';
     case 2:return /^\d{5}$/.test(v('f-plz'))&&v('f-ort')&&v('f-bj')&&v('f-wf')&&v('f-zi');
     case 3:return S.zuVal!==''&&S.hzVal!==''&&S.grVal!=='';
     case 5:return v('f-vn')&&v('f-nn')&&v('f-tel')&&v('f-mail')&&document.getElementById('cb-ds').checked;
@@ -1112,6 +1157,7 @@ function v(id){return(document.getElementById(id)?.value||'').trim()}
 
 function validate(step){
   if(step===1&&!S.gebVal){alert('Bitte wähle einen Gebäudetyp.');return false;}
+  if(step===1&&S.gebVal==='etw'){alert('Bitte wähle den Wohnungstyp der Eigentumswohnung.');return false;}
   if(step===2){
     let ok=true;
     [['f-plz',p=>/^\d{5}$/.test(p)],['f-ort',p=>!!p],
