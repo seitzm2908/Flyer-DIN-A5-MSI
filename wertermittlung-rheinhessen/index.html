@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immobilienbewertung Rheinhessen – Kostenlos & Unverbindlich | Markus Seitz</title>
+  <meta name="description" content="Erfahren Sie kostenlos, was Ihre Immobilie in Rheinhessen wert ist. Ihr Strategie-Makler Markus Seitz bewertet Ihr Objekt persönlich und ehrlich.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ===== TOKENS ===== */
+:root {
+  --navy:      #1B2B5E;
+  --navy-mid:  #2E4A8F;
+  --navy-lt:   #3D6AB5;
+  --ice:       #EEF6FB;
+  --ice-dark:  #D4EBF8;
+  --gold:      #D4A017;
+  --green:     #16A34A;
+  --red:       #DC2626;
+  --text:      #111827;
+  --muted:     #6B7280;
+  --border:    #E5E7EB;
+  --white:     #FFFFFF;
+  --shadow:    0 4px 20px rgba(27,43,94,.10);
+  --shadow-lg: 0 10px 40px rgba(27,43,94,.15);
+  --r:         12px;
+  --r-lg:      20px;
+}
+
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;color:var(--text);background:var(--ice);line-height:1.65;font-size:16px}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;line-height:1.25}
+button{cursor:pointer;border:none;outline:none;font-family:inherit}
+input,select,textarea{font-family:inherit;font-size:1rem}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:860px;margin:0 auto;padding:0 18px}
+.wrap--wide{max-width:1080px;margin:0 auto;padding:0 18px}
+
+/* ===== HEADER ===== */
+.hdr{background:var(--navy);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(0,0,0,.22)}
+.hdr__inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hdr__logo{color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.05rem;line-height:1.2}
+.hdr__logo span{display:block;font-size:.72rem;font-weight:400;opacity:.78}
+.hdr__stars{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:20px;color:#fff;font-size:.78rem;white-space:nowrap}
+.stars-gold{color:#FFD700;letter-spacing:1px}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(140deg,var(--navy) 0%,var(--navy-mid) 55%,var(--navy-lt) 100%);color:#fff;padding:58px 0 50px;text-align:center}
+.hero__eyebrow{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hero__h1{font-size:clamp(1.75rem,5vw,2.75rem);font-weight:800;margin-bottom:16px;text-shadow:0 2px 10px rgba(0,0,0,.18)}
+.hero__sub{font-size:1.05rem;opacity:.88;max-width:540px;margin:0 auto 28px}
+.hero__btn{background:var(--gold);color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;padding:16px 36px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;display:inline-block;text-decoration:none;cursor:pointer;border:none}
+.hero__btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.26)}
+.hero__pills{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero__pill{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.82rem;padding:7px 15px;border-radius:20px}
+
+/* ===== WIZARD SECTION ===== */
+.wiz-section{padding:48px 0 60px}
+.wiz-card{background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+
+/* Progress */
+.wiz-prog{background:var(--ice-dark);padding:18px 26px;border-bottom:1px solid var(--border)}
+.wiz-prog__lbl{font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:7px;text-transform:uppercase;letter-spacing:.7px}
+.wiz-prog__bar{background:var(--border);border-radius:10px;height:6px;overflow:hidden}
+.wiz-prog__fill{background:linear-gradient(90deg,var(--navy),var(--navy-lt));height:100%;border-radius:10px;transition:width .4s ease}
+
+/* Body */
+.wiz-body{padding:30px 26px}
+.step{display:none}
+.step.active{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.step__h2{font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+.step__sub{font-size:.88rem;color:var(--muted);margin-bottom:22px}
+
+/* Card Grids */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:11px;margin-bottom:22px}
+.card-grid--sm{grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}
+
+.sel-card{border:2px solid var(--border);border-radius:var(--r);padding:16px 10px;text-align:center;cursor:pointer;transition:all .18s;background:#fff;user-select:none}
+.sel-card:hover{border-color:var(--navy-mid);background:var(--ice)}
+.sel-card.active{border-color:var(--navy);background:var(--ice);box-shadow:0 0 0 3px rgba(27,43,94,.11)}
+.sel-card__icon{font-size:1.9rem;margin-bottom:7px}
+.sel-card__lbl{font-size:.78rem;font-weight:700;color:var(--navy);line-height:1.3}
+.sel-card__sub{font-size:.7rem;color:var(--muted);margin-top:3px}
+
+/* Condition List */
+.cond-list{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+.cond-card{border:2px solid var(--border);border-radius:var(--r);padding:13px 16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:13px}
+.cond-card:hover{border-color:var(--navy-mid);background:var(--ice)}
+.cond-card.active{border-color:var(--navy);background:var(--ice)}
+.cond-card__icon{font-size:1.4rem;flex-shrink:0}
+.cond-card__lbl{font-weight:700;font-size:.88rem;color:var(--navy)}
+.cond-card__desc{font-size:.75rem;color:var(--muted);margin-top:2px}
+
+/* Section Label */
+.sec-lbl{font-size:.78rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.7px;margin-bottom:11px;margin-top:22px}
+.sec-lbl:first-child{margin-top:0}
+
+/* Form Fields */
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.f-row--1{grid-template-columns:1fr}
+@media(max-width:520px){.f-row{grid-template-columns:1fr}}
+
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:.82rem;font-weight:700;color:var(--navy)}
+.field input,.field select,.field textarea{border:2px solid var(--border);border-radius:8px;padding:11px 13px;font-size:.93rem;transition:border-color .18s;background:#fff;color:var(--text)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy)}
+.field input.err{border-color:var(--red)}
+.field__hint{font-size:.72rem;color:var(--muted)}
+
+/* Result */
+.result-box{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;border-radius:var(--r-lg);padding:30px;text-align:center;margin-bottom:20px}
+.result-box__lbl{font-size:.8rem;opacity:.78;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}
+.result-box__val{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,5vw,2.5rem);font-weight:800;margin-bottom:7px;letter-spacing:-.5px}
+.result-box__range{font-size:.85rem;opacity:.72}
+.result-box__note{margin-top:14px;font-size:.76rem;opacity:.68;line-height:1.55;border-top:1px solid rgba(255,255,255,.18);padding-top:12px}
+
+.result-facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:9px;margin-bottom:22px}
+.rfact{background:var(--ice);border:1px solid var(--ice-dark);border-radius:10px;padding:11px;text-align:center}
+.rfact__lbl{font-size:.7rem;color:var(--muted);margin-bottom:2px}
+.rfact__val{font-weight:700;font-size:.88rem;color:var(--navy)}
+
+/* Checkboxes */
+.cb-row{display:flex;align-items:flex-start;gap:9px;margin-bottom:12px}
+.cb-row input[type=checkbox]{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--navy)}
+.cb-row label{font-size:.8rem;color:var(--muted);line-height:1.4}
+.cb-row a{color:var(--navy)}
+
+/* Wizard Nav */
+.wiz-nav{padding:18px 26px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--ice)}
+
+/* Buttons */
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:50px;transition:all .18s;display:inline-flex;align-items:center;gap:5px;border:none;cursor:pointer}
+.btn--navy{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(27,43,94,.22)}
+.btn--navy:hover{background:var(--navy-mid);transform:translateY(-1px)}
+.btn--navy:disabled{background:var(--border);color:var(--muted);transform:none;box-shadow:none;cursor:not-allowed}
+.btn--ghost{background:transparent;color:var(--navy);border:2px solid var(--border)}
+.btn--ghost:hover{border-color:var(--navy)}
+.btn--gold{background:var(--gold);color:var(--navy);box-shadow:0 4px 14px rgba(212,160,23,.32);width:100%;justify-content:center;padding:16px;font-size:.95rem}
+.btn--gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(212,160,23,.42)}
+.btn--invis{visibility:hidden;pointer-events:none}
+
+/* Thank You */
+.thankyou{text-align:center;padding:44px 24px}
+.ty__icon{font-size:3.8rem;margin-bottom:14px}
+.ty__h2{font-size:1.5rem;color:var(--navy);margin-bottom:9px}
+.ty__p{color:var(--muted);margin-bottom:22px;max-width:380px;margin-left:auto;margin-right:auto}
+.cbox{background:var(--ice);border:1px solid var(--ice-dark);border-radius:var(--r);padding:18px 22px;display:inline-block;text-align:left}
+.cbox__row{display:flex;align-items:center;gap:9px;font-size:.88rem;color:var(--navy);font-weight:600;margin-bottom:7px}
+.cbox__row:last-child{margin-bottom:0}
+
+/* ===== TRUST SECTION ===== */
+.trust{background:#fff;padding:56px 0;border-top:1px solid var(--border)}
+.trust__h2{font-size:1.5rem;color:var(--navy);text-align:center;margin-bottom:8px}
+.trust__sub{text-align:center;color:var(--muted);margin-bottom:36px;font-size:.9rem}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
+.tcard{background:var(--ice);border:1px solid var(--ice-dark);border-radius:var(--r-lg);padding:26px 22px;text-align:center}
+.tcard__icon{font-size:2.3rem;margin-bottom:12px}
+.tcard__h3{font-size:.95rem;color:var(--navy);margin-bottom:5px;font-family:'Montserrat',sans-serif}
+.tcard__p{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--navy);color:rgba(255,255,255,.72);padding:28px 0;font-size:.8rem;text-align:center;line-height:1.9}
+.footer strong{color:#fff}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:580px){
+  .hdr__stars{font-size:.7rem;padding:5px 9px}
+  .wiz-body{padding:22px 16px}
+  .wiz-nav{padding:14px 16px}
+  .wiz-prog{padding:14px 16px}
+  .hero{padding:46px 0 38px}
+  .result-box{padding:22px 18px}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr__inner">
+      <div class="hdr__logo">
+        Markus Seitz Immobilien · iad
+        <span>Ihr Strategie-Makler in Rheinhessen</span>
+      </div>
+      <div class="hdr__stars">
+        <span class="stars-gold">★★★★★</span>
+        <span>5,0 · 51 Bewertungen</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__eyebrow">Kostenlos &amp; Unverbindlich</div>
+    <h1 class="hero__h1">Was ist Ihre Immobilie<br>in Rheinhessen wert?</h1>
+    <p class="hero__sub">Erhalten Sie in 3 Minuten eine fundierte Werteinschätzung – persönlich, ehrlich und ohne jede Verpflichtung.</p>
+    <button class="hero__btn" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'})">Jetzt kostenlos bewerten →</button>
+    <div class="hero__pills">
+      <span class="hero__pill">✅ Kostenlos &amp; unverbindlich</span>
+      <span class="hero__pill">⚡ Ergebnis sofort</span>
+      <span class="hero__pill">📞 Persönliche Beratung</span>
+      <span class="hero__pill">🔒 Datenschutz garantiert</span>
+    </div>
+  </div>
+</section>
+
+<!-- WIZARD -->
+<section class="wiz-section" id="wizard">
+  <div class="wrap">
+    <div class="wiz-card">
+
+      <!-- Progress Bar -->
+      <div class="wiz-prog" id="wiz-prog">
+        <div class="wiz-prog__lbl" id="prog-lbl">Schritt 1 von 5</div>
+        <div class="wiz-prog__bar"><div class="wiz-prog__fill" id="prog-fill" style="width:20%"></div></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="wiz-body">
+
+        <!-- STEP 1: Gebäudetyp -->
+        <div class="step active" id="s1">
+          <h2 class="step__h2">Um welche Immobilie handelt es sich?</h2>
+          <p class="step__sub">Wählen Sie den Typ Ihrer Immobilie.</p>
+          <div class="card-grid" id="g-gebaeude">
+            <div class="sel-card" data-val="efh" data-fac="1.00">
+              <div class="sel-card__icon">🏠</div>
+              <div class="sel-card__lbl">Einfamilienhaus</div>
+              <div class="sel-card__sub">freistehend</div>
+            </div>
+            <div class="sel-card" data-val="doppel" data-fac="0.91">
+              <div class="sel-card__icon">🏘️</div>
+              <div class="sel-card__lbl">Doppelhaus</div>
+              <div class="sel-card__sub">Hälfte</div>
+            </div>
+            <div class="sel-card" data-val="reihen" data-fac="0.87">
+              <div class="sel-card__icon">🏚️</div>
+              <div class="sel-card__lbl">Reihenhaus</div>
+              <div class="sel-card__sub">Ende oder Mitte</div>
+            </div>
+            <div class="sel-card" data-val="mfh" data-fac="0.83">
+              <div class="sel-card__icon">🏢</div>
+              <div class="sel-card__lbl">Mehrfamilienhaus</div>
+              <div class="sel-card__sub">ab 3 Einheiten</div>
+            </div>
+            <div class="sel-card" data-val="etw" data-fac="0.88">
+              <div class="sel-card__icon">🏨</div>
+              <div class="sel-card__lbl">Eigentumswohnung</div>
+              <div class="sel-card__sub">&nbsp;</div>
+            </div>
+            <div class="sel-card" data-val="grundstueck" data-fac="0.28">
+              <div class="sel-card__icon">🌱</div>
+              <div class="sel-card__lbl">Grundstück</div>
+              <div class="sel-card__sub">unbebaute Fläche</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Standort & Basisdaten -->
+        <div class="step" id="s2">
+          <h2 class="step__h2">Wo liegt die Immobilie?</h2>
+          <p class="step__sub">Diese Angaben sind entscheidend für eine realistische Bewertung.</p>
+          <div class="f-row">
+            <div class="field">
+              <label for="f-plz">Postleitzahl *</label>
+              <input type="text" id="f-plz" placeholder="z. B. 55116" maxlength="5" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="f-ort">Ort *</label>
+              <input type="text" id="f-ort" placeholder="z. B. Mainz">
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="field">
+              <label for="f-bj">Baujahr *</label>
+              <input type="number" id="f-bj" placeholder="z. B. 1985" min="1800" max="2025">
+            </div>
+            <div class="field">
+              <label for="f-wf">Wohnfläche (m²) *</label>
+              <input type="number" id="f-wf" placeholder="z. B. 140" min="10" max="2000">
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="field">
+              <label for="f-gs">Grundstücksfläche (m²)</label>
+              <input type="number" id="f-gs" placeholder="z. B. 450">
+              <span class="field__hint">Optional – verbessert die Genauigkeit</span>
+            </div>
+            <div class="field">
+              <label for="f-zi">Anzahl Zimmer *</label>
+              <input type="number" id="f-zi" placeholder="z. B. 5" min="1" max="30">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Details -->
+        <div class="step" id="s3">
+          <h2 class="step__h2">Details zur Immobilie</h2>
+          <p class="step__sub">Diese Faktoren beeinflussen den Wert erheblich.</p>
+
+          <div class="sec-lbl">Zustand der Immobilie</div>
+          <div class="cond-list" id="g-zustand">
+            <div class="cond-card" data-val="sanierung" data-fac="0.75">
+              <div class="cond-card__icon">🔴</div>
+              <div>
+                <div class="cond-card__lbl">Sanierungsbedürftig</div>
+                <div class="cond-card__desc">Umfangreiche Renovierung notwendig, deutlicher Investitionsbedarf</div>
+              </div>
+            </div>
+            <div class="cond-card" data-val="renovierung" data-fac="0.88">
+              <div class="cond-card__icon">🟠</div>
+              <div>
+                <div class="cond-card__lbl">Renovierungsbedürftig</div>
+                <div class="cond-card__desc">Einige Bereiche brauchen Auffrischung, aber voll bewohnbar</div>
+              </div>
+            </div>
+            <div class="cond-card" data-val="gepflegt" data-fac="1.00">
+              <div class="cond-card__icon">🟡</div>
+              <div>
+                <div class="cond-card__lbl">Gepflegt</div>
+                <div class="cond-card__desc">Regelmäßig gewartet, kein akuter Renovierungsbedarf</div>
+              </div>
+            </div>
+            <div class="cond-card" data-val="modernisiert" data-fac="1.11">
+              <div class="cond-card__icon">🟢</div>
+              <div>
+                <div class="cond-card__lbl">Modernisiert</div>
+                <div class="cond-card__desc">Kürzlich renoviert oder teilsaniert, guter bis sehr guter Zustand</div>
+              </div>
+            </div>
+            <div class="cond-card" data-val="neuwertig" data-fac="1.22">
+              <div class="cond-card__icon">🌟</div>
+              <div>
+                <div class="cond-card__lbl">Neuwertig / Erstbezug</div>
+                <div class="cond-card__desc">Wie neu, keinerlei Mängel – Neubau oder vollständig kernsaniert</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sec-lbl">Heizungsart</div>
+          <div class="card-grid card-grid--sm" id="g-heizung">
+            <div class="sel-card" data-val="oel" data-fac="0.93">
+              <div class="sel-card__icon">🛢️</div>
+              <div class="sel-card__lbl">Ölheizung</div>
+            </div>
+            <div class="sel-card" data-val="gas" data-fac="0.98">
+              <div class="sel-card__icon">🔥</div>
+              <div class="sel-card__lbl">Gasheizung</div>
+            </div>
+            <div class="sel-card" data-val="fernwaerme" data-fac="1.00">
+              <div class="sel-card__icon">🏙️</div>
+              <div class="sel-card__lbl">Fernwärme</div>
+            </div>
+            <div class="sel-card" data-val="waermepumpe" data-fac="1.07">
+              <div class="sel-card__icon">♻️</div>
+              <div class="sel-card__lbl">Wärmepumpe</div>
+            </div>
+            <div class="sel-card" data-val="pellet" data-fac="1.05">
+              <div class="sel-card__icon">🌿</div>
+              <div class="sel-card__lbl">Pellet / Solar</div>
+            </div>
+            <div class="sel-card" data-val="unbekannt" data-fac="0.97">
+              <div class="sel-card__icon">❓</div>
+              <div class="sel-card__lbl">Unbekannt</div>
+            </div>
+          </div>
+
+          <div class="sec-lbl">Garage / Stellplatz</div>
+          <div class="card-grid" id="g-garage">
+            <div class="sel-card" data-val="keine" data-bonus="0">
+              <div class="sel-card__icon">🚫</div>
+              <div class="sel-card__lbl">Keine Garage</div>
+            </div>
+            <div class="sel-card" data-val="carport" data-bonus="8000">
+              <div class="sel-card__icon">🏗️</div>
+              <div class="sel-card__lbl">Carport</div>
+            </div>
+            <div class="sel-card" data-val="einzelgarage" data-bonus="18000">
+              <div class="sel-card__icon">🏠</div>
+              <div class="sel-card__lbl">Einzelgarage</div>
+            </div>
+            <div class="sel-card" data-val="doppelgarage" data-bonus="28000">
+              <div class="sel-card__icon">🚗</div>
+              <div class="sel-card__lbl">Doppelgarage</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Ergebnis -->
+        <div class="step" id="s4">
+          <h2 class="step__h2">Ihre Werteinschätzung</h2>
+          <p class="step__sub">Basierend auf Ihren Angaben und aktuellen Marktdaten für Rheinhessen.</p>
+          <div class="result-box">
+            <div class="result-box__lbl">GESCHÄTZTER MARKTWERT</div>
+            <div class="result-box__val" id="res-val">–</div>
+            <div class="result-box__range" id="res-range"></div>
+            <div class="result-box__note">Diese Schätzung basiert auf aktuellen Vergleichswerten in Rheinhessen. Für eine präzise Bewertung erhalten Sie von Markus Seitz eine kostenlose Einschätzung auf Basis einer Vor-Ort-Besichtigung.</div>
+          </div>
+          <div class="result-facts" id="res-facts"></div>
+          <div style="text-align:center;margin-bottom:4px">
+            <p style="font-size:.86rem;color:var(--muted);margin-bottom:14px">Möchten Sie eine <strong>präzise, persönliche Bewertung</strong> von Markus Seitz?</p>
+            <button class="btn btn--gold" onclick="jump(5)">📞 Jetzt kostenlose Expertenbewertung anfordern</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: Kontakt -->
+        <div class="step" id="s5">
+          <h2 class="step__h2">Kostenlose Bewertung anfordern</h2>
+          <p class="step__sub">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel innerhalb von 24 Stunden.</p>
+          <div class="f-row">
+            <div class="field">
+              <label for="f-vn">Vorname *</label>
+              <input type="text" id="f-vn" placeholder="z. B. Thomas">
+            </div>
+            <div class="field">
+              <label for="f-nn">Nachname *</label>
+              <input type="text" id="f-nn" placeholder="z. B. Müller">
+            </div>
+          </div>
+          <div class="f-row f-row--1">
+            <div class="field">
+              <label for="f-tel">Telefon / WhatsApp *</label>
+              <input type="tel" id="f-tel" placeholder="z. B. 0151 23456789">
+              <span class="field__hint">Wir rufen zurück oder schreiben per WhatsApp</span>
+            </div>
+          </div>
+          <div class="f-row f-row--1">
+            <div class="field">
+              <label for="f-mail">E-Mail-Adresse</label>
+              <input type="email" id="f-mail" placeholder="optional">
+            </div>
+          </div>
+          <div class="f-row f-row--1">
+            <div class="field">
+              <label for="f-msg">Kurze Nachricht</label>
+              <input type="text" id="f-msg" placeholder="optional – z. B. beste Erreichbarkeit">
+            </div>
+          </div>
+          <div style="margin-top:10px">
+            <div class="cb-row">
+              <input type="checkbox" id="cb-bew" checked>
+              <label for="cb-bew">Ich möchte die kostenlose Immobilienbewertung von Markus Seitz Immobilien · iad erhalten.</label>
+            </div>
+            <div class="cb-row">
+              <input type="checkbox" id="cb-ds">
+              <label for="cb-ds">Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. *</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- DONE -->
+        <div class="step" id="s-done">
+          <div class="thankyou">
+            <div class="ty__icon">✅</div>
+            <h2 class="ty__h2">Vielen Dank für Ihre Anfrage!</h2>
+            <p class="ty__p">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel <strong>innerhalb von 24 Stunden</strong>. Sie können ihn auch direkt erreichen:</p>
+            <div class="cbox">
+              <div class="cbox__row">📞 <span id="ty-tel">Telefon wird hier eingetragen</span></div>
+              <div class="cbox__row">✉️ <span id="ty-mail">E-Mail wird hier eingetragen</span></div>
+              <div class="cbox__row">🌐 <span>wertermittlung-rheinhessen.de</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /wiz-body -->
+
+      <!-- Nav Buttons -->
+      <div class="wiz-nav" id="wiz-nav">
+        <button class="btn btn--ghost btn--invis" id="btn-back" onclick="goBack()">← Zurück</button>
+        <button class="btn btn--navy" id="btn-next" onclick="goNext()" disabled>Weiter →</button>
+      </div>
+
+    </div><!-- /wiz-card -->
+  </div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="trust">
+  <div class="wrap--wide">
+    <h2 class="trust__h2">Warum Markus Seitz?</h2>
+    <p class="trust__sub">Ihr Strategie-Makler in Rheinhessen – mit Erfahrung, die zählt</p>
+    <div class="trust-grid">
+      <div class="tcard">
+        <div class="tcard__icon">🏆</div>
+        <h3 class="tcard__h3">30+ Jahre Vertrieb</h3>
+        <p class="tcard__p">Profundes Wissen aus drei Jahrzehnten Vertriebs- und Verhandlungserfahrung.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard__icon">📊</div>
+        <h3 class="tcard__h3">15+ Jahre Marketing</h3>
+        <p class="tcard__p">Professionelle Vermarktung mit modernen Methoden – für maximale Reichweite.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard__icon">🧮</div>
+        <h3 class="tcard__h3">10+ Jahre Controlling</h3>
+        <p class="tcard__p">Analytische Präzision bei der Wertermittlung – Sie erhalten den Preis, der wert ist.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard__icon">⭐</div>
+        <h3 class="tcard__h3">5,0 / 5 Google-Bewertung</h3>
+        <p class="tcard__p">51 zufriedene Kunden haben Markus Seitz mit der Höchstnote bewertet.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard__icon">🤝</div>
+        <h3 class="tcard__h3">Ehrlich &amp; Transparent</h3>
+        <p class="tcard__p">Keine versteckten Kosten. Klare Kommunikation vom ersten Gespräch bis zum Notar.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard__icon">📍</div>
+        <h3 class="tcard__h3">Rheinhessen-Experte</h3>
+        <p class="tcard__p">Tiefes Marktwissen in Mainz, Worms, Bingen, Alzey und der gesamten Region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <strong>Markus Seitz Immobilien · iad</strong><br>
+    Ihr Strategie-Makler in Rheinhessen · wertermittlung-rheinhessen.de<br><br>
+    <span style="opacity:.6;font-size:.76rem">
+      Diese Bewertung ist eine unverbindliche Schätzung auf Basis von Marktdaten. Sie ersetzt keine professionelle Verkehrswertermittlung nach ImmoWertV.<br>
+      © 2025 Markus Seitz Immobilien · iad &nbsp;·&nbsp; <a href="#" style="color:inherit">Datenschutz</a> &nbsp;·&nbsp; <a href="#" style="color:inherit">Impressum</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+// =====================================================
+// STATE
+// =====================================================
+const S = {
+  step: 1,
+  total: 5,
+  gebFac: null, gebVal: '',
+  zuFac:  null, zuVal:  '',
+  hzFac:  null, hzVal:  '',
+  grBonus: null, grVal: '',
+};
+
+// =====================================================
+// PLZ → Marktpreis €/m² (Rheinhessen)
+// =====================================================
+function preisQm(plz) {
+  const p = String(plz).trim();
+  if (/^5511/.test(p) || /^5512/.test(p)) return 4500; // Mainz Innenstadt
+  if (/^551/.test(p))                      return 4000; // Mainz allgemein
+  if (/^5521/.test(p) || /^5522/.test(p)) return 3600; // Ingelheim
+  if (/^5523/.test(p) || /^5524/.test(p)) return 2500; // Alzey
+  if (/^5526/.test(p))                    return 3200; // Nieder-Olm
+  if (/^5527/.test(p) || /^5528/.test(p)) return 2900; // Nierstein/Oppenheim
+  if (/^5541/.test(p) || /^5542/.test(p)) return 3300; // Bingen
+  if (/^675/.test(p)  || /^676/.test(p))  return 2800; // Worms
+  if (/^6757/.test(p))                    return 2400; // Osthofen
+  if (/^55/.test(p))                      return 2600; // Übriges Rheinhessen 55xxx
+  if (/^67/.test(p))                      return 2400; // Übriges 67xxx
+  return 2500;
+}
+
+// Baujahr-Faktor
+function bjFac(bj) {
+  const y = parseInt(bj) || 1980;
+  if (y >= 2015) return 1.08;
+  if (y >= 2000) return 1.02;
+  if (y >= 1990) return 0.98;
+  if (y >= 1980) return 0.95;
+  if (y >= 1970) return 0.90;
+  if (y >= 1960) return 0.86;
+  if (y >= 1950) return 0.82;
+  return 0.78;
+}
+
+function eur(n) {
+  return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+}
+
+function round5k(n) { return Math.round(n / 5000) * 5000; }
+
+// =====================================================
+// SELECTION CARDS
+// =====================================================
+function bindCards(gridId, stateKey, facKey, isBool) {
+  document.getElementById(gridId)?.querySelectorAll('.sel-card,.cond-card').forEach(c => {
+    c.addEventListener('click', () => {
+      document.getElementById(gridId).querySelectorAll('.sel-card,.cond-card').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      S[stateKey] = c.dataset.val;
+      S[facKey] = isBool ? parseInt(c.dataset.bonus) : parseFloat(c.dataset.fac);
+      refreshNext();
+    });
+  });
+}
+
+bindCards('g-gebaeude', 'gebVal', 'gebFac', false);
+bindCards('g-zustand',  'zuVal',  'zuFac',  false);
+bindCards('g-heizung',  'hzVal',  'hzFac',  false);
+bindCards('g-garage',   'grVal',  'grBonus', true);
+
+// =====================================================
+// NAVIGATION
+// =====================================================
+function jump(n) {
+  document.getElementById('s' + (S.step === 5 ? 'done' : S.step))?.classList.remove('active');
+  if (n > 5) { sendForm(); return; }
+  if (n === 4) calcResult();
+  document.getElementById('s' + n)?.classList.add('active');
+  S.step = n;
+  renderNav();
+  renderProg();
+  scrollWiz();
+}
+
+function goNext() {
+  if (!validate(S.step)) return;
+  jump(S.step === 5 ? 6 : S.step + 1);
+}
+function goBack()  { if (S.step > 1) jump(S.step - 1); }
+
+function renderNav() {
+  const navEl = document.getElementById('wiz-nav');
+  const back  = document.getElementById('btn-back');
+  const next  = document.getElementById('btn-next');
+
+  // Step 4 uses its own CTA button
+  navEl.style.display = S.step === 4 ? 'none' : 'flex';
+
+  back.className = S.step <= 1 ? 'btn btn--ghost btn--invis' : 'btn btn--ghost';
+
+  if (S.step === 5) {
+    next.textContent = '✉️ Jetzt Bewertung anfordern';
+    next.className = 'btn btn--gold';
+    next.style.flex = '1';
+  } else {
+    next.textContent = 'Weiter →';
+    next.className = 'btn btn--navy';
+    next.style.flex = '';
+  }
+  refreshNext();
+}
+
+function renderProg() {
+  document.getElementById('prog-fill').style.width = (S.step / S.total * 100) + '%';
+  document.getElementById('prog-lbl').textContent = `Schritt ${S.step} von ${S.total}`;
+}
+
+function refreshNext() {
+  const btn = document.getElementById('btn-next');
+  if (btn) btn.disabled = !canGo();
+}
+
+function canGo() {
+  switch (S.step) {
+    case 1: return S.gebVal !== '';
+    case 2:
+      const plz = v('f-plz'), ort = v('f-ort'), bj = v('f-bj'), wf = v('f-wf'), zi = v('f-zi');
+      return /^\d{5}$/.test(plz) && ort && bj && wf && zi;
+    case 3: return S.zuVal !== '' && S.hzVal !== '' && S.grVal !== '';
+    case 5:
+      return v('f-vn') && v('f-nn') && v('f-tel') && document.getElementById('cb-ds').checked;
+    default: return true;
+  }
+}
+
+function scrollWiz() {
+  const el = document.getElementById('wizard');
+  if (el) window.scrollTo({top: el.offsetTop - 70, behavior:'smooth'});
+}
+
+// =====================================================
+// VALIDATION
+// =====================================================
+function v(id) { return (document.getElementById(id)?.value || '').trim(); }
+
+function validate(step) {
+  if (step === 1 && !S.gebVal) { alert('Bitte wählen Sie einen Gebäudetyp.'); return false; }
+  if (step === 2) {
+    let ok = true;
+    [['f-plz', p => /^\d{5}$/.test(p)], ['f-ort', p => !!p],
+     ['f-bj',  p => p >= 1800 && p <= 2025], ['f-wf', p => p >= 10], ['f-zi', p => p >= 1]]
+    .forEach(([id, fn]) => {
+      const el = document.getElementById(id);
+      const valid = fn(v(id));
+      el.classList.toggle('err', !valid);
+      if (!valid) ok = false;
+    });
+    if (!ok) alert('Bitte füllen Sie alle Pflichtfelder korrekt aus.');
+    return ok;
+  }
+  if (step === 3 && (!S.zuVal || !S.hzVal || !S.grVal)) {
+    alert('Bitte treffen Sie für alle drei Bereiche eine Auswahl.');
+    return false;
+  }
+  if (step === 5) {
+    if (!v('f-vn') || !v('f-nn') || !v('f-tel')) { alert('Bitte Name und Telefonnummer eintragen.'); return false; }
+    if (!document.getElementById('cb-ds').checked) { alert('Bitte der Datenschutzerklärung zustimmen.'); return false; }
+  }
+  return true;
+}
+
+// =====================================================
+// CALCULATION
+// =====================================================
+function calcResult() {
+  const plz = v('f-plz'), ort = v('f-ort');
+  const wf  = parseFloat(v('f-wf')) || 100;
+  const bj  = v('f-bj');
+  const pQm = preisQm(plz);
+
+  let mid = wf * pQm;
+  mid *= S.gebFac   ?? 1;
+  mid *= bjFac(bj);
+  mid *= S.zuFac    ?? 1;
+  mid *= S.hzFac    ?? 1;
+  mid += S.grBonus  ?? 0;
+  mid = round5k(mid);
+
+  const lo = round5k(mid * 0.91);
+  const hi = round5k(mid * 1.09);
+
+  document.getElementById('res-val').textContent   = eur(mid);
+  document.getElementById('res-range').textContent = `Wertspanne: ${eur(lo)} – ${eur(hi)}`;
+
+  const labels = {
+    efh:'Einfamilienhaus', doppel:'Doppelhaus', reihen:'Reihenhaus',
+    mfh:'Mehrfamilienhaus', etw:'Eigentumswohnung', grundstueck:'Grundstück',
+    sanierung:'Sanierungsbedürftig', renovierung:'Renovierungsbedürftig',
+    gepflegt:'Gepflegt', modernisiert:'Modernisiert', neuwertig:'Neuwertig',
+    oel:'Ölheizung', gas:'Gasheizung', fernwaerme:'Fernwärme',
+    waermepumpe:'Wärmepumpe', pellet:'Pellet/Solar', unbekannt:'Unbekannt',
+    keine:'Keine Garage', carport:'Carport', einzelgarage:'Einzelgarage', doppelgarage:'Doppelgarage'
+  };
+
+  document.getElementById('res-facts').innerHTML = [
+    ['Lage', `${ort} (${plz})`],
+    ['Marktpreis', `${pQm.toLocaleString('de-DE')} €/m²`],
+    ['Wohnfläche', `${wf} m²`],
+    ['Zustand', labels[S.zuVal] || '-'],
+    ['Heizung',  labels[S.hzVal] || '-'],
+    ['Garage',   labels[S.grVal] || '-'],
+  ].map(([l,v]) => `<div class="rfact"><div class="rfact__lbl">${l}</div><div class="rfact__val">${v}</div></div>`).join('');
+}
+
+// =====================================================
+// FORM SUBMISSION
+// =====================================================
+async function sendForm() {
+  if (!validate(5)) return;
+  const btn = document.getElementById('btn-next');
+  btn.disabled = true;
+  btn.textContent = '⏳ Wird gesendet…';
+
+  // Konfigurierbar: Formspree-ID oder eigene API
+  const ENDPOINT = 'YOUR_FORMSPREE_ID'; // z. B. 'https://formspree.io/f/xabcdefg'
+
+  const payload = {
+    _subject: `Neue Bewertungsanfrage: ${v('f-vn')} ${v('f-nn')} (${v('f-plz')} ${v('f-ort')})`,
+    gebaeude: S.gebVal, plz: v('f-plz'), ort: v('f-ort'),
+    baujahr: v('f-bj'), wohnflaeche: v('f-wf'), zimmer: v('f-zi'),
+    grundstueck: v('f-gs'), zustand: S.zuVal, heizung: S.hzVal, garage: S.grVal,
+    schaetzwert: document.getElementById('res-val')?.textContent,
+    vorname: v('f-vn'), nachname: v('f-nn'), telefon: v('f-tel'),
+    email: v('f-mail'), nachricht: v('f-msg'),
+  };
+
+  try {
+    if (ENDPOINT !== 'YOUR_FORMSPREE_ID') {
+      const r = await fetch(ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload),
+      });
+      if (!r.ok) throw new Error('send failed');
+    }
+    // Danke-Seite
+    document.getElementById('s5').classList.remove('active');
+    document.getElementById('s-done').classList.add('active');
+    document.getElementById('wiz-nav').style.display = 'none';
+    document.getElementById('wiz-prog').style.display = 'none';
+  } catch {
+    btn.disabled = false;
+    btn.textContent = '✉️ Jetzt Bewertung anfordern';
+    alert('Fehler beim Senden. Bitte direkt anrufen.');
+  }
+}
+
+// =====================================================
+// LIVE VALIDATION (typing)
+// =====================================================
+['f-plz','f-ort','f-bj','f-wf','f-zi','f-vn','f-nn','f-tel'].forEach(id => {
+  document.getElementById(id)?.addEventListener('input', refreshNext);
+});
+document.getElementById('cb-ds')?.addEventListener('change', refreshNext);
+
+// INIT
+renderNav();
+renderProg();
+</script>
+</body>
+</html>
