@@ -367,9 +367,77 @@ a{color:var(--cyan);text-decoration:none}
 .legal-body a{color:var(--cyan)}
 @media(max-width:600px){.legal-panel{padding:28px 20px 24px}}
 
+/* ===== INTRO OVERLAY ===== */
+#intro-ov{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:#000;overflow:hidden;
+}
+#intro-ov canvas{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;pointer-events:none;
+}
+#intro-map-wrap{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  opacity:0;transition:opacity 1.1s ease;
+}
+#intro-radar-cv{opacity:0;transition:opacity .7s ease}
+#intro-hud{
+  position:absolute;bottom:11%;left:50%;
+  transform:translateX(-50%);text-align:center;
+  font-family:'Montserrat',sans-serif;pointer-events:none;
+  z-index:10001;white-space:nowrap;
+}
+#intro-brand{
+  font-size:clamp(.85rem,2.4vw,1.25rem);font-weight:700;
+  letter-spacing:.2em;color:#fff;opacity:0;
+  transition:opacity 1.2s;text-transform:uppercase;margin-bottom:.6rem;
+}
+#intro-status{
+  font-size:.62rem;font-weight:600;letter-spacing:.22em;
+  color:#00C9C8;opacity:0;transition:opacity .4s;
+  text-transform:uppercase;min-height:1rem;
+}
+#intro-cta{
+  display:inline-block;margin-top:1.1rem;
+  padding:.55rem 1.7rem;
+  background:rgba(0,201,200,.1);border:1.5px solid #00C9C8;
+  color:#00C9C8;font-family:'Montserrat',sans-serif;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;cursor:pointer;pointer-events:none;
+  opacity:0;transition:opacity .7s;border-radius:2px;
+}
+#intro-cta:hover{background:rgba(0,201,200,.22)}
+#intro-skip{
+  position:absolute;bottom:3%;right:4%;
+  background:transparent;border:1px solid rgba(0,201,200,.28);
+  color:rgba(0,201,200,.55);font-family:'Montserrat',sans-serif;
+  font-size:.6rem;letter-spacing:.14em;padding:.42rem .9rem;
+  cursor:pointer;z-index:10002;text-transform:uppercase;
+  transition:all .2s;border-radius:2px;
+}
+#intro-skip:hover{
+  border-color:#00C9C8;color:#00C9C8;
+  background:rgba(0,201,200,.08);
+}
+/* hide leaflet attribution in intro */
+#intro-map-wrap .leaflet-control-attribution{display:none}
+
 </style>
 </head>
 <body>
+
+<!-- INTRO OVERLAY -->
+<div id="intro-ov">
+  <canvas id="intro-stars-cv"></canvas>
+  <div id="intro-map-wrap"></div>
+  <canvas id="intro-radar-cv"></canvas>
+  <div id="intro-hud">
+    <div id="intro-brand">Markus Seitz Immobilien</div>
+    <div id="intro-status"></div>
+    <button id="intro-cta" onclick="introEnd()">Jetzt bewerten ›</button>
+  </div>
+  <button id="intro-skip" onclick="introEnd()">Überspringen ›</button>
+</div>
 
 <!-- HEADER -->
 <header class="hdr">
@@ -1433,6 +1501,261 @@ if('serviceWorker' in navigator){
 </div>
 
 
+
+<script>
+// === INTRO SEQUENCE: Weltraum → Worms → Radar ===
+(function(){
+  var WORMS=[49.6317,8.3647];
+  var radarRAF=null, starRAF=null, imap=null, done=false;
+
+  function $id(id){return document.getElementById(id);}
+
+  window.introEnd=function(){
+    if(done)return; done=true;
+    if(radarRAF)cancelAnimationFrame(radarRAF);
+    if(starRAF)cancelAnimationFrame(starRAF);
+    var o=$id('intro-ov');
+    o.style.transition='opacity .9s ease';
+    o.style.opacity='0';
+    setTimeout(function(){
+      o.remove();
+      if(imap){imap.remove();imap=null;}
+    },900);
+  };
+
+  function setStatus(txt,delay){
+    setTimeout(function(){
+      var el=$id('intro-status');
+      el.style.opacity='0';
+      setTimeout(function(){el.textContent=txt;el.style.opacity='1';},280);
+    },delay||0);
+  }
+
+  /* ---- STARS ---- */
+  function initStars(){
+    var c=$id('intro-stars-cv');
+    c.width=innerWidth; c.height=innerHeight;
+    var ctx=c.getContext('2d');
+    var stars=[];
+    for(var i=0;i<300;i++){
+      stars.push({
+        x:Math.random()*c.width, y:Math.random()*c.height,
+        r:Math.random()*1.5+.25, a:Math.random()*.9+.1,
+        tw:Math.random()*200
+      });
+    }
+    var t=0, gl=0;
+    return function(){
+      ctx.clearRect(0,0,c.width,c.height);
+      gl=Math.min(1,gl+.012); t++;
+      stars.forEach(function(s){
+        var twinkle=.6+.4*Math.sin((t+s.tw)*.04);
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,'+(s.a*twinkle*gl)+')';
+        ctx.fill();
+      });
+    };
+  }
+
+  /* ---- MAP ---- */
+  function loadLeaflet(cb){
+    var lk=document.createElement('link');
+    lk.rel='stylesheet';
+    lk.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+    document.head.appendChild(lk);
+    var sc=document.createElement('script');
+    sc.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    sc.onload=cb;
+    sc.onerror=function(){ introEnd(); }; // fallback: skip intro on CDN failure
+    document.head.appendChild(sc);
+  }
+
+  function initMap(){
+    var wrap=$id('intro-map-wrap');
+    imap=L.map(wrap,{
+      zoomControl:false,attributionControl:false,
+      dragging:false,scrollWheelZoom:false,
+      doubleClickZoom:false,keyboard:false,tap:false
+    }).setView([47.5,8.0],3);
+    L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      {maxZoom:19}
+    ).addTo(imap);
+  }
+
+  /* ---- RADAR ---- */
+  function runRadar(){
+    var c=$id('intro-radar-cv');
+    c.width=innerWidth; c.height=innerHeight;
+    var ctx=c.getContext('2d');
+    var cx=c.width/2, cy=c.height/2;
+    var R=Math.min(cx,cy)*.83;
+    var angle=0, locked=false, lockA=0;
+    var blips=[];
+
+    function addBlip(){
+      var a=Math.random()*Math.PI*2;
+      var d=R*(.12+Math.random()*.74);
+      blips.push({x:cx+Math.cos(a)*d, y:cy+Math.sin(a)*d,
+                  age:0, maxAge:90+Math.random()*80});
+    }
+
+    function tick(){
+      ctx.clearRect(0,0,c.width,c.height);
+
+      // Radar background
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,10,7,.86)';ctx.fill();
+
+      // Grid rings
+      ctx.lineWidth=1;
+      [.25,.5,.75,1].forEach(function(f){
+        ctx.beginPath();ctx.arc(cx,cy,R*f,0,Math.PI*2);
+        ctx.strokeStyle='rgba(0,201,200,.13)';ctx.stroke();
+      });
+
+      // Cross lines
+      ctx.strokeStyle='rgba(0,201,200,.13)';ctx.lineWidth=1;
+      ctx.beginPath();
+      ctx.moveTo(cx-R,cy);ctx.lineTo(cx+R,cy);
+      ctx.moveTo(cx,cy-R);ctx.lineTo(cx,cy+R);
+      ctx.stroke();
+
+      // Diagonal grid
+      ctx.strokeStyle='rgba(0,201,200,.06)';
+      [45,135].forEach(function(deg){
+        var rad=deg*Math.PI/180;
+        ctx.beginPath();
+        ctx.moveTo(cx-Math.cos(rad)*R,cy-Math.sin(rad)*R);
+        ctx.lineTo(cx+Math.cos(rad)*R,cy+Math.sin(rad)*R);
+        ctx.stroke();
+      });
+
+      // Sweep trail (30 × 3° arcs, fading)
+      for(var i=1;i<=30;i++){
+        var a=angle-(i*Math.PI/60);
+        var op=(30-i)/30*.42;
+        ctx.beginPath();ctx.moveTo(cx,cy);
+        ctx.arc(cx,cy,R,a-Math.PI/60,a);
+        ctx.lineTo(cx,cy);
+        ctx.fillStyle='rgba(0,201,200,'+op+')';ctx.fill();
+      }
+
+      // Sweep arm
+      ctx.save();
+      ctx.shadowColor='#00C9C8';ctx.shadowBlur=14;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+Math.cos(angle)*R, cy+Math.sin(angle)*R);
+      ctx.strokeStyle='rgba(0,201,200,.95)';ctx.lineWidth=2;ctx.stroke();
+      ctx.restore();
+
+      // Blips
+      for(var j=blips.length-1;j>=0;j--){
+        var b=blips[j]; b.age++;
+        var ba=Math.max(0,1-b.age/b.maxAge);
+        if(ba<=0){blips.splice(j,1);continue;}
+        ctx.save();
+        ctx.shadowColor='#00FFB4';ctx.shadowBlur=16;
+        ctx.beginPath();ctx.arc(b.x,b.y,3.5,0,Math.PI*2);
+        ctx.fillStyle='rgba(0,255,180,'+ba+')';ctx.fill();
+        ctx.restore();
+      }
+
+      // Lock-on target at center
+      if(locked){
+        lockA=Math.min(1,lockA+.035);
+        var pulse=.45+.55*Math.sin(Date.now()*.006);
+        ctx.lineWidth=1.5;
+        [16,28,44].forEach(function(pr){
+          ctx.beginPath();ctx.arc(cx,cy,pr,0,Math.PI*2);
+          ctx.strokeStyle='rgba(0,201,200,'+(lockA*(.3+.6*pulse))+')';
+          ctx.stroke();
+        });
+        var cl=18;
+        ctx.save();ctx.shadowColor='#00FFB4';ctx.shadowBlur=10;
+        ctx.strokeStyle='rgba(0,255,180,'+lockA+')';ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(cx-cl,cy);ctx.lineTo(cx+cl,cy);
+        ctx.moveTo(cx,cy-cl);ctx.lineTo(cx,cy+cl);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Outer ring
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+      ctx.strokeStyle='rgba(0,201,200,.42)';ctx.lineWidth=2;ctx.stroke();
+
+      // Tick marks around ring
+      for(var k=0;k<36;k++){
+        var ka=k*Math.PI/18;
+        var kl=k%9===0?13:k%3===0?7:4;
+        ctx.beginPath();
+        ctx.moveTo(cx+Math.cos(ka)*(R-kl),cy+Math.sin(ka)*(R-kl));
+        ctx.lineTo(cx+Math.cos(ka)*R,cy+Math.sin(ka)*R);
+        ctx.strokeStyle='rgba(0,201,200,'+(k%9===0?.55:.22)+')';
+        ctx.lineWidth=k%9===0?1.5:1;ctx.stroke();
+      }
+
+      angle+=.021;
+      if(Math.random()<.045&&blips.length<18)addBlip();
+      radarRAF=requestAnimationFrame(tick);
+    }
+    tick();
+    setTimeout(function(){locked=true;},2200);
+  }
+
+  /* ---- SEQUENCE ---- */
+  var drawStars=initStars();
+  function starLoop(){drawStars();starRAF=requestAnimationFrame(starLoop);}
+  starLoop();
+
+  // Phase 1: Brand text
+  setTimeout(function(){
+    $id('intro-brand').style.opacity='1';
+    setStatus('Initialisierung …');
+  },500);
+
+  // Phase 2: Load satellite map
+  setTimeout(function(){
+    setStatus('Satellitenverbindung …');
+    loadLeaflet(function(){
+      initMap();
+      setTimeout(function(){
+        $id('intro-map-wrap').style.opacity='1';
+        cancelAnimationFrame(starRAF);
+        setStatus('Zielanflug Worms …');
+
+        // Phase 3: Fly to Worms
+        setTimeout(function(){
+          if(imap)imap.flyTo(WORMS,17,{duration:3.0,easeLinearity:.38});
+          setStatus('Annäherung …');
+
+          // Phase 4: Radar overlay
+          setTimeout(function(){
+            $id('intro-map-wrap').style.opacity='.22';
+            var rc=$id('intro-radar-cv');
+            rc.style.opacity='1';
+            setStatus('Scan läuft …');
+            runRadar();
+
+            // Phase 5: Lock-on & CTA
+            setTimeout(function(){
+              setStatus('Objekt erkannt');
+              var cta=$id('intro-cta');
+              cta.style.opacity='1';cta.style.pointerEvents='all';
+            },3000);
+
+            // Auto-close after 8s
+            setTimeout(introEnd,8500);
+          },3600);
+        },350);
+      },700);
+    });
+  },1700);
+
+})();
+</script>
 
 <script>
 function openModal(id){
