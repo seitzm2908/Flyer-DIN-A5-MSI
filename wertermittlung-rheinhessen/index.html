@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Immobilienmakler Worms Rheinhessen | Markus Seitz Immobilien</title>
-  <meta name="description" content="Markus Seitz – Ihr Immobilienmakler in Worms, Rheinhessen und Rhein-Neckar. Kostenlose Wertermittlung für Ihr Haus oder Ihre Wohnung. Ehrlich, persönlich, mit Strategie.">
+  <meta name="description" content="Markus Seitz – dein Immobilienmakler in Worms, Rheinhessen und Rhein-Neckar. Kostenlose Wertermittlung für dein Haus oder deine Wohnung. Ehrlich, persönlich, mit Strategie.">
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#091A2B">
@@ -342,7 +342,18 @@ a{color:var(--cyan);text-decoration:none}
   .btn--invis{visibility:hidden;pointer-events:none}
 }
 .btn--invis{visibility:hidden;pointer-events:none}
-  </style>
+  
+/* ===== VIDEO SECTION ===== */
+.video-section{padding:80px 0;border-top:1px solid var(--border)}
+.video-section__eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);justify-content:center}
+.video-section__eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--cyan);flex-shrink:0}
+.video-section__h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:600;color:var(--white);text-align:center;margin-bottom:12px}
+.video-section__sub{text-align:center;color:var(--muted);max-width:480px;margin:0 auto 36px;line-height:1.75}
+.video-wrap{max-width:360px;margin:0 auto;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);border:1px solid var(--border)}
+.video-wrap video{display:block;width:100%;aspect-ratio:9/16;background:#000;object-fit:cover}
+@media(max-width:420px){.video-wrap{max-width:100%;border-radius:var(--r)}}
+
+</style>
 </head>
 <body>
 
@@ -367,7 +378,7 @@ a{color:var(--cyan);text-decoration:none}
   <div class="wrap">
     <div class="hero__eyebrow">Kostenlos &amp; Unverbindlich</div>
     <h1 class="hero__h1">Immobilienmakler <em>Worms &amp;</em><br><em>Rheinhessen</em> – mit Strategie.</h1>
-    <p class="hero__sub">Markus Seitz bewertet Ihre Immobilie in Worms, Rheinhessen und Rhein-Neckar. Realistisch, ehrlich – kostenlos und unverbindlich.</p>
+    <p class="hero__sub">Markus Seitz bewertet deine Immobilie in Worms, Rheinhessen und Rhein-Neckar. Realistisch, ehrlich – kostenlos und unverbindlich.</p>
     <div class="hero__btns">
       <button class="btn btn--primary" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'})">Wert meiner Immobilie erfahren</button>
       <a class="btn btn--ghost" href="https://markus-seitz.immobilien" target="_blank">markus-seitz.immobilien ›</a>
@@ -398,7 +409,7 @@ a{color:var(--cyan);text-decoration:none}
         <div class="step active" id="s1">
           <div class="step__eyebrow">Schritt 1</div>
           <h2 class="step__h2">Um welche <em>Immobilie</em> handelt es sich?</h2>
-          <p class="step__sub">Wählen Sie den Typ Ihres Objekts.</p>
+          <p class="step__sub">Wähle den Typ deines Objekts.</p>
           <div class="card-grid" id="g-gebaeude">
             <div class="sel-card" data-val="efh" data-fac="1.00">
               <div class="sel-card__icon">🏠</div>
@@ -436,7 +447,7 @@ a{color:var(--cyan);text-decoration:none}
         <!-- STEP 2: Standort & Basisdaten -->
         <div class="step" id="s2">
           <div class="step__eyebrow">Schritt 2</div>
-          <h2 class="step__h2">Wo liegt <em>Ihre Immobilie?</em></h2>
+          <h2 class="step__h2">Wo liegt <em>deine Immobilie?</em></h2>
           <p class="step__sub">Diese Angaben sind entscheidend für eine realistische Bewertung.</p>
           <div class="f-row">
             <div class="field">
@@ -571,8 +582,8 @@ a{color:var(--cyan);text-decoration:none}
         <!-- STEP 4: Ergebnis (Wert-Radar-Stil) -->
         <div class="step radar-bg" id="s4">
           <div class="step__eyebrow">Wert-Radar</div>
-          <h2 class="step__h2">Wo steht <em>Ihre Immobilie</em> im Markt?</h2>
-          <p class="step__sub">Marktdaten statt Bauchgefühl – ein erster Orientierungsrahmen für Ihre Region.</p>
+          <h2 class="step__h2">Wo steht <em>deine Immobilie</em> im Markt?</h2>
+          <p class="step__sub">Marktdaten statt Bauchgefühl – ein erster Orientierungsrahmen für deine Region.</p>
 
           <div class="radar-layout">
             <!-- Left: Ort + Marktpreis -->
@@ -584,7 +595,7 @@ a{color:var(--cyan);text-decoration:none}
               <div class="radar-bars" id="res-bars"></div>
 
               <div class="radar-wfl" id="res-wfl-row" style="display:none">
-                <div class="radar-wfl__label">Ihre Wohnfläche</div>
+                <div class="radar-wfl__label">deine Wohnfläche</div>
                 <div class="radar-wfl__bar-wrap">
                   <div class="radar-wfl__bar" id="res-wfl-bar"></div>
                 </div>
@@ -607,7 +618,7 @@ a{color:var(--cyan);text-decoration:none}
         <div class="step" id="s5">
           <div class="step__eyebrow">Schritt 5</div>
           <h2 class="step__h2">Jetzt <em>Bewertung anfordern</em></h2>
-          <p class="step__sub">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel innerhalb von 24 Stunden.</p>
+          <p class="step__sub">Markus Seitz meldet sich persönlich bei dir – in der Regel innerhalb von 24 Stunden.</p>
           <div class="f-row">
             <div class="field">
               <label for="f-vn">Vorname *</label>
@@ -649,8 +660,8 @@ a{color:var(--cyan);text-decoration:none}
         <div class="step" id="s-done">
           <div class="thankyou">
             <div class="ty__icon">✅</div>
-            <h2 class="ty__h2">Vielen Dank <em>für Ihre Anfrage!</em></h2>
-            <p class="ty__p">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel <strong style="color:var(--white)">innerhalb von 24 Stunden</strong>.</p>
+            <h2 class="ty__h2">Vielen Dank <em>für deine Anfrage!</em></h2>
+            <p class="ty__p">Markus Seitz meldet sich persönlich bei dir – in der Regel <strong style="color:var(--white)">innerhalb von 24 Stunden</strong>.</p>
             <div class="cbox">
               <div class="cbox__row"><span>📞</span> markus-seitz.immobilien</div>
               <div class="cbox__row"><span>📍</span> Rheinhessen &amp; Rhein-Neckar</div>
@@ -724,7 +735,7 @@ a{color:var(--cyan);text-decoration:none}
       <div class="tcard">
         <div class="tcard__icon">🧮</div>
         <h3 class="tcard__h3">10+ Jahre Controlling</h3>
-        <p class="tcard__p">Analytische Präzision bei der Wertermittlung – Sie erhalten den Preis, der wert ist.</p>
+        <p class="tcard__p">Analytische Präzision bei der Wertermittlung – du erhältst den Preis, der wert ist.</p>
       </div>
       <div class="tcard">
         <div class="tcard__icon">📍</div>
@@ -753,7 +764,7 @@ a{color:var(--cyan);text-decoration:none}
         <img src="data:image/jpeg;base64,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" alt="Markus Seitz – Immobilienmakler Worms Rheinhessen" class="about-img" loading="lazy">
       </div>
       <div class="about-content">
-        <div class="about-eyebrow">Ihr persönlicher Ansprechpartner</div>
+        <div class="about-eyebrow">Dein persönlicher Ansprechpartner</div>
         <h2 class="about-h2">Markus Seitz<br><em>Immobilienmakler · iad</em></h2>
         <p class="about-text">Ich begleite Eigentümer in Worms, Rheinhessen und der Rhein-Neckar-Region auf dem Weg zum erfolgreichen Verkauf – ehrlich, persönlich und mit über 50 erfolgreichen Transaktionen in der Region.</p>
 
@@ -762,14 +773,14 @@ a{color:var(--cyan);text-decoration:none}
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div>
-            <strong>Innerhalb von 24 Stunden erhalten Sie Ihre Wertindikation.</strong>
-            <p>Nach Ihrer Anfrage bereite ich die erste Einschätzung persönlich auf. Bei Bedarf vereinbaren wir einen kostenlosen Vor-Ort-Termin für eine vollständige Wertermittlung.</p>
+            <strong>Innerhalb von 24 Stunden erhältst du deine Wertindikation.</strong>
+            <p>Nach deiner Anfrage bereite ich die erste Einschätzung persönlich auf. Bei Bedarf vereinbaren wir einen kostenlosen Vor-Ort-Termin für eine vollständige Wertermittlung.</p>
           </div>
         </div>
 
         <div class="about-privacy">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Ihre Daten werden ausschließlich durch Markus Seitz Immobilien verarbeitet und nicht an Dritte weitergegeben.
+          Deine Daten werden ausschließlich durch Markus Seitz Immobilien und iad Deutschland (Vertriebspartner) zur Bearbeitung deiner Anfrage verarbeitet und nicht an weitere Dritte weitergegeben.
         </div>
       </div>
     </div>
@@ -777,6 +788,22 @@ a{color:var(--cyan);text-decoration:none}
 </section>
 
 <!-- FAQ -->
+
+
+  <!-- VIDEO SECTION -->
+  <section class="video-section">
+    <div class="wrap">
+      <div class="video-section__eyebrow">Einblick</div>
+      <h2 class="video-section__h2">Wie läuft eine <em>Immobilienbewertung</em> ab?</h2>
+      <p class="video-section__sub">In weniger als 2 Minuten erkläre ich dir, was bei einer professionellen Wertermittlung passiert – und warum der richtige Preis so entscheidend ist.</p>
+      <div class="video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="erklaervideo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
 <section class="faq-section">
   <div class="wrap">
     <div class="faq-header">
@@ -797,21 +824,21 @@ a{color:var(--cyan);text-decoration:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wie läuft eine professionelle Immobilienbewertung ab?</button>
         <div class="faq-a">
-          <p>Eine fundierte Bewertung besteht aus Besichtigung der Immobilie, Analyse von Grundriss, Zustand und Ausstattung sowie dem Vergleich mit aktuellen Verkaufspreisen vergleichbarer Objekte in der Region. Ich berechne den Marktwert nach anerkannten Verfahren (Vergleichswert, Sachwert oder Ertragswert) und erkläre Ihnen das Ergebnis transparent und verständlich.</p>
+          <p>Eine fundierte Bewertung besteht aus Besichtigung der Immobilie, Analyse von Grundriss, Zustand und Ausstattung sowie dem Vergleich mit aktuellen Verkaufspreisen vergleichbarer Objekte in der Region. Ich berechne den Marktwert nach anerkannten Verfahren (Vergleichswert, Sachwert oder Ertragswert) und erkläre dir das Ergebnis transparent und verständlich.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Ist die Bewertung wirklich kostenlos und unverbindlich?</button>
         <div class="faq-a">
-          <p>Ja, absolut. Ich erstelle Ihnen eine realistische Marktpreiseinschätzung ohne jede Verpflichtung. Es entstehen keine Kosten, kein Maklervertrag wird unterschrieben, und Sie entscheiden danach frei, wie Sie weiter vorgehen möchten. Mein Ziel ist, Ihnen eine ehrliche Grundlage für Ihre Entscheidung zu geben.</p>
+          <p>Ja, absolut. Ich erstelle dir eine realistische Marktpreiseinschätzung ohne jede Verpflichtung. Es entstehen keine Kosten, kein Maklervertrag wird unterschrieben, und du entscheidest danach frei, wie du weiter vorgehen möchtest. Mein Ziel ist, dir eine ehrliche Grundlage für deine Entscheidung zu geben.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wann ist der beste Zeitpunkt, um meine Immobilie zu verkaufen?</button>
         <div class="faq-a">
-          <p>Es gibt keinen universell „besten" Zeitpunkt. Wichtiger als die Jahreszeit ist der aktuelle Markt in Ihrer Region. In Worms und Rheinhessen ist die Nachfrage nach Wohneigentum stabil, was Verkäufern gute Verhandlungspositionen bietet. Entscheidend ist, dass Ihre persönliche Situation stimmt – nicht die Zinsen oder Schlagzeilen.</p>
+          <p>Es gibt keinen universell „besten" Zeitpunkt. Wichtiger als die Jahreszeit ist der aktuelle Markt in deiner Region. In Worms und Rheinhessen ist die Nachfrage nach Wohneigentum stabil, was Verkäufern gute Verhandlungspositionen bietet. Entscheidend ist, dass deine persönliche Situation stimmt – nicht die Zinsen oder Schlagzeilen.</p>
         </div>
       </div>
 
@@ -825,7 +852,7 @@ a{color:var(--cyan);text-decoration:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Muss ich einen Energieausweis vorlegen?</button>
         <div class="faq-a">
-          <p>Ja. Seit 2014 ist der Energieausweis beim Verkauf oder der Vermietung einer Immobilie gesetzlich Pflicht. Er muss Interessenten spätestens beim Besichtigungstermin vorgelegt werden. Ich unterstütze Sie dabei, den passenden Ausweis (Bedarfs- oder Verbrauchsausweis) zu beschaffen, falls noch keiner vorhanden ist.</p>
+          <p>Ja. Seit 2014 ist der Energieausweis beim Verkauf oder der Vermietung einer Immobilie gesetzlich Pflicht. Er muss Interessenten spätestens beim Besichtigungstermin vorgelegt werden. Ich unterstütze dich dabei, den passenden Ausweis (Bedarfs- oder Verbrauchsausweis) zu beschaffen, falls noch keiner vorhanden ist.</p>
         </div>
       </div>
 
@@ -846,14 +873,14 @@ a{color:var(--cyan);text-decoration:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Muss ich Spekulationssteuer zahlen, wenn ich meine Immobilie verkaufe?</button>
         <div class="faq-a">
-          <p>Wenn Sie die Immobilie selbst bewohnt haben (mindestens im Jahr des Verkaufs und den beiden Vorjahren) oder mehr als 10 Jahre besitzen, fällt in der Regel keine Spekulationssteuer an. Andernfalls wird der Gewinn mit Ihrem persönlichen Einkommensteuersatz versteuert. Ich empfehle, das im Vorfeld mit einem Steuerberater zu klären.</p>
+          <p>Wenn du die Immobilie selbst bewohnt hast (mindestens im Jahr des Verkaufs und den beiden Vorjahren) oder mehr als 10 Jahre besitzt, fällt in der Regel keine Spekulationssteuer an. Andernfalls wird der Gewinn mit deinem persönlichen Einkommensteuersatz versteuert. Ich empfehle, das im Vorfeld mit einem Steuerberater zu klären.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Welche Unterlagen brauche ich für den Verkauf?</button>
         <div class="faq-a">
-          <p>Wichtige Unterlagen sind: Grundbuchauszug, Flurkarte, Baupläne/Grundrisse, Wohnflächenberechnung, Energieausweis, bei Eigentumswohnungen die Teilungserklärung und aktuelle Nebenkostenabrechnungen. Ich prüfe gemeinsam mit Ihnen, welche Unterlagen vorliegen, und helfe bei der Beschaffung fehlender Dokumente.</p>
+          <p>Wichtige Unterlagen sind: Grundbuchauszug, Flurkarte, Baupläne/Grundrisse, Wohnflächenberechnung, Energieausweis, bei Eigentumswohnungen die Teilungserklärung und aktuelle Nebenkostenabrechnungen. Ich prüfe gemeinsam mit dir, welche Unterlagen vorliegen, und helfe bei der Beschaffung fehlender Dokumente.</p>
         </div>
       </div>
 
@@ -867,28 +894,28 @@ a{color:var(--cyan);text-decoration:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Welche Renovierungen erhöhen den Verkaufspreis wirklich?</button>
         <div class="faq-a">
-          <p>Nicht jede Renovierung lohnt sich vor dem Verkauf. Besonders wirkungsvoll sind: frischer Anstrich, ein gepflegtes Bad und eine aufgeräumte, neutrale Präsentation. Große Investitionen (neue Küche, Heizungsanlage) rechnen sich selten voll. Ich berate Sie individuell, welche Maßnahmen in Ihrem Fall das beste Preis-Nutzen-Verhältnis bieten.</p>
+          <p>Nicht jede Renovierung lohnt sich vor dem Verkauf. Besonders wirkungsvoll sind: frischer Anstrich, ein gepflegtes Bad und eine aufgeräumte, neutrale Präsentation. Große Investitionen (neue Küche, Heizungsanlage) rechnen sich selten voll. Ich berate dich individuell, welche Maßnahmen in deinem Fall das beste Preis-Nutzen-Verhältnis bieten.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wie finde ich den richtigen Angebotspreis?</button>
         <div class="faq-a">
-          <p>Der richtige Angebotspreis liegt nahe am Marktwert – nicht darüber. Zu hoch angesetzte Preise schrecken Interessenten ab und führen zu langen Vermarktungszeiten, die den Ruf der Immobilie schädigen. Zu günstig bedeutet Verlust. Eine fundierte Bewertung auf Basis aktueller Vergleichspreise in Worms und Rheinhessen schützt Sie vor beiden Fehlern.</p>
+          <p>Der richtige Angebotspreis liegt nahe am Marktwert – nicht darüber. Zu hoch angesetzte Preise schrecken Interessenten ab und führen zu langen Vermarktungszeiten, die den Ruf der Immobilie schädigen. Zu günstig bedeutet Verlust. Eine fundierte Bewertung auf Basis aktueller Vergleichspreise in Worms und Rheinhessen schützt dich vor beiden Fehlern.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Was passiert beim Notartermin?</button>
         <div class="faq-a">
-          <p>Beim Notartermin wird der Kaufvertrag von beiden Parteien unterzeichnet. Der Notar liest den Vertrag vollständig vor, erklärt alle Klauseln und beantwortet Fragen. Nach der Beurkundung kümmert sich der Notar um die Eigentumsumschreibung im Grundbuch. Ich begleite Sie auf Wunsch zum Notartermin und bereite Sie darauf vor.</p>
+          <p>Beim Notartermin wird der Kaufvertrag von beiden Parteien unterzeichnet. Der Notar liest den Vertrag vollständig vor, erklärt alle Klauseln und beantwortet Fragen. Nach der Beurkundung kümmert sich der Notar um die Eigentumsumschreibung im Grundbuch. Ich begleite dich auf Wunsch zum Notartermin und bereite dich darauf vor.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wie prüfe ich, ob ein Kaufinteressent wirklich finanziert ist?</button>
         <div class="faq-a">
-          <p>Vor einer verbindlichen Zusage sollte immer eine Finanzierungsbestätigung einer Bank vorliegen – nicht nur eine Selbstauskunft. Als Makler prüfe ich die Bonität der Interessenten sorgfältig, bevor ein Kaufvertrag aufgesetzt wird. Das schützt Sie vor Platzern kurz vor dem Ziel.</p>
+          <p>Vor einer verbindlichen Zusage sollte immer eine Finanzierungsbestätigung einer Bank vorliegen – nicht nur eine Selbstauskunft. Als Makler prüfe ich die Bonität der Interessenten sorgfältig, bevor ein Kaufvertrag aufgesetzt wird. Das schützt dich vor Platzern kurz vor dem Ziel.</p>
         </div>
       </div>
 
@@ -902,14 +929,14 @@ a{color:var(--cyan);text-decoration:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Was ist ein Alleinauftrag und lohnt er sich?</button>
         <div class="faq-a">
-          <p>Beim Alleinauftrag beauftragen Sie exklusiv einen Makler. Das klingt einschränkend, hat aber Vorteile: Der Makler investiert mehr in Marketing, professionelle Fotos und Exposé, weil er sicher sein kann, dass sich sein Aufwand lohnt. Statistisch erzielen Alleinaufträge höhere Preise und kürzere Vermarktungszeiten als Mehrfachmandate.</p>
+          <p>Beim Alleinauftrag beauftragst du exklusiv einen Makler. Das klingt einschränkend, hat aber Vorteile: Der Makler investiert mehr in Marketing, professionelle Fotos und Exposé, weil er sicher sein kann, dass sich sein Aufwand lohnt. Statistisch erzielen Alleinaufträge höhere Preise und kürzere Vermarktungszeiten als Mehrfachmandate.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Wie läuft die Zusammenarbeit mit Markus Seitz ab?</button>
         <div class="faq-a">
-          <p>Es beginnt mit einer kostenlosen Bewertung Ihrer Immobilie vor Ort. Danach erhalten Sie eine schriftliche Marktpreiseinschätzung und einen Vorschlag zur Vermarktungsstrategie. Wenn Sie sich für eine Zusammenarbeit entscheiden, kümmere ich mich um alles: professionelle Fotos, Exposé, Besichtigungen, Kaufpreisverhandlung und Notartermin – bis zur Schlüsselübergabe.</p>
+          <p>Es beginnt mit einer kostenlosen Bewertung deiner Immobilie vor Ort. Danach erhältst du eine schriftliche Marktpreiseinschätzung und einen Vorschlag zur Vermarktungsstrategie. Wenn du dich für eine Zusammenarbeit entscheidest, kümmere ich mich um alles: professionelle Fotos, Exposé, Besichtigungen, Kaufpreisverhandlung und Notartermin – bis zur Schlüsselübergabe.</p>
         </div>
       </div>
 
@@ -923,7 +950,7 @@ a{color:var(--cyan);text-decoration:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Warum sollte ich Markus Seitz als Makler in Worms und Rheinhessen wählen?</button>
         <div class="faq-a">
-          <p>Ich kenne den Rheinhessener Immobilienmarkt aus jahrelanger lokaler Erfahrung und über 50 erfolgreichen Verkäufen in der Region. Mein Ansatz ist ehrlich: Ich sage Ihnen den realistischen Preis – auch wenn er unbequem ist. Dazu kommt ein modernes Marketingkonzept mit 3D-Grundrissen, professionellen Fotos und zielgerichteter Online-Werbung. 5,0 Sterne bei Google sprechen für sich.</p>
+          <p>Ich kenne den Rheinhessener Immobilienmarkt aus jahrelanger lokaler Erfahrung und über 50 erfolgreichen Verkäufen in der Region. Mein Ansatz ist ehrlich: Ich sage dir den realistischen Preis – auch wenn er unbequem ist. Dazu kommt ein modernes Marketingkonzept mit 3D-Grundrissen, professionellen Fotos und zielgerichteter Online-Werbung. 5,0 Sterne bei Google sprechen für sich.</p>
         </div>
       </div>
 
@@ -1064,7 +1091,7 @@ function canGo(){
 function v(id){return(document.getElementById(id)?.value||'').trim()}
 
 function validate(step){
-  if(step===1&&!S.gebVal){alert('Bitte wählen Sie einen Gebäudetyp.');return false;}
+  if(step===1&&!S.gebVal){alert('Bitte wähle einen Gebäudetyp.');return false;}
   if(step===2){
     let ok=true;
     [['f-plz',p=>/^\d{5}$/.test(p)],['f-ort',p=>!!p],
@@ -1075,10 +1102,10 @@ function validate(step){
       el.classList.toggle('err',!valid);
       if(!valid)ok=false;
     });
-    if(!ok)alert('Bitte füllen Sie alle Pflichtfelder korrekt aus.');
+    if(!ok)alert('Bitte fülle alle Pflichtfelder korrekt aus.');
     return ok;
   }
-  if(step===3&&(!S.zuVal||!S.hzVal||!S.grVal)){alert('Bitte treffen Sie für alle drei Bereiche eine Auswahl.');return false;}
+  if(step===3&&(!S.zuVal||!S.hzVal||!S.grVal)){alert('Bitte triff für alle drei Bereiche eine Auswahl.');return false;}
   if(step===5){
     if(!v('f-vn')||!v('f-nn')||!v('f-tel')||!v('f-mail')){alert('Bitte Name, Telefonnummer und E-Mail-Adresse eintragen.');return false;}
     if(!document.getElementById('cb-ds').checked){alert('Bitte der Datenschutzerklärung zustimmen.');return false;}
@@ -1111,7 +1138,7 @@ function calcResult(){
   const hi=round5k(mid*1.09);
 
   // Ortname + Preistrend
-  document.getElementById('res-ort').textContent=ort||(plz?`PLZ ${plz}`:'Ihre Region');
+  document.getElementById('res-ort').textContent=ort||(plz?`PLZ ${plz}`:'deine Region');
   document.getElementById('res-trend').textContent=`Marktpreis in dieser Region: ${pQm.toLocaleString('de-DE')} €/m² (Häuser) · ${pWohnung.toLocaleString('de-DE')} €/m² (Wohnungen)`;
 
   // Preis-Balken (Wert-Radar-Stil)

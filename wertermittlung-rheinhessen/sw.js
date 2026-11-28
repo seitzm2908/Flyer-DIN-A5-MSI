@@ -1,10 +1,11 @@
-const CACHE = 'msi-wert-v1';
+const CACHE = 'msi-wert-v2';
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
+  '/erklaervideo.mp4',
   'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap'
 ];
 
