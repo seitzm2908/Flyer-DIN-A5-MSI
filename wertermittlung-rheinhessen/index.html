@@ -422,6 +422,75 @@ a{color:var(--cyan);text-decoration:none}
 /* hide leaflet attribution in intro */
 #intro-map-wrap .leaflet-control-attribution{display:none}
 
+/* ===== PDF PROMISE (Step 4) ===== */
+.pdf-promise{
+  margin-top:26px;padding:20px 18px;
+  background:rgba(0,201,200,.05);
+  border:1px solid rgba(0,201,200,.2);border-radius:10px;
+}
+.pdf-promise__title{
+  font-family:'Montserrat',sans-serif;font-size:.72rem;
+  font-weight:700;color:var(--cyan);letter-spacing:.07em;
+  text-transform:uppercase;margin-bottom:15px;
+}
+.pdf-promise__items{display:flex;flex-direction:column;gap:11px;margin-bottom:20px}
+.pdf-promise__item{display:flex;align-items:flex-start;gap:10px}
+.pdf-promise__check{
+  flex-shrink:0;width:17px;height:17px;
+  background:var(--cyan);color:#091A2B;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.62rem;font-weight:700;margin-top:2px;
+  font-family:'Montserrat',sans-serif;
+}
+.pdf-promise__item strong{
+  display:block;font-size:.79rem;color:var(--white);
+  font-weight:600;font-family:'Montserrat',sans-serif;margin-bottom:3px;
+}
+.pdf-promise__item>div>span{
+  font-size:.69rem;color:rgba(255,255,255,.57);
+  line-height:1.45;font-family:'Montserrat',sans-serif;
+}
+.pdf-promise__sub{
+  text-align:center;margin-top:10px;
+  font-size:.64rem;color:rgba(255,255,255,.43);
+  font-family:'Montserrat',sans-serif;
+}
+
+/* ===== PDF BANNER (Step 5) ===== */
+.pdf-step5-banner{
+  background:rgba(0,201,200,.07);
+  border:1px solid rgba(0,201,200,.22);
+  border-radius:8px;padding:13px 15px;margin:14px 0 0;
+}
+.pdf-step5-banner__label{
+  font-size:.67rem;font-weight:700;color:var(--cyan);
+  letter-spacing:.09em;text-transform:uppercase;
+  font-family:'Montserrat',sans-serif;margin-bottom:8px;
+}
+.pdf-step5-banner__items{display:flex;flex-direction:column;gap:4px}
+.pdf-step5-banner__items span{
+  font-size:.73rem;color:rgba(255,255,255,.8);
+  font-family:'Montserrat',sans-serif;
+}
+
+/* ===== THANKYOU PDF BOX ===== */
+.ty__pdf-box{
+  background:rgba(0,201,200,.07);
+  border:1px solid rgba(0,201,200,.2);
+  border-radius:8px;padding:14px 16px;
+  margin:14px 0;text-align:left;
+}
+.ty__pdf-label{
+  font-size:.68rem;font-weight:700;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:.09em;
+  font-family:'Montserrat',sans-serif;margin-bottom:7px;
+}
+.ty__pdf-box p{
+  font-size:.76rem;color:rgba(255,255,255,.72);
+  margin:0;line-height:1.6;font-family:'Montserrat',sans-serif;
+}
+.ty__pdf-box a{color:var(--cyan)}
+
 </style>
 </head>
 <body>
@@ -723,16 +792,54 @@ a{color:var(--cyan);text-decoration:none}
               <div class="radar-val-num" id="res-val">–</div>
               <div class="radar-val-range" id="res-range"></div>
               <div class="radar-val-note">Dies ist eine <strong>Wertindikation</strong> – ein erster Orientierungsrahmen auf Basis von Marktdaten. Faktoren wie Einbauküche, Bad-Modernisierung oder Außenanlagen fließen erst in die persönliche <strong>Wertermittlung</strong> vor Ort ein.</div>
-              <button class="btn btn--primary btn--full" style="margin-top:20px" onclick="jump(5)">Persönliche Wertermittlung anfordern</button>
             </div>
+          </div>
+
+          <!-- PDF Promise -->
+          <div class="pdf-promise">
+            <div class="pdf-promise__title">🎁 Was du jetzt kostenlos bekommst</div>
+            <div class="pdf-promise__items">
+              <div class="pdf-promise__item">
+                <div class="pdf-promise__check">✓</div>
+                <div>
+                  <strong>2-seitige Wertindikation als PDF</strong>
+                  <span>Bodenwert, Gebäudewert, Marktanpassung & geschätzter Marktwert – übersichtlich aufbereitet</span>
+                </div>
+              </div>
+              <div class="pdf-promise__item">
+                <div class="pdf-promise__check">✓</div>
+                <div>
+                  <strong>Klartext: Warum der Wert eine Spanne ist</strong>
+                  <span>Was online nicht erfasst werden kann – und was das für deinen Verkaufspreis bedeutet</span>
+                </div>
+              </div>
+              <div class="pdf-promise__item">
+                <div class="pdf-promise__check">✓</div>
+                <div>
+                  <strong>Dein nächster Schritt zum Höchstpreis</strong>
+                  <span>Konkrete Empfehlung für eine fundierte, persönliche Bewertung durch Markus Seitz</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn--primary btn--full" onclick="jump(5)" style="font-size:.85rem">
+              Vollständige Auswertung als PDF erhalten →
+            </button>
+            <p class="pdf-promise__sub">Kostenlos & sofort – du gibst nur deine E-Mail-Adresse an</p>
           </div>
         </div>
 
         <!-- STEP 5: Kontakt -->
         <div class="step" id="s5">
           <div class="step__eyebrow">Schritt 5</div>
-          <h2 class="step__h2">Jetzt <em>Bewertung anfordern</em></h2>
-          <p class="step__sub">Markus Seitz meldet sich persönlich bei dir – in der Regel innerhalb von 24 Stunden.</p>
+          <h2 class="step__h2">Deine PDF-Auswertung <em>anfordern</em></h2>
+          <div class="pdf-step5-banner">
+            <div class="pdf-step5-banner__label">📄 Du erhältst sofort nach Absenden:</div>
+            <div class="pdf-step5-banner__items">
+              <span>✓ Seite 1: Bodenwert, Gebäudewert & geschätzter Marktwert mit Preisspanne</span>
+              <span>✓ Seite 2: Warum Preise Spannen sind + dein nächster Schritt zum Höchstpreis</span>
+            </div>
+          </div>
+          <p class="step__sub" style="margin-top:14px">Kostenlos & unverbindlich – Markus Seitz meldet sich persönlich bei dir.</p>
           <div class="f-row">
             <div class="field">
               <label for="f-vn">Vorname *</label>
@@ -775,7 +882,11 @@ a{color:var(--cyan);text-decoration:none}
           <div class="thankyou">
             <div class="ty__icon">✅</div>
             <h2 class="ty__h2">Vielen Dank <em>für deine Anfrage!</em></h2>
-            <p class="ty__p">Markus Seitz meldet sich persönlich bei dir – in der Regel <strong style="color:var(--white)">innerhalb von 24 Stunden</strong>.</p>
+            <p class="ty__p">Deine Wertindikation wurde als PDF heruntergeladen. Markus Seitz meldet sich persönlich bei dir – in der Regel <strong style="color:var(--white)">innerhalb von 24 Stunden</strong>.</p>
+            <div class="ty__pdf-box">
+              <div class="ty__pdf-label">📥 Deine Wertindikation als PDF</div>
+              <p>Deine persönliche 2-seitige Auswertung wurde automatisch heruntergeladen.<br>Falls nicht: <a href="javascript:void(0)" onclick="generatePDF()">hier erneut herunterladen →</a></p>
+            </div>
             <div class="cbox">
               <div class="cbox__row"><span>📞</span> markus-seitz.immobilien</div>
               <div class="cbox__row"><span>📍</span> Rheinhessen &amp; Rhein-Neckar</div>
@@ -1101,6 +1212,7 @@ const S = {
   zuFac:null,  zuVal:'',
   hzFac:null,  hzVal:'',
   grBonus:null,grVal:'',
+  resMid:0,resLo:0,resHi:0,resPQm:0,resBj:0,resWf:0,
 };
 
 // =====================================================
@@ -1268,8 +1380,19 @@ function calcResult(){
   mid+=S.grBonus??0;
   mid=round5k(mid);
 
-  const lo=round5k(mid*0.91);
-  const hi=round5k(mid*1.09);
+  const lo=round5k(mid*0.90);
+  const hi=round5k(mid*1.05);
+  S.resMid=mid;S.resLo=lo;S.resHi=hi;S.resPQm=pQm;
+  S.resBj=parseFloat(v('f-bj'))||0;
+  S.resWf=parseFloat(v('f-wf'))||0;
+
+  // jsPDF vorab laden
+  if(!window.jspdf&&!document.getElementById('jspdf-sc')){
+    const jsc=document.createElement('script');
+    jsc.id='jspdf-sc';
+    jsc.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    document.head.appendChild(jsc);
+  }
 
   // Ortname + Preistrend
   document.getElementById('res-ort').textContent=ort||(plz?`PLZ ${plz}`:'deine Region');
@@ -1306,6 +1429,257 @@ function calcResult(){
 }
 
 // =====================================================
+// PDF GENERATION (2-seitige Wertindikation)
+// =====================================================
+function generatePDF(){
+  if(!window.jspdf){
+    alert('PDF-Generator wird noch geladen – bitte 2 Sekunden warten und erneut klicken.');
+    return;
+  }
+  var jsPDF=window.jspdf.jsPDF;
+  var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var W=210,H=297,m=18,cW=174;
+  var DARK=[9,26,43],CYAN=[0,201,200],WHITE=[255,255,255],
+      TXT=[28,38,52],MID=[95,110,125],LGT=[168,180,196],LTBG=[244,248,252];
+
+  var today=new Date();
+  var dateStr=today.toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});
+
+  var gebMap={
+    'efh':'Einfamilienhaus','doppel':'Doppelhaushälfte','reihen':'Reihenhaus',
+    'mfh':'Mehrfamilienhaus','grundstueck':'Grundstück',
+    'etw-etage':'Etagenwohnung','etw-mais':'Maisonette-Wohnung',
+    'etw-pent':'Penthouse','etw-dg':'Dachgeschosswohnung','etw-eg':'Erdgeschosswohnung'
+  };
+  var zuMap={
+    'sanierung':'Sanierungsbedürftig','renovierung':'Renovierungsbedürftig',
+    'gepflegt':'Gepflegt','modernisiert':'Modernisiert','neuwertig':'Neuwertig / Erstbezug'
+  };
+  var hzMap={
+    'oel':'Ölheizung','gas':'Gasheizung','fernwaerme':'Fernwärme',
+    'waermepumpe':'Wärmepumpe','pellet':'Pellet / Solar','unbekannt':'Unbekannt'
+  };
+  var grMap={'keine':'Keine','carport':'Carport','einzelgarage':'Einzelgarage','doppelgarage':'Doppelgarage'};
+
+  var plz=v('f-plz')||'';
+  var ort=v('f-ort')||'Rheinhessen';
+  var bj=S.resBj||0;
+  var wf=S.resWf||0;
+  var zi=parseFloat(v('f-zi'))||0;
+  var mid=S.resMid||0;
+  var lo=S.resLo||0;
+  var hi=S.resHi||0;
+  var pQm=S.resPQm||2500;
+  var gebTyp=gebMap[S.gebVal]||S.gebVal||'–';
+  var zuTyp=zuMap[S.zuVal]||'–';
+  var hzTyp=hzMap[S.hzVal]||'–';
+  var grTyp=grMap[S.grVal]||'–';
+
+  // Sachwert-Berechnung (Schätzwerte, illustrativ)
+  var alter=bj>0?(today.getFullYear()-bj):50;
+  var bodenrw=Math.round(pQm*0.12); // Bodenrichtwert-Schätzung
+  var grundstueck=wf*3.3; // grob
+  var bodenwert=Math.round(grundstueck*bodenrw/5000)*5000;
+  if(bodenwert<30000)bodenwert=Math.round(mid*0.42/5000)*5000;
+  var kostenkennwert=920;
+  var indexFaktor=2.0+(alter<10?0.1:0); // grob inflationsbereinigt
+  var kw_aktuell=Math.round(kostenkennwert*indexFaktor);
+  var bgf=Math.round(wf*1.15);
+  var hk=Math.round(kw_aktuell*bgf/1000)*1000;
+  var aw=Math.round(hk*(alter/80)*0.9/1000)*1000;
+  var gebwert=hk-aw;
+  var marktanp=Math.max(0,Math.round((mid-bodenwert-gebwert)/5000)*5000);
+
+  function sf(size,style,col){
+    doc.setFontSize(size);
+    doc.setFont('helvetica',style||'normal');
+    if(col)doc.setTextColor(col[0],col[1],col[2]);
+    else doc.setTextColor(TXT[0],TXT[1],TXT[2]);
+  }
+  function fmtEur(n){return Math.round(n).toLocaleString('de-DE')+',00 EUR';}
+  function fmtEurK(n){return Math.round(n/1000)*1000<1000?Math.round(n).toLocaleString('de-DE')+'  EUR':Math.round(n).toLocaleString('de-DE')+' EUR';}
+
+  function header(page){
+    doc.setFillColor(DARK[0],DARK[1],DARK[2]);
+    doc.rect(0,0,W,38,'F');
+    doc.setFillColor(CYAN[0],CYAN[1],CYAN[2]);
+    doc.rect(0,38,W,1.5,'F');
+    sf(16,'bold',WHITE);
+    doc.text('Wertindikation',m,17);
+    sf(7.5,'normal',[180,205,225]);
+    doc.text('Markus Seitz Immobilien  iad Deutschland',m,25);
+    sf(6.5,'normal',[0,160,160]);
+    doc.text('Stichtag: '+dateStr,m,32);
+    sf(6,'normal',[0,160,160]);
+    doc.text('Seite '+page+' von 2',W-m,32,{align:'right'});
+  }
+
+  function secLine(text,y){
+    sf(6,'bold',CYAN);
+    doc.text(text.toUpperCase(),m,y);
+    doc.setDrawColor(CYAN[0],CYAN[1],CYAN[2]);
+    doc.setLineWidth(0.3);
+    doc.line(m,y+1.5,W-m,y+1.5);
+    return y+8;
+  }
+
+  function kv(label,val,x,yr,labelW){
+    var lw=labelW||36;
+    sf(6.5,'normal',LGT); doc.text(label+':',x,yr);
+    sf(6.5,'bold',TXT);   doc.text(String(val||'–'),x+lw,yr);
+  }
+
+  function calcRow(label,val,x,yr,indent){
+    var ix=indent?m+5:m;
+    sf(7,'normal',TXT); doc.text(label,ix,yr);
+    sf(7,'bold',TXT);   doc.text(val,W-m,yr,{align:'right'});
+  }
+
+  // ========== PAGE 1 ==========
+  header(1);
+  var y=48;
+
+  // Objekt-Daten
+  y=secLine('Objekt',y);
+  var col2=m+cW/2+4;
+  kv('Gebäudetyp',gebTyp,m,y,38);
+  kv('Baujahr',bj||'–',col2,y,24); y+=6;
+  kv('Lage',plz+(ort?' '+ort:''),m,y,38);
+  kv('Wohnfläche',wf?wf+' m²':'–',col2,y,24); y+=6;
+  kv('Zustand',zuTyp,m,y,38);
+  kv('Zimmer',zi||'–',col2,y,24); y+=6;
+  kv('Heizung',hzTyp,m,y,38);
+  kv('Garage',grTyp,col2,y,24); y+=10;
+
+  // Bodenwert
+  y=secLine('Bodenwert',y);
+  doc.setFillColor(LTBG[0],LTBG[1],LTBG[2]);
+  doc.rect(m,y-4,cW,22,2?undefined:'F'); // no-fill, just for spacing ref
+  sf(6.5,'normal',MID); doc.text('Grundstücksfläche (Schätzung):',m,y); sf(6.5,'bold',TXT); doc.text(Math.round(grundstueck).toLocaleString('de-DE')+' m²',W-m,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',MID); doc.text('x Bodenrichtwert (Schätzung):',m,y); sf(6.5,'bold',TXT); doc.text('x '+bodenrw.toLocaleString('de-DE')+' EUR/m²',W-m,y,{align:'right'}); y+=5.5;
+  doc.setDrawColor(220,228,236); doc.setLineWidth(0.2); doc.line(m,y,W-m,y); y+=5;
+  sf(7.5,'bold',TXT); doc.text('Bodenwert:',m,y); doc.text(fmtEur(bodenwert),W-m,y,{align:'right'}); y+=10;
+
+  // Gebäudewert
+  y=secLine('Gebäudewert',y);
+  sf(6.5,'normal',MID); doc.text('Kostenkennwert (Basisjahr 2010):',m,y); sf(6.5,'bold',TXT); doc.text(kostenkennwert.toLocaleString('de-DE')+' EUR/m²',W-m,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',MID); doc.text('Kostenkennwert zum Stichtag:',m,y); sf(6.5,'bold',TXT); doc.text(kw_aktuell.toLocaleString('de-DE')+' EUR/m²',W-m,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',MID); doc.text('x Brutto-Grundfläche (Schätzung):',m,y); sf(6.5,'bold',TXT); doc.text('x '+bgf.toLocaleString('de-DE')+' m²',W-m,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',MID); doc.text('= Herstellungskosten Gebäude:',m,y); sf(6.5,'bold',TXT); doc.text('= '+fmtEur(hk),W-m,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',[180,65,65]); doc.text('Alterswertminderung (ca. '+alter+' Jahre):',m,y); doc.setTextColor(180,65,65); doc.text('-'+fmtEur(aw),W-m,y,{align:'right'}); y+=5.5;
+  doc.setDrawColor(220,228,236); doc.setLineWidth(0.2); doc.line(m,y,W-m,y); y+=5;
+  sf(7.5,'bold',TXT); doc.text('Gebäudewert:',m,y); doc.text(fmtEur(gebwert),W-m,y,{align:'right'}); y+=10;
+
+  // Marktwert-Ergebnis
+  y=secLine('Geschätzter Wert des Objekts',y);
+  doc.setFillColor(LTBG[0],LTBG[1],LTBG[2]);
+  doc.rect(m,y-5,cW,36,'F');
+  sf(6.5,'normal',MID); doc.text('Bodenwert:',m+3,y); doc.text(fmtEur(bodenwert),W-m-3,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',MID); doc.text('+ Gebäudewert:',m+3,y); doc.text('+ '+fmtEur(gebwert),W-m-3,y,{align:'right'}); y+=5.5;
+  sf(6.5,'normal',[0,145,145]); doc.text('+ Marktanpassung:',m+3,y); doc.setTextColor(0,145,145); doc.text('+ '+fmtEur(marktanp),W-m-3,y,{align:'right'}); y+=5.5;
+  doc.setDrawColor(CYAN[0],CYAN[1],CYAN[2]); doc.setLineWidth(0.5); doc.line(m+3,y,W-m-3,y); y+=6;
+  sf(11,'bold',DARK); doc.text('Geschätzter Wert: ca. '+fmtEurK(mid),m+3,y);
+  sf(8,'normal',MID); doc.text('Spanne: '+fmtEurK(lo)+' – '+fmtEurK(hi),W-m-3,y,{align:'right'});
+  y+=14;
+
+  // Note
+  doc.setFillColor(240,252,252);
+  doc.roundedRect(m,y,cW,18,2,2,'F');
+  doc.setDrawColor(CYAN[0],CYAN[1],CYAN[2]); doc.setLineWidth(0.5); doc.line(m,y,m,y+18);
+  sf(6.5,'bold',[0,145,145]); doc.text('Hinweis zur Preisspanne',m+4,y+6);
+  sf(6.2,'normal',TXT);
+  var hinweis='Der Schätzwert ist der rechnerische Mittelwert. Die Preisspanne (Median -10 % bis +5 %) zeigt\ndie realistische Marktschwankung. Für eine verlässliche Bewertung empfehlen wir\neine persönliche Wertermittlung durch Markus Seitz Immobilien.';
+  doc.text(hinweis,m+4,y+11.5);
+  y+=23;
+
+  // Footer page 1
+  doc.setFillColor(DARK[0],DARK[1],DARK[2]);
+  doc.rect(0,H-14,W,14,'F');
+  sf(6,'normal',[130,155,185]);
+  doc.text('Markus Seitz Immobilien  iad Deutschland  St.-Georgen-Str. 13, 67551 Worms',m,H-6);
+  sf(6,'normal',[0,160,160]);
+  doc.text('Seite 1 von 2',W-m,H-6,{align:'right'});
+
+  // ========== PAGE 2 ==========
+  doc.addPage();
+  header(2);
+  y=48;
+
+  // Warum Spanne
+  y=secLine('Warum ist der Wert eine Spanne?',y);
+  sf(7.5,'normal',TXT);
+  doc.text(
+    'Eine Online-Wertindikation liefert einen ersten Orientierungsrahmen auf Basis statistischer\n'+
+    'Marktdaten. Für einen präzisen Marktwert sind Faktoren entscheidend, die nur bei einer\n'+
+    'persönlichen Begehung durch einen erfahrenen Immobilienexperten bewertet werden können.',
+    m,y
+  );
+  y+=22;
+
+  // Two columns
+  var colW=(cW-6)/2;
+  var rx=m+colW+6;
+
+  // Left: Was erfasst
+  doc.setFillColor(241,251,245);
+  doc.roundedRect(m,y,colW,54,2,2,'F');
+  doc.setDrawColor(0,170,100); doc.setLineWidth(0.4); doc.line(m,y,m,y+54);
+  sf(7,'bold',[0,130,70]); doc.text('WAS ERFASST WIRD',m+4,y+8);
+  var okList=['Regionaler Marktpreis','Gebäudetyp & Größe','Baujahr & Zustand','Heizungsart','Garage / Stellplatz'];
+  okList.forEach(function(it,i){
+    doc.setTextColor(0,145,75); doc.text('+',m+4,y+18+i*7);
+    doc.setTextColor(TXT[0],TXT[1],TXT[2]); sf(7,'normal',TXT); doc.text(it,m+10,y+18+i*7);
+  });
+
+  // Right: Nur vor Ort
+  doc.setFillColor(255,248,245);
+  doc.roundedRect(rx,y,colW,54,2,2,'F');
+  doc.setDrawColor(210,80,45); doc.setLineWidth(0.4); doc.line(rx,y,rx,y+54);
+  sf(7,'bold',[200,70,35]); doc.text('NUR VOR ORT BEWERTBAR',rx+4,y+8);
+  var xList=['Einbauküche & Bad','Energieausweis & Dämmung','Grundriss & Raumqualität','Außenanlagen, Terrasse','Mikrolage & Ausrichtung'];
+  xList.forEach(function(it,i){
+    doc.setTextColor(205,70,35); doc.text('x',rx+4,y+18+i*7);
+    doc.setTextColor(TXT[0],TXT[1],TXT[2]); sf(7,'normal',TXT); doc.text(it,rx+10,y+18+i*7);
+  });
+  y+=62;
+
+  // CTA
+  doc.setFillColor(DARK[0],DARK[1],DARK[2]);
+  doc.roundedRect(m,y,cW,56,3,3,'F');
+  doc.setFillColor(CYAN[0],CYAN[1],CYAN[2]); doc.rect(m,y,cW,2,'F');
+  sf(10,'bold',CYAN); doc.text('WERTERMITTLUNG MIT MARKUS SEITZ',W/2,y+14,{align:'center'});
+  sf(7.5,'normal',[195,215,235]);
+  doc.text('Ich führe für Sie eine kostenlose, persönliche Wertermittlung durch –\nunverbindlich, ehrlich und ohne versteckte Kosten.',W/2,y+22,{align:'center'});
+  sf(8,'bold',WHITE); doc.text('Markus Seitz Immobilien  iad Deutschland',W/2,y+34,{align:'center'});
+  sf(7,'normal',CYAN);
+  doc.text('Tel: +49 176 15858511',W/2,y+41,{align:'center'});
+  doc.text('info@markus-seitz.immobilien',W/2,y+47,{align:'center'});
+  sf(6.5,'normal',[165,190,215]);
+  doc.text('St.-Georgen-Str. 13  67551 Worms  www.markus-seitz.immobilien',W/2,y+53,{align:'center'});
+  y+=62;
+
+  // Legal
+  doc.setDrawColor(220,228,236); doc.setLineWidth(0.3); doc.line(m,y,W-m,y); y+=5;
+  sf(6,'normal',LGT);
+  doc.text(
+    'Diese Wertindikation ist keine Verkehrswertberechnung gemäß ImmoWertV und hat keinen rechtsgültigen Charakter. Sie basiert auf\n'+
+    'statistischen Marktdaten und stellt lediglich einen Orientierungsrahmen dar. Alle Berechnungen (Bodenwert, Gebäudewert, Marktanpassung)\n'+
+    'sind Schätzgrößen. Für eine verlässliche Bewertung empfehlen wir eine persönliche Wertermittlung durch einen qualifizierten Makler.',
+    m,y
+  );
+
+  // Footer page 2
+  doc.setFillColor(DARK[0],DARK[1],DARK[2]);
+  doc.rect(0,H-14,W,14,'F');
+  sf(6,'normal',[130,155,185]);
+  doc.text('Markus Seitz Immobilien  iad Deutschland  St.-Georgen-Str. 13, 67551 Worms',m,H-6);
+  sf(6,'normal',[0,160,160]);
+  doc.text('Seite 2 von 2',W-m,H-6,{align:'right'});
+
+  doc.save('Wertindikation_'+ort.replace(/\s+/g,'_')+'_Markus_Seitz.pdf');
+}
+
+// =====================================================
 // SUBMIT
 // =====================================================
 async function sendForm(){
@@ -1333,6 +1707,7 @@ async function sendForm(){
     document.getElementById('wiz-nav').style.display='none';
     document.getElementById('wiz-prog').style.display='none';
     document.getElementById('prog-lbl').textContent='Fertig';
+    setTimeout(generatePDF,500);
   } catch{
     btn.disabled=false;btn.textContent='Bewertung anfordern →';
     alert('Fehler beim Senden. Bitte direkt kontaktieren.');
