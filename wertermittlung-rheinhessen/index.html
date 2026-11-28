@@ -3,183 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Immobilienbewertung Rheinhessen – Kostenlos & Unverbindlich | Markus Seitz</title>
+  <title>Immobilienbewertung Rheinhessen – Markus Seitz Immobilien</title>
   <meta name="description" content="Erfahren Sie kostenlos, was Ihre Immobilie in Rheinhessen wert ist. Ihr Strategie-Makler Markus Seitz bewertet Ihr Objekt persönlich und ehrlich.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
 /* ===== TOKENS ===== */
 :root {
-  --navy:      #1B2B5E;
-  --navy-mid:  #2E4A8F;
-  --navy-lt:   #3D6AB5;
-  --ice:       #EEF6FB;
-  --ice-dark:  #D4EBF8;
-  --gold:      #D4A017;
-  --green:     #16A34A;
-  --red:       #DC2626;
-  --text:      #111827;
-  --muted:     #6B7280;
-  --border:    #E5E7EB;
+  --bg:        #091A2B;
+  --bg-mid:    #0D2238;
+  --bg-card:   #0E2035;
+  --bg-card2:  rgba(255,255,255,.05);
+  --cyan:      #00C9C8;
+  --cyan-dim:  rgba(0,201,200,.18);
+  --cyan-glow: rgba(0,201,200,.08);
   --white:     #FFFFFF;
-  --shadow:    0 4px 20px rgba(27,43,94,.10);
-  --shadow-lg: 0 10px 40px rgba(27,43,94,.15);
+  --muted:     rgba(255,255,255,.58);
+  --border:    rgba(255,255,255,.10);
+  --border-c:  rgba(0,201,200,.30);
+  --gold:      #C9A84C;
+  --text:      rgba(255,255,255,.88);
   --r:         12px;
   --r-lg:      20px;
+  --pill:      999px;
 }
 
 /* ===== RESET ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Open Sans',sans-serif;color:var(--text);background:var(--ice);line-height:1.65;font-size:16px}
-h1,h2,h3,h4{font-family:'Montserrat',sans-serif;line-height:1.25}
-button{cursor:pointer;border:none;outline:none;font-family:inherit}
-input,select,textarea{font-family:inherit;font-size:1rem}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;line-height:1.15;color:var(--white)}
+button{cursor:pointer;border:none;font-family:'Montserrat',sans-serif}
+input,select,textarea{font-family:'Montserrat',sans-serif;font-size:.93rem}
+a{color:var(--cyan);text-decoration:none}
 
 /* ===== LAYOUT ===== */
-.wrap{max-width:860px;margin:0 auto;padding:0 18px}
-.wrap--wide{max-width:1080px;margin:0 auto;padding:0 18px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.wrap--wide{max-width:1100px;margin:0 auto;padding:0 22px}
 
 /* ===== HEADER ===== */
-.hdr{background:var(--navy);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(0,0,0,.22)}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 0;background:rgba(9,26,43,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .hdr__inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.hdr__logo{color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.05rem;line-height:1.2}
-.hdr__logo span{display:block;font-size:.72rem;font-weight:400;opacity:.78}
-.hdr__stars{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:20px;color:#fff;font-size:.78rem;white-space:nowrap}
-.stars-gold{color:#FFD700;letter-spacing:1px}
+.hdr__logo{display:flex;align-items:center;gap:11px}
+.hdr__logo-mark{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border-c);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cyan);flex-shrink:0}
+.hdr__logo-text{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.25}
+.hdr__logo-text span{display:block;font-size:.7rem;font-weight:400;color:var(--muted)}
+.hdr__badge{font-size:.68rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border-c);padding:5px 13px;border-radius:var(--pill);white-space:nowrap}
 
 /* ===== HERO ===== */
-.hero{background:linear-gradient(140deg,var(--navy) 0%,var(--navy-mid) 55%,var(--navy-lt) 100%);color:#fff;padding:58px 0 50px;text-align:center}
-.hero__eyebrow{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
-.hero__h1{font-size:clamp(1.75rem,5vw,2.75rem);font-weight:800;margin-bottom:16px;text-shadow:0 2px 10px rgba(0,0,0,.18)}
-.hero__sub{font-size:1.05rem;opacity:.88;max-width:540px;margin:0 auto 28px}
-.hero__btn{background:var(--gold);color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;padding:16px 36px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;display:inline-block;text-decoration:none;cursor:pointer;border:none}
-.hero__btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.26)}
-.hero__pills{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}
-.hero__pill{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.82rem;padding:7px 15px;border-radius:20px}
+.hero{padding:130px 0 72px;position:relative;overflow:hidden;text-align:left}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:70%;height:140%;background:radial-gradient(ellipse at center,rgba(0,201,200,.07) 0%,transparent 65%);pointer-events:none}
+.hero__eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+.hero__eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--cyan);flex-shrink:0}
+.hero__h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:600;margin-bottom:22px;color:var(--white)}
+.hero__h1 em{font-style:italic;color:var(--cyan)}
+.hero__sub{font-size:1rem;color:var(--muted);max-width:500px;margin-bottom:36px;line-height:1.75}
+.hero__btns{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:48px}
+.hero__pills{display:flex;flex-wrap:wrap;gap:9px}
+.hero__pill{font-size:.7rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:var(--pill)}
+
+/* ===== BUTTONS ===== */
+.btn{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.4px;padding:14px 28px;border-radius:var(--pill);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;border:none;text-decoration:none}
+.btn--primary{background:var(--cyan);color:var(--bg);box-shadow:0 4px 24px rgba(0,201,200,.22)}
+.btn--primary:hover{background:#00e0df;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,201,200,.34)}
+.btn--ghost{background:rgba(255,255,255,.07);color:var(--white);border:1px solid var(--border)}
+.btn--ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+.btn--outline-cyan{background:transparent;color:var(--cyan);border:1px solid var(--border-c)}
+.btn--outline-cyan:hover{background:var(--cyan-dim)}
+.btn--full{width:100%;justify-content:center;padding:16px 28px;font-size:.88rem}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none !important}
 
 /* ===== WIZARD SECTION ===== */
-.wiz-section{padding:48px 0 60px}
-.wiz-card{background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+.wiz-section{padding:60px 0 80px}
+.wiz-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
 
 /* Progress */
-.wiz-prog{background:var(--ice-dark);padding:18px 26px;border-bottom:1px solid var(--border)}
-.wiz-prog__lbl{font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:7px;text-transform:uppercase;letter-spacing:.7px}
-.wiz-prog__bar{background:var(--border);border-radius:10px;height:6px;overflow:hidden}
-.wiz-prog__fill{background:linear-gradient(90deg,var(--navy),var(--navy-lt));height:100%;border-radius:10px;transition:width .4s ease}
+.wiz-prog{padding:18px 28px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2)}
+.wiz-prog__lbl{font-size:.68rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.wiz-prog__bar{background:rgba(255,255,255,.08);border-radius:var(--pill);height:3px;overflow:hidden}
+.wiz-prog__fill{background:linear-gradient(90deg,var(--cyan),rgba(0,201,200,.6));height:100%;border-radius:var(--pill);transition:width .4s ease}
 
 /* Body */
-.wiz-body{padding:30px 26px}
+.wiz-body{padding:34px 28px}
 .step{display:none}
 .step.active{display:block;animation:fadeUp .3s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.step__h2{font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:5px}
-.step__sub{font-size:.88rem;color:var(--muted);margin-bottom:22px}
+/* Step headline */
+.step__eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:12px;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+.step__eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--cyan);flex-shrink:0}
+.step__h2{font-size:clamp(1.5rem,4vw,2rem);font-weight:600;color:var(--white);margin-bottom:6px}
+.step__h2 em{font-style:italic;color:var(--cyan)}
+.step__sub{font-size:.84rem;color:var(--muted);margin-bottom:26px}
 
-/* Card Grids */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:11px;margin-bottom:22px}
-.card-grid--sm{grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}
+/* Selection Cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:10px;margin-bottom:24px}
+.card-grid--sm{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
 
-.sel-card{border:2px solid var(--border);border-radius:var(--r);padding:16px 10px;text-align:center;cursor:pointer;transition:all .18s;background:#fff;user-select:none}
-.sel-card:hover{border-color:var(--navy-mid);background:var(--ice)}
-.sel-card.active{border-color:var(--navy);background:var(--ice);box-shadow:0 0 0 3px rgba(27,43,94,.11)}
-.sel-card__icon{font-size:1.9rem;margin-bottom:7px}
-.sel-card__lbl{font-size:.78rem;font-weight:700;color:var(--navy);line-height:1.3}
-.sel-card__sub{font-size:.7rem;color:var(--muted);margin-top:3px}
+.sel-card{border:1px solid var(--border);border-radius:var(--r);padding:18px 10px;text-align:center;cursor:pointer;transition:all .18s;background:var(--bg-card2);user-select:none}
+.sel-card:hover{border-color:var(--border-c);background:var(--cyan-glow)}
+.sel-card.active{border-color:var(--cyan);background:var(--cyan-dim);box-shadow:0 0 0 1px var(--cyan) inset}
+.sel-card__icon{font-size:1.8rem;margin-bottom:8px}
+.sel-card__lbl{font-size:.75rem;font-weight:600;color:var(--white);line-height:1.3}
+.sel-card__sub{font-size:.68rem;color:var(--muted);margin-top:3px}
 
-/* Condition List */
-.cond-list{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
-.cond-card{border:2px solid var(--border);border-radius:var(--r);padding:13px 16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:13px}
-.cond-card:hover{border-color:var(--navy-mid);background:var(--ice)}
-.cond-card.active{border-color:var(--navy);background:var(--ice)}
-.cond-card__icon{font-size:1.4rem;flex-shrink:0}
-.cond-card__lbl{font-weight:700;font-size:.88rem;color:var(--navy)}
-.cond-card__desc{font-size:.75rem;color:var(--muted);margin-top:2px}
+/* Condition Cards */
+.cond-list{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.cond-card{border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:14px;background:var(--bg-card2)}
+.cond-card:hover{border-color:var(--border-c);background:var(--cyan-glow)}
+.cond-card.active{border-color:var(--cyan);background:var(--cyan-dim)}
+.cond-card__icon{font-size:1.3rem;flex-shrink:0}
+.cond-card__lbl{font-weight:600;font-size:.86rem;color:var(--white)}
+.cond-card__desc{font-size:.72rem;color:var(--muted);margin-top:2px;line-height:1.4}
 
 /* Section Label */
-.sec-lbl{font-size:.78rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.7px;margin-bottom:11px;margin-top:22px}
-.sec-lbl:first-child{margin-top:0}
+.sec-eyebrow{display:flex;align-items:center;gap:9px;margin-top:24px;margin-bottom:12px;font-size:.64rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--cyan)}
+.sec-eyebrow::before{content:'';display:block;width:16px;height:1.5px;background:var(--cyan);flex-shrink:0}
+.sec-eyebrow:first-child{margin-top:0}
 
 /* Form Fields */
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}
 .f-row--1{grid-template-columns:1fr}
 @media(max-width:520px){.f-row{grid-template-columns:1fr}}
 
-.field{display:flex;flex-direction:column;gap:5px}
-.field label{font-size:.82rem;font-weight:700;color:var(--navy)}
-.field input,.field select,.field textarea{border:2px solid var(--border);border-radius:8px;padding:11px 13px;font-size:.93rem;transition:border-color .18s;background:#fff;color:var(--text)}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy)}
-.field input.err{border-color:var(--red)}
-.field__hint{font-size:.72rem;color:var(--muted)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.74rem;font-weight:600;letter-spacing:.4px;color:rgba(255,255,255,.7)}
+.field input,.field select,.field textarea{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:.88rem;color:var(--white);transition:border-color .18s;outline:none;-webkit-appearance:none}
+.field input::placeholder{color:var(--muted)}
+.field input:focus,.field select:focus{border-color:var(--cyan);background:rgba(0,201,200,.05)}
+.field input.err{border-color:#ef4444}
+.field__hint{font-size:.68rem;color:var(--muted)}
+.field select option{background:var(--bg-mid);color:var(--white)}
 
-/* Result */
-.result-box{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;border-radius:var(--r-lg);padding:30px;text-align:center;margin-bottom:20px}
-.result-box__lbl{font-size:.8rem;opacity:.78;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}
-.result-box__val{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,5vw,2.5rem);font-weight:800;margin-bottom:7px;letter-spacing:-.5px}
-.result-box__range{font-size:.85rem;opacity:.72}
-.result-box__note{margin-top:14px;font-size:.76rem;opacity:.68;line-height:1.55;border-top:1px solid rgba(255,255,255,.18);padding-top:12px}
+/* Result Box */
+.result-box{background:linear-gradient(135deg,rgba(0,201,200,.12) 0%,rgba(0,201,200,.04) 100%);border:1px solid var(--border-c);border-radius:var(--r-lg);padding:32px;text-align:center;margin-bottom:22px;position:relative;overflow:hidden}
+.result-box::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(0,201,200,.12),transparent 70%);pointer-events:none}
+.result-box__eyebrow{font-size:.64rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+.result-box__val{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3rem);font-weight:600;color:var(--white);margin-bottom:8px;letter-spacing:-.5px}
+.result-box__range{font-size:.82rem;color:var(--muted)}
+.result-box__note{margin-top:16px;font-size:.74rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:14px;text-align:left}
 
-.result-facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:9px;margin-bottom:22px}
-.rfact{background:var(--ice);border:1px solid var(--ice-dark);border-radius:10px;padding:11px;text-align:center}
-.rfact__lbl{font-size:.7rem;color:var(--muted);margin-bottom:2px}
-.rfact__val{font-weight:700;font-size:.88rem;color:var(--navy)}
+.result-facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-bottom:24px}
+.rfact{background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.rfact__lbl{font-size:.64rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.rfact__val{font-weight:600;font-size:.82rem;color:var(--white)}
 
 /* Checkboxes */
-.cb-row{display:flex;align-items:flex-start;gap:9px;margin-bottom:12px}
-.cb-row input[type=checkbox]{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--navy)}
-.cb-row label{font-size:.8rem;color:var(--muted);line-height:1.4}
-.cb-row a{color:var(--navy)}
+.cb-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px}
+.cb-row input[type=checkbox]{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--cyan)}
+.cb-row label{font-size:.76rem;color:var(--muted);line-height:1.5}
+.cb-row a{color:var(--cyan)}
 
 /* Wizard Nav */
-.wiz-nav{padding:18px 26px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--ice)}
-
-/* Buttons */
-.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:50px;transition:all .18s;display:inline-flex;align-items:center;gap:5px;border:none;cursor:pointer}
-.btn--navy{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(27,43,94,.22)}
-.btn--navy:hover{background:var(--navy-mid);transform:translateY(-1px)}
-.btn--navy:disabled{background:var(--border);color:var(--muted);transform:none;box-shadow:none;cursor:not-allowed}
-.btn--ghost{background:transparent;color:var(--navy);border:2px solid var(--border)}
-.btn--ghost:hover{border-color:var(--navy)}
-.btn--gold{background:var(--gold);color:var(--navy);box-shadow:0 4px 14px rgba(212,160,23,.32);width:100%;justify-content:center;padding:16px;font-size:.95rem}
-.btn--gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(212,160,23,.42)}
-.btn--invis{visibility:hidden;pointer-events:none}
+.wiz-nav{padding:18px 28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(0,0,0,.18)}
 
 /* Thank You */
-.thankyou{text-align:center;padding:44px 24px}
-.ty__icon{font-size:3.8rem;margin-bottom:14px}
-.ty__h2{font-size:1.5rem;color:var(--navy);margin-bottom:9px}
-.ty__p{color:var(--muted);margin-bottom:22px;max-width:380px;margin-left:auto;margin-right:auto}
-.cbox{background:var(--ice);border:1px solid var(--ice-dark);border-radius:var(--r);padding:18px 22px;display:inline-block;text-align:left}
-.cbox__row{display:flex;align-items:center;gap:9px;font-size:.88rem;color:var(--navy);font-weight:600;margin-bottom:7px}
+.thankyou{text-align:center;padding:52px 24px}
+.ty__icon{font-size:3.5rem;margin-bottom:16px}
+.ty__h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:10px}
+.ty__h2 em{font-style:italic;color:var(--cyan)}
+.ty__p{color:var(--muted);margin-bottom:26px;max-width:400px;margin-left:auto;margin-right:auto;font-size:.88rem;line-height:1.75}
+.cbox{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;display:inline-block;text-align:left;min-width:260px}
+.cbox__row{display:flex;align-items:center;gap:10px;font-size:.86rem;color:var(--white);font-weight:500;margin-bottom:8px}
 .cbox__row:last-child{margin-bottom:0}
+.cbox__row span{color:var(--cyan)}
 
 /* ===== TRUST SECTION ===== */
-.trust{background:#fff;padding:56px 0;border-top:1px solid var(--border)}
-.trust__h2{font-size:1.5rem;color:var(--navy);text-align:center;margin-bottom:8px}
-.trust__sub{text-align:center;color:var(--muted);margin-bottom:36px;font-size:.9rem}
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
-.tcard{background:var(--ice);border:1px solid var(--ice-dark);border-radius:var(--r-lg);padding:26px 22px;text-align:center}
-.tcard__icon{font-size:2.3rem;margin-bottom:12px}
-.tcard__h3{font-size:.95rem;color:var(--navy);margin-bottom:5px;font-family:'Montserrat',sans-serif}
-.tcard__p{font-size:.82rem;color:var(--muted);line-height:1.5}
+.trust{padding:72px 0;border-top:1px solid var(--border)}
+.trust__inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.tcard{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px 22px;transition:border-color .2s}
+.tcard:hover{border-color:var(--border-c)}
+.tcard__icon{font-size:1.6rem;margin-bottom:14px}
+.tcard__h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:6px}
+.tcard__p{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* Reviews section */
+.reviews{padding:64px 0;border-top:1px solid var(--border)}
+.reviews__score{display:flex;align-items:center;gap:22px;margin-bottom:36px}
+.reviews__num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:600;color:var(--white);line-height:1}
+.reviews__num sub{font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--muted);font-weight:400}
+.reviews__meta{}
+.reviews__stars{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:4px}
+.reviews__label{font-size:.68rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan)}
+.reviews__sub{font-size:.88rem;color:var(--muted);margin-top:4px}
+.reviews__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.review-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r);padding:18px}
+.review-card__stars{color:var(--gold);font-size:.82rem;letter-spacing:1px;margin-bottom:9px}
+.review-card__text{font-size:.8rem;color:var(--text);line-height:1.6;margin-bottom:12px}
+.review-card__author{font-size:.74rem;font-weight:600;color:var(--white)}
+
+/* Section header helper */
+.sec-header{margin-bottom:36px}
+.sec-header__eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:14px;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+.sec-header__eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:var(--cyan);flex-shrink:0}
+.sec-header__h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:600;color:var(--white)}
+.sec-header__h2 em{font-style:italic;color:var(--cyan)}
+.sec-header__sub{font-size:.86rem;color:var(--muted);margin-top:8px}
 
 /* ===== FOOTER ===== */
-.footer{background:var(--navy);color:rgba(255,255,255,.72);padding:28px 0;font-size:.8rem;text-align:center;line-height:1.9}
-.footer strong{color:#fff}
+.footer{background:rgba(0,0,0,.3);border-top:1px solid var(--border);padding:30px 0;text-align:center;font-size:.74rem;color:var(--muted);line-height:1.9}
+.footer strong{color:var(--white)}
+.footer a{color:var(--muted)}
+.footer a:hover{color:var(--cyan)}
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .trust__inner{grid-template-columns:1fr}
+  .reviews__grid{grid-template-columns:1fr}
+}
 @media(max-width:580px){
-  .hdr__stars{font-size:.7rem;padding:5px 9px}
-  .wiz-body{padding:22px 16px}
-  .wiz-nav{padding:14px 16px}
-  .wiz-prog{padding:14px 16px}
-  .hero{padding:46px 0 38px}
+  .hdr__badge{display:none}
+  .wiz-body{padding:22px 18px}
+  .wiz-nav{padding:14px 18px}
+  .wiz-prog{padding:14px 18px}
+  .hero{padding:100px 0 56px}
+  .hero__btns{flex-direction:column}
+  .hero__btns .btn{width:100%;justify-content:center}
   .result-box{padding:22px 18px}
   .card-grid{grid-template-columns:repeat(2,1fr)}
-  .trust-grid{grid-template-columns:1fr}
+  .btn--invis{visibility:hidden;pointer-events:none}
 }
+.btn--invis{visibility:hidden;pointer-events:none}
   </style>
 </head>
 <body>
@@ -189,13 +234,13 @@ input,select,textarea{font-family:inherit;font-size:1rem}
   <div class="wrap">
     <div class="hdr__inner">
       <div class="hdr__logo">
-        Markus Seitz Immobilien · iad
-        <span>Ihr Strategie-Makler in Rheinhessen</span>
+        <div class="hdr__logo-mark">MS</div>
+        <div class="hdr__logo-text">
+          Markus Seitz Immobilien
+          <span>Strategie-Makler · iad</span>
+        </div>
       </div>
-      <div class="hdr__stars">
-        <span class="stars-gold">★★★★★</span>
-        <span>5,0 · 51 Bewertungen</span>
-      </div>
+      <div class="hdr__badge">★ 5,0 · 51 Google-Bewertungen</div>
     </div>
   </div>
 </header>
@@ -204,14 +249,17 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 <section class="hero">
   <div class="wrap">
     <div class="hero__eyebrow">Kostenlos &amp; Unverbindlich</div>
-    <h1 class="hero__h1">Was ist Ihre Immobilie<br>in Rheinhessen wert?</h1>
-    <p class="hero__sub">Erhalten Sie in 3 Minuten eine fundierte Werteinschätzung – persönlich, ehrlich und ohne jede Verpflichtung.</p>
-    <button class="hero__btn" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'})">Jetzt kostenlos bewerten →</button>
+    <h1 class="hero__h1">Deine Immobilie verdient<br><em>eine ehrliche Bewertung.</em></h1>
+    <p class="hero__sub">Ich kenne den Markt in Rheinhessen. Wir starten mit einer realistischen Wertermittlung – nicht mit einem Inserat.</p>
+    <div class="hero__btns">
+      <button class="btn btn--primary" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'})">Wert meiner Immobilie erfahren</button>
+      <a class="btn btn--ghost" href="https://markus-seitz.immobilien" target="_blank">Zur Strategie-Seite ›</a>
+    </div>
     <div class="hero__pills">
-      <span class="hero__pill">✅ Kostenlos &amp; unverbindlich</span>
-      <span class="hero__pill">⚡ Ergebnis sofort</span>
-      <span class="hero__pill">📞 Persönliche Beratung</span>
-      <span class="hero__pill">🔒 Datenschutz garantiert</span>
+      <span class="hero__pill">Kostenlos</span>
+      <span class="hero__pill">Unverbindlich</span>
+      <span class="hero__pill">Ergebnis sofort</span>
+      <span class="hero__pill">Datenschutz garantiert</span>
     </div>
   </div>
 </section>
@@ -221,19 +269,19 @@ input,select,textarea{font-family:inherit;font-size:1rem}
   <div class="wrap">
     <div class="wiz-card">
 
-      <!-- Progress Bar -->
+      <!-- Progress -->
       <div class="wiz-prog" id="wiz-prog">
         <div class="wiz-prog__lbl" id="prog-lbl">Schritt 1 von 5</div>
         <div class="wiz-prog__bar"><div class="wiz-prog__fill" id="prog-fill" style="width:20%"></div></div>
       </div>
 
-      <!-- Steps -->
       <div class="wiz-body">
 
         <!-- STEP 1: Gebäudetyp -->
         <div class="step active" id="s1">
-          <h2 class="step__h2">Um welche Immobilie handelt es sich?</h2>
-          <p class="step__sub">Wählen Sie den Typ Ihrer Immobilie.</p>
+          <div class="step__eyebrow">Schritt 1</div>
+          <h2 class="step__h2">Um welche <em>Immobilie</em> handelt es sich?</h2>
+          <p class="step__sub">Wählen Sie den Typ Ihres Objekts.</p>
           <div class="card-grid" id="g-gebaeude">
             <div class="sel-card" data-val="efh" data-fac="1.00">
               <div class="sel-card__icon">🏠</div>
@@ -252,12 +300,12 @@ input,select,textarea{font-family:inherit;font-size:1rem}
             </div>
             <div class="sel-card" data-val="mfh" data-fac="0.83">
               <div class="sel-card__icon">🏢</div>
-              <div class="sel-card__lbl">Mehrfamilienhaus</div>
+              <div class="sel-card__lbl">Mehrfamilien­haus</div>
               <div class="sel-card__sub">ab 3 Einheiten</div>
             </div>
             <div class="sel-card" data-val="etw" data-fac="0.88">
               <div class="sel-card__icon">🏨</div>
-              <div class="sel-card__lbl">Eigentumswohnung</div>
+              <div class="sel-card__lbl">Eigentums­wohnung</div>
               <div class="sel-card__sub">&nbsp;</div>
             </div>
             <div class="sel-card" data-val="grundstueck" data-fac="0.28">
@@ -270,7 +318,8 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 
         <!-- STEP 2: Standort & Basisdaten -->
         <div class="step" id="s2">
-          <h2 class="step__h2">Wo liegt die Immobilie?</h2>
+          <div class="step__eyebrow">Schritt 2</div>
+          <h2 class="step__h2">Wo liegt <em>Ihre Immobilie?</em></h2>
           <p class="step__sub">Diese Angaben sind entscheidend für eine realistische Bewertung.</p>
           <div class="f-row">
             <div class="field">
@@ -307,10 +356,11 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 
         <!-- STEP 3: Details -->
         <div class="step" id="s3">
-          <h2 class="step__h2">Details zur Immobilie</h2>
+          <div class="step__eyebrow">Schritt 3</div>
+          <h2 class="step__h2">Details zur <em>Immobilie</em></h2>
           <p class="step__sub">Diese Faktoren beeinflussen den Wert erheblich.</p>
 
-          <div class="sec-lbl">Zustand der Immobilie</div>
+          <div class="sec-eyebrow">Zustand</div>
           <div class="cond-list" id="g-zustand">
             <div class="cond-card" data-val="sanierung" data-fac="0.75">
               <div class="cond-card__icon">🔴</div>
@@ -349,7 +399,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
             </div>
           </div>
 
-          <div class="sec-lbl">Heizungsart</div>
+          <div class="sec-eyebrow">Heizungsart</div>
           <div class="card-grid card-grid--sm" id="g-heizung">
             <div class="sel-card" data-val="oel" data-fac="0.93">
               <div class="sel-card__icon">🛢️</div>
@@ -377,47 +427,52 @@ input,select,textarea{font-family:inherit;font-size:1rem}
             </div>
           </div>
 
-          <div class="sec-lbl">Garage / Stellplatz</div>
+          <div class="sec-eyebrow">Garage / Stellplatz</div>
           <div class="card-grid" id="g-garage">
             <div class="sel-card" data-val="keine" data-bonus="0">
               <div class="sel-card__icon">🚫</div>
-              <div class="sel-card__lbl">Keine Garage</div>
+              <div class="sel-card__lbl">Keine</div>
             </div>
             <div class="sel-card" data-val="carport" data-bonus="8000">
               <div class="sel-card__icon">🏗️</div>
               <div class="sel-card__lbl">Carport</div>
+              <div class="sel-card__sub">+8.000 €</div>
             </div>
             <div class="sel-card" data-val="einzelgarage" data-bonus="18000">
               <div class="sel-card__icon">🏠</div>
               <div class="sel-card__lbl">Einzelgarage</div>
+              <div class="sel-card__sub">+18.000 €</div>
             </div>
             <div class="sel-card" data-val="doppelgarage" data-bonus="28000">
               <div class="sel-card__icon">🚗</div>
               <div class="sel-card__lbl">Doppelgarage</div>
+              <div class="sel-card__sub">+28.000 €</div>
             </div>
           </div>
         </div>
 
         <!-- STEP 4: Ergebnis -->
         <div class="step" id="s4">
-          <h2 class="step__h2">Ihre Werteinschätzung</h2>
+          <div class="step__eyebrow">Ihre Werteinschätzung</div>
+          <h2 class="step__h2">Geschätzter <em>Marktwert</em></h2>
           <p class="step__sub">Basierend auf Ihren Angaben und aktuellen Marktdaten für Rheinhessen.</p>
           <div class="result-box">
-            <div class="result-box__lbl">GESCHÄTZTER MARKTWERT</div>
+            <div class="result-box__eyebrow">Marktwert-Schätzung</div>
             <div class="result-box__val" id="res-val">–</div>
             <div class="result-box__range" id="res-range"></div>
-            <div class="result-box__note">Diese Schätzung basiert auf aktuellen Vergleichswerten in Rheinhessen. Für eine präzise Bewertung erhalten Sie von Markus Seitz eine kostenlose Einschätzung auf Basis einer Vor-Ort-Besichtigung.</div>
+            <div class="result-box__note">Diese Schätzung basiert auf aktuellen Vergleichswerten in Rheinhessen. Für eine präzise, persönliche Bewertung erhalten Sie von Markus Seitz eine kostenlose Einschätzung auf Basis einer Vor-Ort-Besichtigung.</div>
           </div>
           <div class="result-facts" id="res-facts"></div>
           <div style="text-align:center;margin-bottom:4px">
-            <p style="font-size:.86rem;color:var(--muted);margin-bottom:14px">Möchten Sie eine <strong>präzise, persönliche Bewertung</strong> von Markus Seitz?</p>
-            <button class="btn btn--gold" onclick="jump(5)">📞 Jetzt kostenlose Expertenbewertung anfordern</button>
+            <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px">Möchten Sie eine <strong style="color:var(--white)">präzise, persönliche Bewertung</strong> von Markus Seitz?</p>
+            <button class="btn btn--primary btn--full" onclick="jump(5)">Kostenlose Expertenbewertung anfordern</button>
           </div>
         </div>
 
         <!-- STEP 5: Kontakt -->
         <div class="step" id="s5">
-          <h2 class="step__h2">Kostenlose Bewertung anfordern</h2>
+          <div class="step__eyebrow">Schritt 5</div>
+          <h2 class="step__h2">Jetzt <em>Bewertung anfordern</em></h2>
           <p class="step__sub">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel innerhalb von 24 Stunden.</p>
           <div class="f-row">
             <div class="field">
@@ -433,7 +488,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
             <div class="field">
               <label for="f-tel">Telefon / WhatsApp *</label>
               <input type="tel" id="f-tel" placeholder="z. B. 0151 23456789">
-              <span class="field__hint">Wir rufen zurück oder schreiben per WhatsApp</span>
+              <span class="field__hint">Ich rufe zurück oder schreibe per WhatsApp</span>
             </div>
           </div>
           <div class="f-row f-row--1">
@@ -448,11 +503,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
               <input type="text" id="f-msg" placeholder="optional – z. B. beste Erreichbarkeit">
             </div>
           </div>
-          <div style="margin-top:10px">
-            <div class="cb-row">
-              <input type="checkbox" id="cb-bew" checked>
-              <label for="cb-bew">Ich möchte die kostenlose Immobilienbewertung von Markus Seitz Immobilien · iad erhalten.</label>
-            </div>
+          <div style="margin-top:12px">
             <div class="cb-row">
               <input type="checkbox" id="cb-ds">
               <label for="cb-ds">Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. *</label>
@@ -464,34 +515,68 @@ input,select,textarea{font-family:inherit;font-size:1rem}
         <div class="step" id="s-done">
           <div class="thankyou">
             <div class="ty__icon">✅</div>
-            <h2 class="ty__h2">Vielen Dank für Ihre Anfrage!</h2>
-            <p class="ty__p">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel <strong>innerhalb von 24 Stunden</strong>. Sie können ihn auch direkt erreichen:</p>
+            <h2 class="ty__h2">Vielen Dank <em>für Ihre Anfrage!</em></h2>
+            <p class="ty__p">Markus Seitz meldet sich persönlich bei Ihnen – in der Regel <strong style="color:var(--white)">innerhalb von 24 Stunden</strong>.</p>
             <div class="cbox">
-              <div class="cbox__row">📞 <span id="ty-tel">Telefon wird hier eingetragen</span></div>
-              <div class="cbox__row">✉️ <span id="ty-mail">E-Mail wird hier eingetragen</span></div>
-              <div class="cbox__row">🌐 <span>wertermittlung-rheinhessen.de</span></div>
+              <div class="cbox__row"><span>📞</span> markus-seitz.immobilien</div>
+              <div class="cbox__row"><span>📍</span> Rheinhessen &amp; Rhein-Neckar</div>
+              <div class="cbox__row"><span>⭐</span> 5,0 / 51 Google-Bewertungen</div>
             </div>
           </div>
         </div>
 
       </div><!-- /wiz-body -->
 
-      <!-- Nav Buttons -->
+      <!-- Nav -->
       <div class="wiz-nav" id="wiz-nav">
         <button class="btn btn--ghost btn--invis" id="btn-back" onclick="goBack()">← Zurück</button>
-        <button class="btn btn--navy" id="btn-next" onclick="goNext()" disabled>Weiter →</button>
+        <button class="btn btn--primary" id="btn-next" onclick="goNext()" disabled>Weiter →</button>
       </div>
 
     </div><!-- /wiz-card -->
   </div>
 </section>
 
-<!-- TRUST SECTION -->
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="wrap--wide">
+    <div class="reviews__score">
+      <div class="reviews__num">5,0<sub> / 5</sub></div>
+      <div class="reviews__meta">
+        <div class="reviews__stars">★★★★★</div>
+        <div class="reviews__label">51 Bewertungen auf Google</div>
+        <div class="reviews__sub">Das sagen Eigentümer und Käufer, die ich begleitet habe.</div>
+      </div>
+    </div>
+    <div class="reviews__grid">
+      <div class="review-card">
+        <div class="review-card__stars">★★★★★</div>
+        <div class="review-card__text">„Hervorragender Service und absolute Professionalität! Von der ersten Besichtigung bis zur Schlüsselübergabe lief alles absolut reibungslos, transparent und professionell."</div>
+        <div class="review-card__author">Iryna K. · Google-Bewertung</div>
+      </div>
+      <div class="review-card">
+        <div class="review-card__stars">★★★★★</div>
+        <div class="review-card__text">„Wir haben unser Mehrfamilienhaus über Herrn Seitz verkauft. Wir konnten ihn jederzeit telefonisch erreichen und er hatte für alle Probleme eine Lösung."</div>
+        <div class="review-card__author">Gabi W. · Google-Bewertung</div>
+      </div>
+      <div class="review-card">
+        <div class="review-card__stars">★★★★★</div>
+        <div class="review-card__text">„Markus Seitz ist ein anderer Makler, er kümmert sich äußerst gewissenhaft um seine Kunden und ist immer ehrlich in seinen Immobilienbewertungen."</div>
+        <div class="review-card__author">Benjamin H. · Google-Bewertung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
 <section class="trust">
   <div class="wrap--wide">
-    <h2 class="trust__h2">Warum Markus Seitz?</h2>
-    <p class="trust__sub">Ihr Strategie-Makler in Rheinhessen – mit Erfahrung, die zählt</p>
-    <div class="trust-grid">
+    <div class="sec-header">
+      <div class="sec-header__eyebrow">Warum Markus Seitz</div>
+      <h2 class="sec-header__h2">Ihr Strategie-Makler <em>in Rheinhessen</em></h2>
+      <p class="sec-header__sub">Erfahrung, die zählt – Ehrlichkeit, die überzeugt.</p>
+    </div>
+    <div class="trust__inner">
       <div class="tcard">
         <div class="tcard__icon">🏆</div>
         <h3 class="tcard__h3">30+ Jahre Vertrieb</h3>
@@ -508,9 +593,9 @@ input,select,textarea{font-family:inherit;font-size:1rem}
         <p class="tcard__p">Analytische Präzision bei der Wertermittlung – Sie erhalten den Preis, der wert ist.</p>
       </div>
       <div class="tcard">
-        <div class="tcard__icon">⭐</div>
-        <h3 class="tcard__h3">5,0 / 5 Google-Bewertung</h3>
-        <p class="tcard__p">51 zufriedene Kunden haben Markus Seitz mit der Höchstnote bewertet.</p>
+        <div class="tcard__icon">📍</div>
+        <h3 class="tcard__h3">Rheinhessen-Experte</h3>
+        <p class="tcard__p">Tiefes Marktwissen in Mainz, Worms, Bingen, Alzey und der gesamten Region.</p>
       </div>
       <div class="tcard">
         <div class="tcard__icon">🤝</div>
@@ -518,9 +603,9 @@ input,select,textarea{font-family:inherit;font-size:1rem}
         <p class="tcard__p">Keine versteckten Kosten. Klare Kommunikation vom ersten Gespräch bis zum Notar.</p>
       </div>
       <div class="tcard">
-        <div class="tcard__icon">📍</div>
-        <h3 class="tcard__h3">Rheinhessen-Experte</h3>
-        <p class="tcard__p">Tiefes Marktwissen in Mainz, Worms, Bingen, Alzey und der gesamten Region.</p>
+        <div class="tcard__icon">⭐</div>
+        <h3 class="tcard__h3">5,0 Google-Rating</h3>
+        <p class="tcard__p">51 zufriedene Kunden haben Markus Seitz mit der Höchstnote bewertet.</p>
       </div>
     </div>
   </div>
@@ -530,10 +615,11 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 <footer class="footer">
   <div class="wrap">
     <strong>Markus Seitz Immobilien · iad</strong><br>
-    Ihr Strategie-Makler in Rheinhessen · wertermittlung-rheinhessen.de<br><br>
-    <span style="opacity:.6;font-size:.76rem">
+    Selbstständiger Vertriebspartner der iad Deutschland GmbH · § 34c GewO<br>
+    <a href="https://markus-seitz.immobilien" target="_blank">markus-seitz.immobilien</a> · wertermittlung-rheinhessen.de<br><br>
+    <span style="font-size:.7rem;opacity:.7">
       Diese Bewertung ist eine unverbindliche Schätzung auf Basis von Marktdaten. Sie ersetzt keine professionelle Verkehrswertermittlung nach ImmoWertV.<br>
-      © 2025 Markus Seitz Immobilien · iad &nbsp;·&nbsp; <a href="#" style="color:inherit">Datenschutz</a> &nbsp;·&nbsp; <a href="#" style="color:inherit">Impressum</a>
+      © 2025 Markus Seitz Immobilien · <a href="#">Datenschutz</a> · <a href="#">Impressum</a>
     </span>
   </div>
 </footer>
@@ -543,169 +629,139 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 // STATE
 // =====================================================
 const S = {
-  step: 1,
-  total: 5,
-  gebFac: null, gebVal: '',
-  zuFac:  null, zuVal:  '',
-  hzFac:  null, hzVal:  '',
-  grBonus: null, grVal: '',
+  step:1, total:5,
+  gebFac:null, gebVal:'',
+  zuFac:null,  zuVal:'',
+  hzFac:null,  hzVal:'',
+  grBonus:null,grVal:'',
 };
 
 // =====================================================
-// PLZ → Marktpreis €/m² (Rheinhessen)
+// PLZ → €/m²
 // =====================================================
-function preisQm(plz) {
-  const p = String(plz).trim();
-  if (/^5511/.test(p) || /^5512/.test(p)) return 4500; // Mainz Innenstadt
-  if (/^551/.test(p))                      return 4000; // Mainz allgemein
-  if (/^5521/.test(p) || /^5522/.test(p)) return 3600; // Ingelheim
-  if (/^5523/.test(p) || /^5524/.test(p)) return 2500; // Alzey
-  if (/^5526/.test(p))                    return 3200; // Nieder-Olm
-  if (/^5527/.test(p) || /^5528/.test(p)) return 2900; // Nierstein/Oppenheim
-  if (/^5541/.test(p) || /^5542/.test(p)) return 3300; // Bingen
-  if (/^675/.test(p)  || /^676/.test(p))  return 2800; // Worms
-  if (/^6757/.test(p))                    return 2400; // Osthofen
-  if (/^55/.test(p))                      return 2600; // Übriges Rheinhessen 55xxx
-  if (/^67/.test(p))                      return 2400; // Übriges 67xxx
+function preisQm(plz){
+  const p=String(plz).trim();
+  if(/^5511/.test(p)||/^5512/.test(p))return 4500;
+  if(/^551/.test(p))return 4000;
+  if(/^5521/.test(p)||/^5522/.test(p))return 3600;
+  if(/^5523/.test(p)||/^5524/.test(p))return 2500;
+  if(/^5526/.test(p))return 3200;
+  if(/^5527/.test(p)||/^5528/.test(p))return 2900;
+  if(/^5541/.test(p)||/^5542/.test(p))return 3300;
+  if(/^675/.test(p)||/^676/.test(p))return 2800;
+  if(/^6757/.test(p))return 2400;
+  if(/^55/.test(p))return 2600;
+  if(/^67/.test(p))return 2400;
   return 2500;
 }
 
-// Baujahr-Faktor
-function bjFac(bj) {
-  const y = parseInt(bj) || 1980;
-  if (y >= 2015) return 1.08;
-  if (y >= 2000) return 1.02;
-  if (y >= 1990) return 0.98;
-  if (y >= 1980) return 0.95;
-  if (y >= 1970) return 0.90;
-  if (y >= 1960) return 0.86;
-  if (y >= 1950) return 0.82;
-  return 0.78;
+function bjFac(bj){
+  const y=parseInt(bj)||1980;
+  if(y>=2015)return 1.08; if(y>=2000)return 1.02;
+  if(y>=1990)return 0.98; if(y>=1980)return 0.95;
+  if(y>=1970)return 0.90; if(y>=1960)return 0.86;
+  if(y>=1950)return 0.82; return 0.78;
 }
 
-function eur(n) {
-  return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-}
-
-function round5k(n) { return Math.round(n / 5000) * 5000; }
+function eur(n){return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n)}
+function round5k(n){return Math.round(n/5000)*5000}
 
 // =====================================================
 // SELECTION CARDS
 // =====================================================
-function bindCards(gridId, stateKey, facKey, isBool) {
-  document.getElementById(gridId)?.querySelectorAll('.sel-card,.cond-card').forEach(c => {
-    c.addEventListener('click', () => {
-      document.getElementById(gridId).querySelectorAll('.sel-card,.cond-card').forEach(x => x.classList.remove('active'));
+function bindCards(gridId,stateKey,facKey,isBonus){
+  document.getElementById(gridId)?.querySelectorAll('.sel-card,.cond-card').forEach(c=>{
+    c.addEventListener('click',()=>{
+      document.getElementById(gridId).querySelectorAll('.sel-card,.cond-card').forEach(x=>x.classList.remove('active'));
       c.classList.add('active');
-      S[stateKey] = c.dataset.val;
-      S[facKey] = isBool ? parseInt(c.dataset.bonus) : parseFloat(c.dataset.fac);
+      S[stateKey]=c.dataset.val;
+      S[facKey]=isBonus?parseInt(c.dataset.bonus):parseFloat(c.dataset.fac);
       refreshNext();
     });
   });
 }
-
-bindCards('g-gebaeude', 'gebVal', 'gebFac', false);
-bindCards('g-zustand',  'zuVal',  'zuFac',  false);
-bindCards('g-heizung',  'hzVal',  'hzFac',  false);
-bindCards('g-garage',   'grVal',  'grBonus', true);
+bindCards('g-gebaeude','gebVal','gebFac',false);
+bindCards('g-zustand','zuVal','zuFac',false);
+bindCards('g-heizung','hzVal','hzFac',false);
+bindCards('g-garage','grVal','grBonus',true);
 
 // =====================================================
 // NAVIGATION
 // =====================================================
-function jump(n) {
-  document.getElementById('s' + (S.step === 5 ? 'done' : S.step))?.classList.remove('active');
-  if (n > 5) { sendForm(); return; }
-  if (n === 4) calcResult();
-  document.getElementById('s' + n)?.classList.add('active');
-  S.step = n;
-  renderNav();
-  renderProg();
-  scrollWiz();
+function jump(n){
+  document.getElementById('s'+(S.step==='done'?'done':S.step))?.classList.remove('active');
+  if(n>5){sendForm();return;}
+  if(n===4)calcResult();
+  document.getElementById('s'+n)?.classList.add('active');
+  S.step=n;
+  renderNav(); renderProg();
+  document.getElementById('wizard').scrollIntoView({behavior:'smooth',block:'start'});
 }
+function goNext(){if(!validate(S.step))return;jump(S.step===5?6:S.step+1);}
+function goBack(){if(S.step>1)jump(S.step-1);}
 
-function goNext() {
-  if (!validate(S.step)) return;
-  jump(S.step === 5 ? 6 : S.step + 1);
-}
-function goBack()  { if (S.step > 1) jump(S.step - 1); }
-
-function renderNav() {
-  const navEl = document.getElementById('wiz-nav');
-  const back  = document.getElementById('btn-back');
-  const next  = document.getElementById('btn-next');
-
-  // Step 4 uses its own CTA button
-  navEl.style.display = S.step === 4 ? 'none' : 'flex';
-
-  back.className = S.step <= 1 ? 'btn btn--ghost btn--invis' : 'btn btn--ghost';
-
-  if (S.step === 5) {
-    next.textContent = '✉️ Jetzt Bewertung anfordern';
-    next.className = 'btn btn--gold';
-    next.style.flex = '1';
+function renderNav(){
+  const nav=document.getElementById('wiz-nav');
+  const back=document.getElementById('btn-back');
+  const next=document.getElementById('btn-next');
+  nav.style.display=S.step===4?'none':'flex';
+  back.className=S.step<=1?'btn btn--ghost btn--invis':'btn btn--ghost';
+  if(S.step===5){
+    next.textContent='Bewertung anfordern →';
+    next.className='btn btn--primary';
+    next.style.flex='1';
   } else {
-    next.textContent = 'Weiter →';
-    next.className = 'btn btn--navy';
-    next.style.flex = '';
+    next.textContent='Weiter →';
+    next.className='btn btn--primary';
+    next.style.flex='';
   }
   refreshNext();
 }
 
-function renderProg() {
-  document.getElementById('prog-fill').style.width = (S.step / S.total * 100) + '%';
-  document.getElementById('prog-lbl').textContent = `Schritt ${S.step} von ${S.total}`;
+function renderProg(){
+  document.getElementById('prog-fill').style.width=(S.step/S.total*100)+'%';
+  document.getElementById('prog-lbl').textContent=`Schritt ${S.step} von ${S.total}`;
 }
 
-function refreshNext() {
-  const btn = document.getElementById('btn-next');
-  if (btn) btn.disabled = !canGo();
+function refreshNext(){
+  const btn=document.getElementById('btn-next');
+  if(btn)btn.disabled=!canGo();
 }
 
-function canGo() {
-  switch (S.step) {
-    case 1: return S.gebVal !== '';
-    case 2:
-      const plz = v('f-plz'), ort = v('f-ort'), bj = v('f-bj'), wf = v('f-wf'), zi = v('f-zi');
-      return /^\d{5}$/.test(plz) && ort && bj && wf && zi;
-    case 3: return S.zuVal !== '' && S.hzVal !== '' && S.grVal !== '';
-    case 5:
-      return v('f-vn') && v('f-nn') && v('f-tel') && document.getElementById('cb-ds').checked;
-    default: return true;
+function canGo(){
+  switch(S.step){
+    case 1:return S.gebVal!=='';
+    case 2:return /^\d{5}$/.test(v('f-plz'))&&v('f-ort')&&v('f-bj')&&v('f-wf')&&v('f-zi');
+    case 3:return S.zuVal!==''&&S.hzVal!==''&&S.grVal!=='';
+    case 5:return v('f-vn')&&v('f-nn')&&v('f-tel')&&document.getElementById('cb-ds').checked;
+    default:return true;
   }
-}
-
-function scrollWiz() {
-  const el = document.getElementById('wizard');
-  if (el) window.scrollTo({top: el.offsetTop - 70, behavior:'smooth'});
 }
 
 // =====================================================
 // VALIDATION
 // =====================================================
-function v(id) { return (document.getElementById(id)?.value || '').trim(); }
+function v(id){return(document.getElementById(id)?.value||'').trim()}
 
-function validate(step) {
-  if (step === 1 && !S.gebVal) { alert('Bitte wählen Sie einen Gebäudetyp.'); return false; }
-  if (step === 2) {
-    let ok = true;
-    [['f-plz', p => /^\d{5}$/.test(p)], ['f-ort', p => !!p],
-     ['f-bj',  p => p >= 1800 && p <= 2025], ['f-wf', p => p >= 10], ['f-zi', p => p >= 1]]
-    .forEach(([id, fn]) => {
-      const el = document.getElementById(id);
-      const valid = fn(v(id));
-      el.classList.toggle('err', !valid);
-      if (!valid) ok = false;
+function validate(step){
+  if(step===1&&!S.gebVal){alert('Bitte wählen Sie einen Gebäudetyp.');return false;}
+  if(step===2){
+    let ok=true;
+    [['f-plz',p=>/^\d{5}$/.test(p)],['f-ort',p=>!!p],
+     ['f-bj',p=>p>=1800&&p<=2025],['f-wf',p=>p>=10],['f-zi',p=>p>=1]]
+    .forEach(([id,fn])=>{
+      const el=document.getElementById(id);
+      const valid=fn(v(id));
+      el.classList.toggle('err',!valid);
+      if(!valid)ok=false;
     });
-    if (!ok) alert('Bitte füllen Sie alle Pflichtfelder korrekt aus.');
+    if(!ok)alert('Bitte füllen Sie alle Pflichtfelder korrekt aus.');
     return ok;
   }
-  if (step === 3 && (!S.zuVal || !S.hzVal || !S.grVal)) {
-    alert('Bitte treffen Sie für alle drei Bereiche eine Auswahl.');
-    return false;
-  }
-  if (step === 5) {
-    if (!v('f-vn') || !v('f-nn') || !v('f-tel')) { alert('Bitte Name und Telefonnummer eintragen.'); return false; }
-    if (!document.getElementById('cb-ds').checked) { alert('Bitte der Datenschutzerklärung zustimmen.'); return false; }
+  if(step===3&&(!S.zuVal||!S.hzVal||!S.grVal)){alert('Bitte treffen Sie für alle drei Bereiche eine Auswahl.');return false;}
+  if(step===5){
+    if(!v('f-vn')||!v('f-nn')||!v('f-tel')){alert('Bitte Name und Telefonnummer eintragen.');return false;}
+    if(!document.getElementById('cb-ds').checked){alert('Bitte der Datenschutzerklärung zustimmen.');return false;}
   }
   return true;
 }
@@ -713,100 +769,90 @@ function validate(step) {
 // =====================================================
 // CALCULATION
 // =====================================================
-function calcResult() {
-  const plz = v('f-plz'), ort = v('f-ort');
-  const wf  = parseFloat(v('f-wf')) || 100;
-  const bj  = v('f-bj');
-  const pQm = preisQm(plz);
+function calcResult(){
+  const plz=v('f-plz'),ort=v('f-ort');
+  const wf=parseFloat(v('f-wf'))||100;
+  const bj=v('f-bj');
+  const pQm=preisQm(plz);
 
-  let mid = wf * pQm;
-  mid *= S.gebFac   ?? 1;
-  mid *= bjFac(bj);
-  mid *= S.zuFac    ?? 1;
-  mid *= S.hzFac    ?? 1;
-  mid += S.grBonus  ?? 0;
-  mid = round5k(mid);
+  let mid=wf*pQm;
+  mid*=S.gebFac??1;
+  mid*=bjFac(bj);
+  mid*=S.zuFac??1;
+  mid*=S.hzFac??1;
+  mid+=S.grBonus??0;
+  mid=round5k(mid);
 
-  const lo = round5k(mid * 0.91);
-  const hi = round5k(mid * 1.09);
+  const lo=round5k(mid*0.91);
+  const hi=round5k(mid*1.09);
 
-  document.getElementById('res-val').textContent   = eur(mid);
-  document.getElementById('res-range').textContent = `Wertspanne: ${eur(lo)} – ${eur(hi)}`;
+  document.getElementById('res-val').textContent=eur(mid);
+  document.getElementById('res-range').textContent=`Wertspanne: ${eur(lo)} – ${eur(hi)}`;
 
-  const labels = {
-    efh:'Einfamilienhaus', doppel:'Doppelhaus', reihen:'Reihenhaus',
-    mfh:'Mehrfamilienhaus', etw:'Eigentumswohnung', grundstueck:'Grundstück',
-    sanierung:'Sanierungsbedürftig', renovierung:'Renovierungsbedürftig',
-    gepflegt:'Gepflegt', modernisiert:'Modernisiert', neuwertig:'Neuwertig',
-    oel:'Ölheizung', gas:'Gasheizung', fernwaerme:'Fernwärme',
-    waermepumpe:'Wärmepumpe', pellet:'Pellet/Solar', unbekannt:'Unbekannt',
-    keine:'Keine Garage', carport:'Carport', einzelgarage:'Einzelgarage', doppelgarage:'Doppelgarage'
+  const labels={
+    efh:'Einfamilienhaus',doppel:'Doppelhaus',reihen:'Reihenhaus',
+    mfh:'Mehrfamilienhaus',etw:'Eigentumswohnung',grundstueck:'Grundstück',
+    sanierung:'Sanierungsbedürftig',renovierung:'Renovierungsbedürftig',
+    gepflegt:'Gepflegt',modernisiert:'Modernisiert',neuwertig:'Neuwertig',
+    oel:'Ölheizung',gas:'Gasheizung',fernwaerme:'Fernwärme',
+    waermepumpe:'Wärmepumpe',pellet:'Pellet/Solar',unbekannt:'Unbekannt',
+    keine:'Keine Garage',carport:'Carport',einzelgarage:'Einzelgarage',doppelgarage:'Doppelgarage'
   };
 
-  document.getElementById('res-facts').innerHTML = [
-    ['Lage', `${ort} (${plz})`],
-    ['Marktpreis', `${pQm.toLocaleString('de-DE')} €/m²`],
-    ['Wohnfläche', `${wf} m²`],
-    ['Zustand', labels[S.zuVal] || '-'],
-    ['Heizung',  labels[S.hzVal] || '-'],
-    ['Garage',   labels[S.grVal] || '-'],
-  ].map(([l,v]) => `<div class="rfact"><div class="rfact__lbl">${l}</div><div class="rfact__val">${v}</div></div>`).join('');
+  document.getElementById('res-facts').innerHTML=[
+    ['Lage',`${ort} (${plz})`],
+    ['Marktpreis',`${pQm.toLocaleString('de-DE')} €/m²`],
+    ['Wohnfläche',`${wf} m²`],
+    ['Zustand',labels[S.zuVal]||'-'],
+    ['Heizung',labels[S.hzVal]||'-'],
+    ['Garage',labels[S.grVal]||'-'],
+  ].map(([l,val])=>`<div class="rfact"><div class="rfact__lbl">${l}</div><div class="rfact__val">${val}</div></div>`).join('');
 }
 
 // =====================================================
-// FORM SUBMISSION
+// SUBMIT
 // =====================================================
-async function sendForm() {
-  if (!validate(5)) return;
-  const btn = document.getElementById('btn-next');
-  btn.disabled = true;
-  btn.textContent = '⏳ Wird gesendet…';
+async function sendForm(){
+  if(!validate(5))return;
+  const btn=document.getElementById('btn-next');
+  btn.disabled=true;btn.textContent='⏳ Wird gesendet…';
 
-  // Konfigurierbar: Formspree-ID oder eigene API
-  const ENDPOINT = 'https://formspree.io/f/xbgoegzb';
+  const ENDPOINT='https://formspree.io/f/xbgoegzb';
 
-  const payload = {
-    _subject: `Neue Bewertungsanfrage: ${v('f-vn')} ${v('f-nn')} (${v('f-plz')} ${v('f-ort')})`,
-    gebaeude: S.gebVal, plz: v('f-plz'), ort: v('f-ort'),
-    baujahr: v('f-bj'), wohnflaeche: v('f-wf'), zimmer: v('f-zi'),
-    grundstueck: v('f-gs'), zustand: S.zuVal, heizung: S.hzVal, garage: S.grVal,
-    schaetzwert: document.getElementById('res-val')?.textContent,
-    vorname: v('f-vn'), nachname: v('f-nn'), telefon: v('f-tel'),
-    email: v('f-mail'), nachricht: v('f-msg'),
+  const payload={
+    _subject:`Neue Bewertungsanfrage: ${v('f-vn')} ${v('f-nn')} (${v('f-plz')} ${v('f-ort')})`,
+    gebaeude:S.gebVal,plz:v('f-plz'),ort:v('f-ort'),
+    baujahr:v('f-bj'),wohnflaeche:v('f-wf'),zimmer:v('f-zi'),
+    grundstueck:v('f-gs'),zustand:S.zuVal,heizung:S.hzVal,garage:S.grVal,
+    schaetzwert:document.getElementById('res-val')?.textContent,
+    vorname:v('f-vn'),nachname:v('f-nn'),telefon:v('f-tel'),
+    email:v('f-mail'),nachricht:v('f-msg'),
   };
 
-  try {
-    if (ENDPOINT !== 'YOUR_FORMSPREE_ID') {
-      const r = await fetch(ENDPOINT, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify(payload),
-      });
-      if (!r.ok) throw new Error('send failed');
-    }
-    // Danke-Seite
+  try{
+    const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+    if(!r.ok)throw new Error();
     document.getElementById('s5').classList.remove('active');
     document.getElementById('s-done').classList.add('active');
-    document.getElementById('wiz-nav').style.display = 'none';
-    document.getElementById('wiz-prog').style.display = 'none';
-  } catch {
-    btn.disabled = false;
-    btn.textContent = '✉️ Jetzt Bewertung anfordern';
-    alert('Fehler beim Senden. Bitte direkt anrufen.');
+    document.getElementById('wiz-nav').style.display='none';
+    document.getElementById('wiz-prog').style.display='none';
+    document.getElementById('prog-lbl').textContent='Fertig';
+  } catch{
+    btn.disabled=false;btn.textContent='Bewertung anfordern →';
+    alert('Fehler beim Senden. Bitte direkt kontaktieren.');
   }
 }
 
 // =====================================================
-// LIVE VALIDATION (typing)
+// LIVE VALIDATION
 // =====================================================
-['f-plz','f-ort','f-bj','f-wf','f-zi','f-vn','f-nn','f-tel'].forEach(id => {
-  document.getElementById(id)?.addEventListener('input', refreshNext);
+['f-plz','f-ort','f-bj','f-wf','f-zi','f-vn','f-nn','f-tel'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('input',refreshNext);
 });
-document.getElementById('cb-ds')?.addEventListener('change', refreshNext);
+document.getElementById('cb-ds')?.addEventListener('change',refreshNext);
 
 // INIT
-renderNav();
-renderProg();
+renderNav();renderProg();
 </script>
 </body>
 </html>
