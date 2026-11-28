@@ -283,6 +283,24 @@ a{color:var(--cyan);text-decoration:none}
 .radar-val-range{font-size:.8rem;color:var(--muted);margin-bottom:10px}
 .radar-val-note{font-size:.74rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:12px;margin-top:auto}
 
+/* ===== FAQ ===== */
+.faq-section{padding:80px 0;background:linear-gradient(180deg,rgba(0,201,200,.03) 0%,transparent 100%)}
+.faq-header{text-align:center;margin-bottom:56px}
+.faq-eyebrow{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.faq-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:600;line-height:1.15;color:var(--white);margin:0 0 16px}
+.faq-h2 em{color:var(--cyan);font-style:italic}
+.faq-intro{color:var(--muted);font-size:.93rem;max-width:600px;margin:0 auto;line-height:1.7}
+.faq-grid{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+.faq-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03);transition:border-color .2s}
+.faq-item:has(.faq-q[aria-expanded="true"]){border-color:rgba(0,201,200,.35)}
+.faq-q{width:100%;background:none;border:none;padding:20px 24px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:600;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
+.faq-q:hover{color:var(--cyan)}
+.faq-q::after{content:'＋';flex-shrink:0;font-size:1.1rem;color:var(--cyan);transition:transform .3s}
+.faq-q[aria-expanded="true"]::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s}
+.faq-a.open{max-height:600px;padding-bottom:4px}
+.faq-a p{padding:0 24px 20px;color:var(--muted);font-size:.88rem;line-height:1.75;margin:0}
+
 /* ===== FOOTER ===== */
 .footer{background:rgba(0,0,0,.3);border-top:1px solid var(--border);padding:30px 0;text-align:center;font-size:.74rem;color:var(--muted);line-height:1.9}
 .footer strong{color:var(--white)}
@@ -332,7 +350,7 @@ a{color:var(--cyan);text-decoration:none}
   <div class="wrap">
     <div class="hero__eyebrow">Kostenlos &amp; Unverbindlich</div>
     <h1 class="hero__h1">Immobilienmakler <em>Worms &amp;</em><br><em>Rheinhessen</em> – mit Strategie.</h1>
-    <p class="hero__sub">Markus Seitz bewertet Ihre Immobilie in Worms, Rheinhessen und Rhein-Neckar. Realistisch, ehrlich – und ohne Inserat zu starten.</p>
+    <p class="hero__sub">Markus Seitz bewertet Ihre Immobilie in Worms, Rheinhessen und Rhein-Neckar. Realistisch, ehrlich – kostenlos und unverbindlich.</p>
     <div class="hero__btns">
       <button class="btn btn--primary" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'})">Wert meiner Immobilie erfahren</button>
       <a class="btn btn--ghost" href="https://markus-seitz.immobilien" target="_blank">markus-seitz.immobilien ›</a>
@@ -710,6 +728,161 @@ a{color:var(--cyan);text-decoration:none}
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="wrap">
+    <div class="faq-header">
+      <div class="faq-eyebrow">Häufige Fragen</div>
+      <h2 class="faq-h2">Was Eigentümer beim<br><em>Immobilienverkauf</em> wissen wollen</h2>
+      <p class="faq-intro">Die wichtigsten Fragen rund um Bewertung, Verkauf und Zusammenarbeit mit einem Makler – ehrlich beantwortet von Markus Seitz.</p>
+    </div>
+
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was ist meine Immobilie aktuell wert?</button>
+        <div class="faq-a">
+          <p>Der Marktwert einer Immobilie hängt von Lage, Zustand, Baujahr, Wohnfläche und der aktuellen Nachfragesituation ab. In Worms und Rheinhessen liegen Einfamilienhäuser je nach Lage und Ausstattung zwischen 250.000 und über 600.000 €. Eine erste Orientierung liefert unser kostenloser Wert-Radar – für eine verbindliche Einschätzung empfehle ich einen persönlichen Termin vor Ort.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wie läuft eine professionelle Immobilienbewertung ab?</button>
+        <div class="faq-a">
+          <p>Eine fundierte Bewertung besteht aus Besichtigung der Immobilie, Analyse von Grundriss, Zustand und Ausstattung sowie dem Vergleich mit aktuellen Verkaufspreisen vergleichbarer Objekte in der Region. Ich berechne den Marktwert nach anerkannten Verfahren (Vergleichswert, Sachwert oder Ertragswert) und erkläre Ihnen das Ergebnis transparent und verständlich.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Ist die Bewertung wirklich kostenlos und unverbindlich?</button>
+        <div class="faq-a">
+          <p>Ja, absolut. Ich erstelle Ihnen eine realistische Marktpreiseinschätzung ohne jede Verpflichtung. Es entstehen keine Kosten, kein Maklervertrag wird unterschrieben, und Sie entscheiden danach frei, wie Sie weiter vorgehen möchten. Mein Ziel ist, Ihnen eine ehrliche Grundlage für Ihre Entscheidung zu geben.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wann ist der beste Zeitpunkt, um meine Immobilie zu verkaufen?</button>
+        <div class="faq-a">
+          <p>Es gibt keinen universell „besten" Zeitpunkt. Wichtiger als die Jahreszeit ist der aktuelle Markt in Ihrer Region. In Worms und Rheinhessen ist die Nachfrage nach Wohneigentum stabil, was Verkäufern gute Verhandlungspositionen bietet. Entscheidend ist, dass Ihre persönliche Situation stimmt – nicht die Zinsen oder Schlagzeilen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was kostet ein Makler beim Immobilienverkauf in Rheinhessen?</button>
+        <div class="faq-a">
+          <p>Seit der Maklerreform 2020 gilt: Die Courtage wird in Deutschland in der Regel hälftig zwischen Käufer und Verkäufer geteilt. Marktüblich sind 3,57 % inkl. MwSt. für jede Seite (also 7,14 % gesamt). Ich führe ein offenes Gespräch über Kosten und Leistungen, bevor wir gemeinsam entscheiden, ob eine Zusammenarbeit sinnvoll ist.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Muss ich einen Energieausweis vorlegen?</button>
+        <div class="faq-a">
+          <p>Ja. Seit 2014 ist der Energieausweis beim Verkauf oder der Vermietung einer Immobilie gesetzlich Pflicht. Er muss Interessenten spätestens beim Besichtigungstermin vorgelegt werden. Ich unterstütze Sie dabei, den passenden Ausweis (Bedarfs- oder Verbrauchsausweis) zu beschaffen, falls noch keiner vorhanden ist.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wie lange dauert ein Immobilienverkauf durchschnittlich?</button>
+        <div class="faq-a">
+          <p>Von der Bewertung bis zur Schlüsselübergabe dauert ein Verkauf in der Regel 3 bis 6 Monate. Die Vermarktung selbst dauert in Worms und Rheinhessen oft nur wenige Wochen – vorausgesetzt, der Preis ist marktgerecht und die Unterlagen sind vollständig. Die notarielle Abwicklung nach einem Kaufvertrag dauert typischerweise 4 bis 8 Wochen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was ist der Unterschied zwischen Marktwert und Verkehrswert?</button>
+        <div class="faq-a">
+          <p>Verkehrswert und Marktwert bezeichnen praktisch dasselbe: den Preis, der im gewöhnlichen Geschäftsverkehr erzielt werden kann. Der Begriff „Verkehrswert" ist der gesetzlich definierte Fachbegriff (§ 194 BauGB), während „Marktwert" im alltäglichen Sprachgebrauch üblich ist. Beide beschreiben den realistisch erzielbaren Preis – nicht den Wunschpreis.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Muss ich Spekulationssteuer zahlen, wenn ich meine Immobilie verkaufe?</button>
+        <div class="faq-a">
+          <p>Wenn Sie die Immobilie selbst bewohnt haben (mindestens im Jahr des Verkaufs und den beiden Vorjahren) oder mehr als 10 Jahre besitzen, fällt in der Regel keine Spekulationssteuer an. Andernfalls wird der Gewinn mit Ihrem persönlichen Einkommensteuersatz versteuert. Ich empfehle, das im Vorfeld mit einem Steuerberater zu klären.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Welche Unterlagen brauche ich für den Verkauf?</button>
+        <div class="faq-a">
+          <p>Wichtige Unterlagen sind: Grundbuchauszug, Flurkarte, Baupläne/Grundrisse, Wohnflächenberechnung, Energieausweis, bei Eigentumswohnungen die Teilungserklärung und aktuelle Nebenkostenabrechnungen. Ich prüfe gemeinsam mit Ihnen, welche Unterlagen vorliegen, und helfe bei der Beschaffung fehlender Dokumente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kann ich meine Immobilie auch ohne Makler verkaufen?</button>
+        <div class="faq-a">
+          <p>Ja, das ist möglich. Ein Privatverkauf spart die Maklercourtage, erfordert aber erheblichen Zeitaufwand, Marktkenntnisse und Verhandlungsgeschick. Risiken sind Fehleinschätzungen beim Preis, Bonitätsprüfung der Käufer und rechtliche Fallstricke. Viele Eigentümer stellen fest, dass ein erfahrener Makler unter dem Strich mehr Netto-Erlös erzielt.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Welche Renovierungen erhöhen den Verkaufspreis wirklich?</button>
+        <div class="faq-a">
+          <p>Nicht jede Renovierung lohnt sich vor dem Verkauf. Besonders wirkungsvoll sind: frischer Anstrich, ein gepflegtes Bad und eine aufgeräumte, neutrale Präsentation. Große Investitionen (neue Küche, Heizungsanlage) rechnen sich selten voll. Ich berate Sie individuell, welche Maßnahmen in Ihrem Fall das beste Preis-Nutzen-Verhältnis bieten.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wie finde ich den richtigen Angebotspreis?</button>
+        <div class="faq-a">
+          <p>Der richtige Angebotspreis liegt nahe am Marktwert – nicht darüber. Zu hoch angesetzte Preise schrecken Interessenten ab und führen zu langen Vermarktungszeiten, die den Ruf der Immobilie schädigen. Zu günstig bedeutet Verlust. Eine fundierte Bewertung auf Basis aktueller Vergleichspreise in Worms und Rheinhessen schützt Sie vor beiden Fehlern.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was passiert beim Notartermin?</button>
+        <div class="faq-a">
+          <p>Beim Notartermin wird der Kaufvertrag von beiden Parteien unterzeichnet. Der Notar liest den Vertrag vollständig vor, erklärt alle Klauseln und beantwortet Fragen. Nach der Beurkundung kümmert sich der Notar um die Eigentumsumschreibung im Grundbuch. Ich begleite Sie auf Wunsch zum Notartermin und bereite Sie darauf vor.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wie prüfe ich, ob ein Kaufinteressent wirklich finanziert ist?</button>
+        <div class="faq-a">
+          <p>Vor einer verbindlichen Zusage sollte immer eine Finanzierungsbestätigung einer Bank vorliegen – nicht nur eine Selbstauskunft. Als Makler prüfe ich die Bonität der Interessenten sorgfältig, bevor ein Kaufvertrag aufgesetzt wird. Das schützt Sie vor Platzern kurz vor dem Ziel.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Ist Home Staging sinnvoll?</button>
+        <div class="faq-a">
+          <p>Home Staging – die professionelle Möblierung und Inszenierung einer Immobilie – kann den wahrgenommenen Wert erheblich steigern und die Verkaufsdauer verkürzen. Studien zeigen, dass professionell gestylte Objekte bis zu 10 % mehr erzielen. Ich empfehle es besonders bei leerstehenden oder älteren Immobilien und vermittle auf Wunsch einen erfahrenen Stager.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was ist ein Alleinauftrag und lohnt er sich?</button>
+        <div class="faq-a">
+          <p>Beim Alleinauftrag beauftragen Sie exklusiv einen Makler. Das klingt einschränkend, hat aber Vorteile: Der Makler investiert mehr in Marketing, professionelle Fotos und Exposé, weil er sicher sein kann, dass sich sein Aufwand lohnt. Statistisch erzielen Alleinaufträge höhere Preise und kürzere Vermarktungszeiten als Mehrfachmandate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wie läuft die Zusammenarbeit mit Markus Seitz ab?</button>
+        <div class="faq-a">
+          <p>Es beginnt mit einer kostenlosen Bewertung Ihrer Immobilie vor Ort. Danach erhalten Sie eine schriftliche Marktpreiseinschätzung und einen Vorschlag zur Vermarktungsstrategie. Wenn Sie sich für eine Zusammenarbeit entscheiden, kümmere ich mich um alles: professionelle Fotos, Exposé, Besichtigungen, Kaufpreisverhandlung und Notartermin – bis zur Schlüsselübergabe.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was passiert, wenn meine Immobilie nicht verkauft wird?</button>
+        <div class="faq-a">
+          <p>Wenn eine Immobilie nicht verkauft wird, liegt das fast immer am Preis oder an der Präsentation. Ich analysiere regelmäßig das Interesse der Interessenten und spreche offen über notwendige Anpassungen. Eine Immobilie, die zu lange auf dem Markt ist, verliert an Wahrnehmung – deshalb setze ich von Anfang an auf eine realistische Strategie statt auf Wunschdenken.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Warum sollte ich Markus Seitz als Makler in Worms und Rheinhessen wählen?</button>
+        <div class="faq-a">
+          <p>Ich kenne den Rheinhessener Immobilienmarkt aus jahrelanger lokaler Erfahrung und über 50 erfolgreichen Verkäufen in der Region. Mein Ansatz ist ehrlich: Ich sage Ihnen den realistischen Preis – auch wenn er unbequem ist. Dazu kommt ein modernes Marketingkonzept mit 3D-Grundrissen, professionellen Fotos und zielgerichteter Online-Werbung. 5,0 Sterne bei Google sprechen für sich.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="wrap">
@@ -967,6 +1140,23 @@ document.getElementById('cb-ds')?.addEventListener('change',refreshNext);
 
 // INIT
 renderNav();renderProg();
+</script>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded','false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if(!expanded){
+      btn.setAttribute('aria-expanded','true');
+      btn.nextElementSibling.classList.add('open');
+    }
+  });
+});
 </script>
 
 <script>
