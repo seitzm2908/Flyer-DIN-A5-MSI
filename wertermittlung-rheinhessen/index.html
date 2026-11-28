@@ -353,6 +353,20 @@ a{color:var(--cyan);text-decoration:none}
 .video-wrap video{display:block;width:100%;aspect-ratio:9/16;background:#000;object-fit:cover}
 @media(max-width:420px){.video-wrap{max-width:100%;border-radius:var(--r)}}
 
+
+/* ===== LEGAL MODALS ===== */
+.legal-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);overflow-y:auto;padding:20px 16px}
+.legal-modal.open{display:flex;align-items:flex-start;justify-content:center}
+.legal-panel{background:var(--bg-mid);border:1px solid var(--border);border-radius:var(--r-lg);max-width:720px;width:100%;margin:auto;padding:40px 36px 36px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,.6)}
+.legal-panel__close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--muted);font-size:1.5rem;line-height:1;cursor:pointer;padding:4px 8px;border-radius:6px;transition:color .2s}
+.legal-panel__close:hover{color:var(--white)}
+.legal-panel__title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:600;color:var(--white);margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.legal-body{color:var(--muted);font-size:.84rem;line-height:1.85}
+.legal-body h3{color:var(--white);font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;margin:22px 0 8px;text-transform:uppercase;letter-spacing:.5px}
+.legal-body p{margin-bottom:12px}
+.legal-body a{color:var(--cyan)}
+@media(max-width:600px){.legal-panel{padding:28px 20px 24px}}
+
 </style>
 </head>
 <body>
@@ -966,7 +980,7 @@ a{color:var(--cyan);text-decoration:none}
     <a href="https://markus-seitz.immobilien" target="_blank">markus-seitz.immobilien</a> · wertermittlung-rheinhessen.de<br><br>
     <span style="font-size:.7rem;opacity:.7">
       Diese Bewertung ist eine unverbindliche Schätzung auf Basis von Marktdaten. Sie ersetzt keine professionelle Verkehrswertermittlung nach ImmoWertV.<br>
-      © 2025 Markus Seitz Immobilien · <a href="#">Datenschutz</a> · <a href="#">Impressum</a>
+      © 2025 Markus Seitz Immobilien · <a href="#" onclick="openModal('datenschutz');return false;">Datenschutz</a> · <a href="#" onclick="openModal('impressum');return false;">Impressum</a> · <a href="#" onclick="openModal('agb');return false;">AGB</a> · <a href="#" onclick="openModal('widerruf');return false;">Widerruf</a>
     </span>
   </div>
 </footer>
@@ -1241,5 +1255,144 @@ if('serviceWorker' in navigator){
   });
 }
 </script>
+
+<!-- LEGAL MODALS -->
+<div id="modal-impressum" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-impressum-title" onclick="if(event.target===this)closeModal('impressum')">
+  <div class="legal-panel">
+    <button class="legal-panel__close" onclick="closeModal('impressum')" aria-label="Schließen">✕</button>
+    <div class="legal-panel__title" id="modal-impressum-title">Impressum</div>
+    <div class="legal-body">
+      <p>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</p>
+      <h3>Anbieter</h3>
+      <p><strong>Markus Seitz Immobilien · iad</strong><br>Markus Seitz<br>St.-Georgen-Str. 13<br>67551 Worms-Pfeddersheim<br>Deutschland</p>
+      <h3>Kontakt</h3>
+      <p>Telefon: <a href="tel:+4917615858511">+49 176 15858511</a><br>E-Mail: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a></p>
+      <h3>Steuernummer &amp; Umsatzsteuer-ID</h3>
+      <p>Steuernummer: 44/162/72014<br>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE316069592</p>
+      <h3>Tätigkeit nach § 34c GewO</h3>
+      <p>Erlaubnis nach § 34c Gewerbeordnung zur Tätigkeit als Immobilienmakler.<br>Aufsichtsbehörde: Stadtverwaltung Worms, Bereich 3 – Sicherheit &amp; Ordnung, Folzstr. 5, 67547 Worms · <a href="https://www.worms.de" target="_blank">www.worms.de</a><br>Zuständige Kammer: IHK für Rheinhessen</p>
+      <h3>Unternehmenszugehörigkeit</h3>
+      <p>Tätig im Netzwerk von iad Deutschland GmbH (iad ID 1057).</p>
+      <h3>Berufs&shy;haftpflichtversicherung</h3>
+      <p>R+V Allgemeine Versicherung AG<br>Versicherungsnummer: 4DXWU35ZROM5HU0W9<br>Raiffeisenplatz 1, 65189 Wiesbaden<br>Geltungsraum: Deutschland</p>
+      <h3>Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h3>
+      <p>Markus Seitz, St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim</p>
+      <h3>Verbraucherschlichtung</h3>
+      <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Die EU-OS-Plattform wurde zum 20.07.2025 endgültig abgeschaltet.</p>
+      <h3>Haftung für Inhalte</h3>
+      <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Als Diensteanbieter bin ich gemäß § 7 Abs. 1 DDG für eigene Inhalte nach den allgemeinen Gesetzen verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.</p>
+      <h3>Haftung für Links</h3>
+      <p>Diese Website enthält Links zu externen Websites Dritter. Bei Bekanntwerden von Rechtsverletzungen werde ich entsprechende Links umgehend entfernen.</p>
+      <h3>Urheberrecht</h3>
+      <p>Die auf dieser Website erstellten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Downloads und Kopien sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+      <h3>Widerspruch gegen Werbe-E-Mails</h3>
+      <p>Der Nutzung der im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung nicht ausdrücklich angeforderter Werbung wird hiermit ausdrücklich widersprochen.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-datenschutz" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-datenschutz-title" onclick="if(event.target===this)closeModal('datenschutz')">
+  <div class="legal-panel">
+    <button class="legal-panel__close" onclick="closeModal('datenschutz')" aria-label="Schließen">✕</button>
+    <div class="legal-panel__title" id="modal-datenschutz-title">Datenschutzerklärung</div>
+    <div class="legal-body">
+      <h3>1. Verantwortlicher</h3>
+      <p>Markus Seitz, Einzelunternehmen, handelnd unter Markus Seitz Immobilien, St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim. Telefon: +49 176 158 585 11. E-Mail: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a></p>
+      <h3>2. Hosting und Server-Logfiles</h3>
+      <p>Diese Website wird bei der united-domains GmbH, Gautinger Str. 10, 82319 Starnberg, gehostet. Beim Aufruf der Seite speichert der Server automatisch Daten in Logfiles: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, übertragene Datenmenge, Browsertyp, Betriebssystem und Referrer. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mit united-domains besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO.</p>
+      <h3>3. Kontaktformular / Anfrage</h3>
+      <p>Wenn du das Bewertungsformular auf dieser Seite ausfüllst, werden deine Angaben (Name, Telefon/E-Mail, Immobiliendaten) ausschließlich durch Markus Seitz Immobilien und iad Deutschland (Vertriebspartner) zur Bearbeitung deiner Anfrage verarbeitet und nicht an weitere Dritte weitergegeben. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). Daten werden gelöscht, sobald sie nicht mehr benötigt werden.</p>
+      <h3>4. Cookies</h3>
+      <p>Diese Seite verwendet ausschließlich technisch notwendige, nicht zustimmungspflichtige Mittel. Es werden keine Tracking- oder Werbe-Cookies gesetzt.</p>
+      <h3>5. Deine Rechte</h3>
+      <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Schreib mir dazu an: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a></p>
+      <h3>6. Beschwerderecht</h3>
+      <p>Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren, z. B. beim Landesbeauftragten für den Datenschutz und die Informationsfreiheit Rheinland-Pfalz, Hintere Bleiche 34, 55116 Mainz.</p>
+      <h3>7. Stand</h3>
+      <p>November 2026</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-agb" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-agb-title" onclick="if(event.target===this)closeModal('agb')">
+  <div class="legal-panel">
+    <button class="legal-panel__close" onclick="closeModal('agb')" aria-label="Schließen">✕</button>
+    <div class="legal-panel__title" id="modal-agb-title">Allgemeine Geschäftsbedingungen</div>
+    <div class="legal-body">
+      <p>Geltungsbereich: Diese AGB gelten für die Erbringung von Dienstleistungen von Markus Seitz Immobilien, St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim, E-Mail: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a> (nachfolgend „Auftragnehmer") gegenüber seinen Kunden (nachfolgend „Auftraggeber").</p>
+      <h3>1. Allgemeines</h3>
+      <p>1.1 Diese AGB gelten für Verträge, die zwischen dem Auftraggeber und dem Auftragnehmer unter Einbeziehung dieser AGB geschlossen werden.</p>
+      <p>1.2 Der Auftragnehmer ist berechtigt, in eigenem Namen Leistungen an Subunternehmer zu vergeben. Er bleibt alleiniger Vertragspartner des Auftraggebers.</p>
+      <p>1.3 Soweit neben diesen AGB weitere Vertragsdokumente Vertragsbestandteil geworden sind, gehen diese im Widerspruchsfall den vorliegenden AGB vor.</p>
+      <p>1.4 Abweichende AGB des Auftraggebers erkennt der Auftragnehmer – vorbehaltlich ausdrücklicher Zustimmung – nicht an.</p>
+      <h3>2. Vertragsgegenstand und Leistungsumfang</h3>
+      <p>2.1 Der Auftragnehmer erbringt als selbständiger Unternehmer Immobilienvermittlung.</p>
+      <p>2.2 Der spezifische Leistungsumfang ist Gegenstand von Individualvereinbarungen.</p>
+      <p>2.3 Der Auftragnehmer erbringt die vertragsgemäßen Leistungen mit größtmöglicher Sorgfalt und Gewissenhaftigkeit.</p>
+      <h3>3. Mitwirkungspflichten des Auftraggebers</h3>
+      <p>Der Auftraggeber stellt alle zur Leistungserfüllung erforderlichen Informationen vollständig und korrekt zur Verfügung. Für Verzögerungen aufgrund verspäteter Mitwirkung des Auftraggebers ist der Auftragnehmer nicht verantwortlich.</p>
+      <h3>4. Vergütung</h3>
+      <p>4.1 Die Vergütung wird individualvertraglich vereinbart.</p>
+      <p>4.2 Die Vergütung ist nach Leistungserbringung zu entrichten; bei zeitabschnittsweiser Bemessung nach Ablauf der jeweiligen Zeitabschnitte (§ 614 BGB).</p>
+      <p>4.3 Die Rechnung wird per Post oder E-Mail gestellt und ist innerhalb von 14 Tagen nach Zugang fällig.</p>
+      <h3>5. Haftung / Freistellung</h3>
+      <p>5.1 Der Auftragnehmer haftet uneingeschränkt bei Vorsatz, grober Fahrlässigkeit und Verletzung von Leben, Körper oder Gesundheit. Bei fahrlässiger Verletzung wesentlicher Vertragspflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt. Im Übrigen ist die Haftung ausgeschlossen.</p>
+      <p>5.2 Der Auftraggeber stellt den Auftragnehmer von Ansprüchen Dritter frei, die durch eigene Verstöße des Auftraggebers entstehen.</p>
+      <h3>6. Vertragsdauer und Kündigung</h3>
+      <p>6.1 Vertragsdauer und Kündigungsfristen werden individuell vereinbart. Das Recht zur fristlosen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+      <p>6.3 Nach Vertragsbeendigung sind überlassene Unterlagen zurückzugeben oder zu vernichten; elektronische Daten vollständig zu löschen.</p>
+      <h3>7. Vertraulichkeit und Datenschutz</h3>
+      <p>7.1 Der Auftragnehmer behandelt alle Vorgänge streng vertraulich, auch über die Vertragsdauer hinaus.</p>
+      <p>7.2 Der Auftragnehmer hält sämtliche datenschutzrechtlichen Vorschriften (DSGVO, BDSG) ein.</p>
+      <h3>8. Schlussbestimmungen</h3>
+      <p>8.1 Es gilt deutsches Recht unter Ausschluss des CISG. Gerichtsstand ist der Sitz des Auftragnehmers, sofern der Auftraggeber Kaufmann oder juristische Person des öffentlichen Rechts ist.</p>
+      <p>8.2 Sollte eine Bestimmung unwirksam sein, bleibt die Gültigkeit der AGB im Übrigen unberührt.</p>
+      <p>8.5 Änderungen dieser AGB werden Bestandskunden mit einer Frist von zwei Wochen per E-Mail mitgeteilt. Widerspruch ist innerhalb der mitgeteilten Frist möglich.</p>
+      <h3>9. Verbraucherschlichtung</h3>
+      <p>Der Anbieter ist weder bereit noch verpflichtet, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle nach dem VSBG teilzunehmen. Kontakt: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a></p>
+      <p><em>Stand: Juli 2026</em></p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-widerruf" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-widerruf-title" onclick="if(event.target===this)closeModal('widerruf')">
+  <div class="legal-panel">
+    <button class="legal-panel__close" onclick="closeModal('widerruf')" aria-label="Schließen">✕</button>
+    <div class="legal-panel__title" id="modal-widerruf-title">Widerrufsbelehrung</div>
+    <div class="legal-body">
+      <h3>Widerrufsrecht</h3>
+      <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen den Maklervertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
+      <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns – <strong>Markus Seitz Immobilien</strong>, St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim, Telefon: <a href="tel:+4917615858511">+49 176 15 85 85 11</a>, E-Mail: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a> – mittels einer eindeutigen Erklärung (z. B. Brief, E-Mail) über Ihren Widerruf informieren. Sie können das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist genügt die rechtzeitige Absendung der Mitteilung.</p>
+      <h3>Folgen des Widerrufs</h3>
+      <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle von uns empfangenen Zahlungen unverzüglich und spätestens binnen vierzehn Tagen ab Eingang Ihrer Widerrufserklärung zurückzuzahlen. Für die Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben; Ihnen werden dabei keine Entgelte berechnet.</p>
+      <p>Haben Sie verlangt, dass die Dienstleistung während der Widerrufsfrist beginnen soll, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zum Widerruf bereits erbrachten Leistungen entspricht.</p>
+      <h3>Muster-Widerrufsformular</h3>
+      <p><em>(Dieses Formular ist nicht vorgeschrieben. Füllen Sie es aus und senden Sie es zurück, wenn Sie den Maklervertrag widerrufen möchten.)</em></p>
+      <p>An: Markus Seitz Immobilien, St.-Georgen-Str. 13, 67551 Worms-Pfeddersheim<br>E-Mail: <a href="mailto:info@markus-seitz.immobilien">info@markus-seitz.immobilien</a></p>
+      <p>Hiermit widerrufe ich / widerrufen wir den von mir / uns abgeschlossenen Maklervertrag:<br><br>
+      Vertragsabschlussdatum: _______________<br>
+      Gegenstand: Nachweis der Gelegenheit / Vermittlung eines Kauf-/Mietvertrages *<br>
+      Name des Verbrauchers: _______________<br>
+      Anschrift: _______________<br>
+      Datum: _______________</p>
+      <p><em>* Nichtzutreffendes streichen.</em></p>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+function openModal(id){
+  const m=document.getElementById('modal-'+id);
+  if(m){m.classList.add('open');document.body.style.overflow='hidden';}
+}
+function closeModal(id){
+  const m=document.getElementById('modal-'+id);
+  if(m){m.classList.remove('open');document.body.style.overflow='';}
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.legal-modal.open').forEach(m=>m.classList.remove('open'))&&(document.body.style.overflow='')});
+</script>
+
 </body>
 </html>
